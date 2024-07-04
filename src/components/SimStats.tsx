@@ -2,7 +2,6 @@ type Props = {
   minProfit: number;
   maxProfit: number;
   meanProfit: number;
-  stdError: number;
   lowerCI: number;
   upperCI: number;
   q1: number;
@@ -10,14 +9,12 @@ type Props = {
   q3: number;
   pLoseMoneyLowerCI: number;
   pLoseMoneyUpperCI: number;
-  valueAtRisk: number;
 };
 
 export default function SimStats({
   minProfit,
   maxProfit,
   meanProfit,
-  stdError,
   lowerCI,
   upperCI,
   q1,
@@ -25,7 +22,6 @@ export default function SimStats({
   q3,
   pLoseMoneyLowerCI,
   pLoseMoneyUpperCI,
-  valueAtRisk,
 }: Props) {
   return (
     <article className="flex w-full flex-col rounded-md border p-2 font-bold">
@@ -67,10 +63,6 @@ export default function SimStats({
           [{pLoseMoneyLowerCI.toLocaleString("en-US")} to{" "}
           {pLoseMoneyUpperCI.toLocaleString("en-US")}]
         </p>
-      </section>
-      <section id="valueAtRisk" className="flex flex-row justify-between">
-        <p>Value at Risk at 5% Level:</p>
-        <p>{valueAtRisk.toLocaleString("en-US")}</p>
       </section>
     </article>
   );

@@ -51,7 +51,6 @@ export default async function FinanceResults() {
   const {
     simValues,
     meanProfit,
-    stdError,
     lowerCI,
     upperCI,
     minProfit,
@@ -61,7 +60,6 @@ export default async function FinanceResults() {
     q3,
     pLoseMoneyLowerCI,
     pLoseMoneyUpperCI,
-    valueAtRisk,
   } = await simulateFinance(
     fixedCost,
     demandMin,
@@ -94,13 +92,11 @@ export default async function FinanceResults() {
             meanProfit={meanProfit}
             lowerCI={lowerCI}
             upperCI={upperCI}
-            stdError={stdError}
             q1={q1}
             q2={q2}
             q3={q3}
             pLoseMoneyLowerCI={pLoseMoneyLowerCI}
             pLoseMoneyUpperCI={pLoseMoneyUpperCI}
-            valueAtRisk={valueAtRisk}
           />
           <ThemeSwitch />
         </main>

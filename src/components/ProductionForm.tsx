@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Form,
+  FormLabel,
   FormControl,
   FormField,
   FormItem,
@@ -17,34 +18,48 @@ import { z } from "zod";
 
 const formSchema = z
   .object({
-    distMin: z.coerce.number({
-      required_error: "Minimum is required",
-      invalid_type_error: "Minimum must be a number",
+    unitCost: z.coerce.number({
+      required_error: "Unit cost is required",
+      invalid_type_error: "Unit cost must be a number",
     }),
-    distMode: z.coerce.number({
-      required_error: "Mode is required",
-      invalid_type_error: "Mode must be a number",
+    unitPrice: z.coerce.number({
+      required_error: "Unit price is required",
+      invalid_type_error: "Unit price must be a number",
     }),
-    distMax: z.coerce.number({
-      required_error: "Maximum is required",
-      invalid_type_error: "Maximum must be a number",
+    salvagePrice: z.coerce.number({
+      required_error: "Salvage price is required",
+      invalid_type_error: "Salvage price must be a number",
     }),
-    simPeriodsPerYear: z.coerce.number({
-      required_error: "Periods per year is required",
-      invalid_type_error: "Periods per year must be a number",
+    demandMin: z.coerce.number({
+      required_error: "Demand min is required",
+      invalid_type_error: "Demand min must be a number",
+    }),
+    demandMode: z.coerce.number({
+      required_error: "Demand mode is required",
+      invalid_type_error: "Demand mode must be a number",
+    }),
+    demandMax: z.coerce.number({
+      required_error: "Demand max is required",
+      invalid_type_error: "Demand max must be a number",
+    }),
+    fixedCost: z.coerce.number({
+      required_error: "Fixed costs are required",
+      invalid_type_error: "Fixed costs must be a number",
+    }),
+    productionQuantity: z.coerce.number({
+      required_error: "Production quantity is required",
+      invalid_type_error: "Production quantity must be a number",
     }),
   })
-  // validate that min <= mode <= max and min < max and simPeriodsPerYear > 0
+  // validate triangular demand distribution
   .refine(
     (fields) =>
-      fields.distMin <= fields.distMode &&
-      fields.distMode <= fields.distMax &&
-      fields.distMin < fields.distMax &&
-      fields.simPeriodsPerYear > 0,
+      fields.demandMin <= fields.demandMode &&
+      fields.demandMode <= fields.demandMax &&
+      fields.demandMin < fields.demandMax,
     {
-      message:
-        "The following must be true: 1) min <= mode <= max 2) min < max and 3) simPeriodsPerYear > 0",
-      path: ["simPeriodsPerYear"],
+      message: "Invalid data, please review.",
+      path: ["unitCost"],
     },
   );
 
@@ -54,86 +69,139 @@ export default function ProductionForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      distMin: undefined,
-      distMode: undefined,
-      distMax: undefined,
-      simPeriodsPerYear: undefined,
+      unitCost: undefined,
+      unitPrice: undefined,
+      salvagePrice: undefined,
+      demandMin: undefined,
+      demandMode: undefined,
+      demandMax: undefined,
+      fixedCost: undefined,
+      productionQuantity: undefined,
     },
   });
 
   // define submit handler
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const { distMin, distMode, distMax, simPeriodsPerYear } = values;
+    const {
+      unitCost,
+      unitPrice,
+      salvagePrice,
+      demandMin,
+      demandMode,
+      demandMax,
+      fixedCost,
+      productionQuantity,
+    } = values;
     router.push(
-      `/results/triangular?&distMin=${distMin}&distMode=${distMode}&distMax=${distMax}&simPeriodsPerYear=${simPeriodsPerYear}`,
+      `/results/production?unitCost=${unitCost}&unitPrice=${unitPrice}&salvagePrice=${salvagePrice}&demandMin=${demandMin}&demandMode=${demandMode}&demandMax=${demandMax}&fixedCost=${fixedCost}&productionQuantity=${productionQuantity}`,
     );
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col gap-4 p-4"
+      >
+        <FormLabel>Unit Cost</FormLabel>
         <FormField
           control={form.control}
-          name="distMin"
+          name="unitCost"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Minimum cash flow (or demand) per period"
-                  {...field}
-                />
+                <Input type="number" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-
+        <FormLabel>Unit Price</FormLabel>
         <FormField
           control={form.control}
-          name="distMode"
+          name="unitPrice"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Expected cash flow (or demand) per period"
-                  {...field}
-                />
+                <Input type="number" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-
+        <FormLabel>Salvage Price</FormLabel>
         <FormField
           control={form.control}
-          name="distMax"
+          name="salvagePrice"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Maximum cash flow (or demand) per period"
-                  {...field}
-                />
+                <Input type="number" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-
+        <FormLabel>Demand Minimum</FormLabel>
         <FormField
           control={form.control}
-          name="simPeriodsPerYear"
+          name="demandMin"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Periods per Year (e.g. 12 for monthly)"
-                  {...field}
-                />
+                <Input type="number" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormLabel>Demand Mode</FormLabel>
+        <FormField
+          control={form.control}
+          name="demandMode"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input type="number" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormLabel>Demand Maximum</FormLabel>
+        <FormField
+          control={form.control}
+          name="demandMax"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input type="number" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormLabel>Fixed Costs</FormLabel>
+        <FormField
+          control={form.control}
+          name="fixedCost"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input type="number" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormLabel>Production Quantity</FormLabel>
+        <FormField
+          control={form.control}
+          name="productionQuantity"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input type="number" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
