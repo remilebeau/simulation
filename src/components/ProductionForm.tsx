@@ -21,13 +21,9 @@ const formSchema = z
       required_error: "Minimum is required",
       invalid_type_error: "Minimum must be a number",
     }),
-    distMean: z.coerce.number({
-      required_error: "Mean is required",
-      invalid_type_error: "Mean must be a number",
-    }),
-    distSD: z.coerce.number({
-      required_error: "Standard deviation is required",
-      invalid_type_error: "Standard deviation must be a number",
+    distMode: z.coerce.number({
+      required_error: "Mode is required",
+      invalid_type_error: "Mode must be a number",
     }),
     distMax: z.coerce.number({
       required_error: "Maximum is required",
@@ -38,30 +34,28 @@ const formSchema = z
       invalid_type_error: "Periods per year must be a number",
     }),
   })
-  // validate that min < mean < max and min < max and SD > 0 and simPeriodsPerYear > 0
+  // validate that min <= mode <= max and min < max and simPeriodsPerYear > 0
   .refine(
     (fields) =>
-      fields.distMin < fields.distMean &&
-      fields.distMean < fields.distMax &&
+      fields.distMin <= fields.distMode &&
+      fields.distMode <= fields.distMax &&
       fields.distMin < fields.distMax &&
-      fields.distSD > 0 &&
       fields.simPeriodsPerYear > 0,
     {
       message:
-        "The following must be true: 1) min < mean < max 2) min < max 3) standard deviation > 0 and 4) simPeriodsPerYear > 0",
+        "The following must be true: 1) min <= mode <= max 2) min < max and 3) simPeriodsPerYear > 0",
       path: ["simPeriodsPerYear"],
     },
   );
 
-export default function TruncNormForm() {
+export default function ProductionForm() {
   const router = useRouter();
   // define form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       distMin: undefined,
-      distMean: undefined,
-      distSD: undefined,
+      distMode: undefined,
       distMax: undefined,
       simPeriodsPerYear: undefined,
     },
@@ -69,9 +63,9 @@ export default function TruncNormForm() {
 
   // define submit handler
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const { distMin, distMean, distSD, distMax, simPeriodsPerYear } = values;
+    const { distMin, distMode, distMax, simPeriodsPerYear } = values;
     router.push(
-      `/results/truncnorm?distMin=${distMin}&distMean=${distMean}&distSD=${distSD}&distMax=${distMax}&simPeriodsPerYear=${simPeriodsPerYear}`,
+      `/results/triangular?&distMin=${distMin}&distMode=${distMode}&distMax=${distMax}&simPeriodsPerYear=${simPeriodsPerYear}`,
     );
   }
 
@@ -97,7 +91,7 @@ export default function TruncNormForm() {
 
         <FormField
           control={form.control}
-          name="distMean"
+          name="distMode"
           render={({ field }) => (
             <FormItem>
               <FormControl>
@@ -121,22 +115,6 @@ export default function TruncNormForm() {
                 <Input
                   type="number"
                   placeholder="Maximum cash flow (or demand) per period"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="distSD"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Standard deviation of cash flow (or demand) per period"
                   {...field}
                 />
               </FormControl>

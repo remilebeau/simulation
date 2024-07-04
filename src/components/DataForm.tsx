@@ -11,38 +11,30 @@ import {
 
 export default function DataForm() {
   // client component imports
-  const TriangularForm = dynamic(() => import("./TriangularForm"), {
+  const FinanceForm = dynamic(() => import("@/components/FinanceForm"), {
     ssr: false,
   });
-  const TruncNormForm = dynamic(() => import("./TruncNormForm"), {
-    ssr: false,
-  });
-  const UniformForm = dynamic(() => import("./UniformForm"), {
+  const ProductionForm = dynamic(() => import("@/components/ProductionForm"), {
     ssr: false,
   });
 
-  const [distribution, setDistribution] = useState("");
+  const [model, setModel] = useState("");
 
   return (
     <>
-      <label htmlFor="distribution">Select Distribution</label>
-      <Select
-        onValueChange={(value) => setDistribution(value)}
-        value={distribution}
-      >
+      <label htmlFor="model">Select Model</label>
+      <Select onValueChange={(value) => setModel(value)} value={model}>
         <SelectTrigger>
-          <SelectValue placeholder="Select a distribution" />
+          <SelectValue placeholder="Select a model" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="triangular">Triangular</SelectItem>
-          <SelectItem value="truncnorm">Truncated Normal</SelectItem>
-          <SelectItem value="uniform">Uniform</SelectItem>
+          <SelectItem value="finance">Finance</SelectItem>
+          <SelectItem value="production">Production</SelectItem>
         </SelectContent>
       </Select>
 
-      {distribution === "triangular" && <TriangularForm />}
-      {distribution === "truncnorm" && <TruncNormForm />}
-      {distribution === "uniform" && <UniformForm />}
+      {model === "finance" && <FinanceForm />}
+      {model === "production" && <ProductionForm />}
     </>
   );
 }

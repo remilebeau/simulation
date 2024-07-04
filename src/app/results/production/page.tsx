@@ -1,16 +1,11 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import getTriDistValues from "@/lib/getTriDistValues";
-import getTriSimValues from "@/lib/getTriSimValues";
 import dynamic from "next/dynamic";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 
-export default async function TriangularResults() {
+export default async function ProductionResults() {
   // client component imports
-  const DistPlot = dynamic(() => import("@/components/DistPlot"), {
-    ssr: false,
-  });
   const SimPlot = dynamic(() => import("@/components/SimPlot"), {
     ssr: false,
   });
