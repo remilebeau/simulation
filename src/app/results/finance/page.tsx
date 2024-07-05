@@ -1,9 +1,9 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import dynamic from "next/dynamic";
 import simulateFinance from "@/lib/simulateFinance";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
+import ResultsHeader from "@/components/ResultsHeader";
 
 export default async function FinanceResults() {
   // client component imports
@@ -78,13 +78,7 @@ export default async function FinanceResults() {
     <>
       {simValues && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
-          <Button
-            className="text-3xl font-bold"
-            onClick={() => router.push("/")}
-          >
-            Go Back
-          </Button>
-          <h2 className="text-2xl">Simulation Results</h2>
+          <ResultsHeader />
           <SimPlot simValues={simValues} />
           <SimStats
             minProfit={minProfit}
