@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Form,
+  FormLabel,
   FormControl,
   FormField,
   FormItem,
@@ -128,7 +129,11 @@ export default function FinanceForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col gap-4 p-4"
+      >
+        <FormLabel>Fixed Costs</FormLabel>
         <FormField
           control={form.control}
           name="fixedCost"
@@ -137,7 +142,7 @@ export default function FinanceForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Total fixed costs"
+                  placeholder="Total fixed costs for the 5-year period (e.g. 100000)"
                   {...field}
                 />
               </FormControl>
@@ -145,42 +150,58 @@ export default function FinanceForm() {
             </FormItem>
           )}
         />
+        <FormLabel>Minimum Demand</FormLabel>
         <FormField
           control={form.control}
           name="demandMin"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" placeholder="Minimum demand" {...field} />
+                <Input
+                  type="number"
+                  placeholder="Minimum demand based on historical data, industry knowledge, etc. (e.g. 5000)"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+        <FormLabel>Expected Demand</FormLabel>
         <FormField
           control={form.control}
           name="demandMode"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" placeholder="Expected demand" {...field} />
+                <Input
+                  type="number"
+                  placeholder="Expected demand based on historical data, industry knowledge, etc. (e.g. 12000)"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+        <FormLabel>Maximum Demand</FormLabel>
         <FormField
           control={form.control}
           name="demandMax"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" placeholder="Maximum demand" {...field} />
+                <Input
+                  type="number"
+                  placeholder="Maximum demand based on historical data, industry knowledge, etc. (e.g. 16000)"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+        <FormLabel>Gross Profit per Unit</FormLabel>
         <FormField
           control={form.control}
           name="yearOneMargin"
@@ -189,7 +210,7 @@ export default function FinanceForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Gross profit per unit in year 1"
+                  placeholder="The amount of gross profit per unit. Revenue / unit - COGS / unit (e.g. 4000)"
                   {...field}
                 />
               </FormControl>
@@ -197,6 +218,7 @@ export default function FinanceForm() {
             </FormItem>
           )}
         />
+        <FormLabel>Annual Margin Decrease</FormLabel>
         <FormField
           control={form.control}
           name="annualMarginDecrease"
@@ -205,7 +227,7 @@ export default function FinanceForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="The percentage that gross profit will decrease in years 2 to 5 (e.g. 0.05 for 5% decrease)"
+                  placeholder="The annual percentage that gross profit will decrease in years 2 to 5 (e.g. 0.05 for 5% decrease)"
                   {...field}
                 />
               </FormControl>
@@ -213,31 +235,43 @@ export default function FinanceForm() {
             </FormItem>
           )}
         />
+
+        <FormLabel>Tax Rate</FormLabel>
         <FormField
           control={form.control}
           name="taxRate"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" placeholder="Tax rate" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="discountRate"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input type="number" placeholder="Discount rate" {...field} />
+                <Input
+                  type="number"
+                  placeholder="Marginal tax rate (e.g. 0.40)"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
 
+        <FormLabel>Discount Rate</FormLabel>
+        <FormField
+          control={form.control}
+          name="discountRate"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input
+                  type="number"
+                  placeholder="Discount rate for future cash flows over the 5-year period (e.g. 0.10)"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormLabel>Minimum Demand Decay Rate</FormLabel>
         <FormField
           control={form.control}
           name="demandDecayMin"
@@ -246,7 +280,7 @@ export default function FinanceForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Minimum demand decay rate"
+                  placeholder="The minimum amount of demand decay (e.g. 0.05)"
                   {...field}
                 />
               </FormControl>
@@ -255,6 +289,7 @@ export default function FinanceForm() {
           )}
         />
 
+        <FormLabel>Expected Demand Decay Rate</FormLabel>
         <FormField
           control={form.control}
           name="demandDecayMode"
@@ -263,7 +298,7 @@ export default function FinanceForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Expected demand decay rate"
+                  placeholder="The expected amount of demand decay (e.g. 0.08)"
                   {...field}
                 />
               </FormControl>
@@ -272,6 +307,7 @@ export default function FinanceForm() {
           )}
         />
 
+        <FormLabel>Maximum Demand Decay Rate</FormLabel>
         <FormField
           control={form.control}
           name="demandDecayMax"
@@ -280,7 +316,7 @@ export default function FinanceForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Maximum demand decay rate"
+                  placeholder="The maximum amount of demand decay (e.g. 0.10)"
                   {...field}
                 />
               </FormControl>
