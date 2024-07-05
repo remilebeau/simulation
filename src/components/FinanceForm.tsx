@@ -142,7 +142,7 @@ export default function FinanceForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Total fixed costs for the 5-year period (e.g. 100000)"
+                  placeholder="Total fixed costs for the 5-year period (e.g. $700,000,000)"
                   {...field}
                 />
               </FormControl>
@@ -159,7 +159,7 @@ export default function FinanceForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Minimum demand based on historical data, industry knowledge, etc. (e.g. 5000)"
+                  placeholder="Minimum demand based on historical data, industry knowledge, etc. (e.g. 50,000)"
                   {...field}
                 />
               </FormControl>
@@ -176,7 +176,7 @@ export default function FinanceForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Expected demand based on historical data, industry knowledge, etc. (e.g. 12000)"
+                  placeholder="Expected demand based on historical data, industry knowledge, etc. (e.g. 75,000)"
                   {...field}
                 />
               </FormControl>
@@ -193,7 +193,7 @@ export default function FinanceForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Maximum demand based on historical data, industry knowledge, etc. (e.g. 16000)"
+                  placeholder="Maximum demand based on historical data, industry knowledge, etc. (e.g. 85,000)"
                   {...field}
                 />
               </FormControl>
@@ -210,7 +210,7 @@ export default function FinanceForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="The amount of gross profit per unit. Revenue / unit - COGS / unit (e.g. 4000)"
+                  placeholder="The amount of gross profit per unit. Revenue / unit - COGS / unit (e.g. 4,000)"
                   {...field}
                 />
               </FormControl>
