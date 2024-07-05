@@ -112,7 +112,7 @@ export default function ProductionForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Production cost per unit (e.g. 80)"
+                  placeholder="Production cost per unit (e.g. $80)"
                   {...field}
                 />
               </FormControl>
@@ -129,7 +129,7 @@ export default function ProductionForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Sell price per unit (e.g. 100)"
+                  placeholder="Sell price per unit (e.g. $100)"
                   {...field}
                 />
               </FormControl>
@@ -146,7 +146,7 @@ export default function ProductionForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Salvage price per unit (e.g. 30)"
+                  placeholder="Salvage price per unit (e.g. $30)"
                   {...field}
                 />
               </FormControl>
@@ -163,7 +163,7 @@ export default function ProductionForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Minimum demand based on historical data, industry knowledge, etc. (e.g. 5000)"
+                  placeholder="Minimum demand based on historical data, industry knowledge, etc. (e.g. 5,000)"
                   {...field}
                 />
               </FormControl>
@@ -180,7 +180,7 @@ export default function ProductionForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Expected demand based on historical data, industry knowledge, etc. (e.g. 12000)"
+                  placeholder="Expected demand based on historical data, industry knowledge, etc. (e.g. 12,000)"
                   {...field}
                 />
               </FormControl>
@@ -197,7 +197,7 @@ export default function ProductionForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Expected demand based on historical data, industry knowledge, etc. (e.g. 16000)"
+                  placeholder="Expected demand based on historical data, industry knowledge, etc. (e.g. 16,000)"
                   {...field}
                 />
               </FormControl>
@@ -214,7 +214,7 @@ export default function ProductionForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Total fixed costs (e.g. 100000)"
+                  placeholder="Total fixed costs (e.g. $100,000)"
                   {...field}
                 />
               </FormControl>
@@ -231,7 +231,7 @@ export default function ProductionForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="The number of units to produce (e.g. 7800)"
+                  placeholder="The number of units to produce (e.g. 7,800)"
                   {...field}
                 />
               </FormControl>
