@@ -110,7 +110,11 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input
+                  type="number"
+                  placeholder="Production cost per unit (e.g. 80)"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -123,7 +127,11 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input
+                  type="number"
+                  placeholder="Sell price per unit (e.g. 100)"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -136,46 +144,62 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input
+                  type="number"
+                  placeholder="Salvage price per unit (e.g. 30)"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <FormLabel>Demand Minimum</FormLabel>
+        <FormLabel>Minimum Demand</FormLabel>
         <FormField
           control={form.control}
           name="demandMin"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input
+                  type="number"
+                  placeholder="Minimum demand based on historical data, industry knowledge, etc. (e.g. 5000)"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <FormLabel>Demand Mode</FormLabel>
+        <FormLabel>Expected Demand</FormLabel>
         <FormField
           control={form.control}
           name="demandMode"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input
+                  type="number"
+                  placeholder="Expected demand based on historical data, industry knowledge, etc. (e.g. 12000)"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <FormLabel>Demand Maximum</FormLabel>
+        <FormLabel>Maximum Demand</FormLabel>
         <FormField
           control={form.control}
           name="demandMax"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input
+                  type="number"
+                  placeholder="Expected demand based on historical data, industry knowledge, etc. (e.g. 16000)"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -188,7 +212,11 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input
+                  type="number"
+                  placeholder="Total fixed costs (e.g. 100000)"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -201,7 +229,11 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input
+                  type="number"
+                  placeholder="The number of units to produce (e.g. 7800)"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
