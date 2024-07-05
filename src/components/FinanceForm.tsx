@@ -227,7 +227,7 @@ export default function FinanceForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="The annual percentage that gross profit will decrease in years 2 to 5 (e.g. 0.05 for 5% decrease)"
+                  placeholder="The annual percentage that gross profit will decrease in years 2 to 5 (e.g. 0.04 for 4% decrease)"
                   {...field}
                 />
               </FormControl>
@@ -271,7 +271,7 @@ export default function FinanceForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Minimum Demand Decay Rate</FormLabel>
+        <FormLabel>Minimum Annual Demand Decay</FormLabel>
         <FormField
           control={form.control}
           name="demandDecayMin"
@@ -280,7 +280,7 @@ export default function FinanceForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="The minimum amount of demand decay (e.g. 0.05)"
+                  placeholder="The minimum amount of annual demand decay (e.g. 0.05)"
                   {...field}
                 />
               </FormControl>
@@ -289,7 +289,7 @@ export default function FinanceForm() {
           )}
         />
 
-        <FormLabel>Expected Demand Decay Rate</FormLabel>
+        <FormLabel>Expected Annual Demand Decay</FormLabel>
         <FormField
           control={form.control}
           name="demandDecayMode"
@@ -298,7 +298,7 @@ export default function FinanceForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="The expected amount of demand decay (e.g. 0.08)"
+                  placeholder="The expected amount of annual demand decay (e.g. 0.08)"
                   {...field}
                 />
               </FormControl>
@@ -307,7 +307,7 @@ export default function FinanceForm() {
           )}
         />
 
-        <FormLabel>Maximum Demand Decay Rate</FormLabel>
+        <FormLabel>Maximum Annual Demand Decay</FormLabel>
         <FormField
           control={form.control}
           name="demandDecayMax"
@@ -316,7 +316,7 @@ export default function FinanceForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="The maximum amount of demand decay (e.g. 0.10)"
+                  placeholder="The maximum amount of annual demand decay (e.g. 0.10)"
                   {...field}
                 />
               </FormControl>
