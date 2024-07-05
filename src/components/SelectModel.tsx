@@ -9,7 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export default function DataForm() {
+export default function SelectModel() {
   // client component imports
   const FinanceForm = dynamic(() => import("@/components/FinanceForm"), {
     ssr: false,
@@ -21,7 +21,7 @@ export default function DataForm() {
   const [model, setModel] = useState("");
 
   return (
-    <>
+    <section className="flex flex-col gap-4 p-4">
       <label htmlFor="model">Select Model</label>
       <Select onValueChange={(value) => setModel(value)} value={model}>
         <SelectTrigger>
@@ -35,6 +35,6 @@ export default function DataForm() {
 
       {model === "finance" && <FinanceForm />}
       {model === "production" && <ProductionForm />}
-    </>
+    </section>
   );
 }
