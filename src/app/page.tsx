@@ -6,6 +6,18 @@ export default function HomePage() {
     <main className="mx-auto flex max-w-4xl flex-col gap-8 p-8">
       <h1 className="text-3xl font-bold">Monte Carlo Simulation</h1>
       <p>Select a model and input the parameters.</p>
+      <p>
+        If you wish to download the profit values provided by the simulation for
+        your own analysis, please visit the{" "}
+        <a
+          href="https://simulation-api-t28w.onrender.com/docs"
+          rel="noreferrer"
+          target="_blank"
+          className="text-blue-500 hover:underline"
+        >
+          API docs
+        </a>
+      </p>
       <SelectModel />
       <ThemeSwitch />
     </main>
