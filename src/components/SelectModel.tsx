@@ -35,10 +35,10 @@ export default function SelectModel() {
             Monte Carlo Simulation for Production
           </SelectItem>
           <SelectItem value="triangular">
-            Generate values from a triangular distribution
+            Generate Values from a Triangular Distribution
           </SelectItem>
           <SelectItem value="truncnorm">
-            Generate values from a truncated normal distribution
+            Generate Values from a Truncated Normal Distribution
           </SelectItem>
         </SelectContent>
       </Select>
