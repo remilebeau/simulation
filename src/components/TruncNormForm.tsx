@@ -22,7 +22,7 @@ const formSchema = z
       required_error: "Min value is required",
       invalid_type_error: "Min value must be a number",
     }),
-    distMode: z.coerce.number({
+    distMean: z.coerce.number({
       required_error: "Mode value is required",
       invalid_type_error: "Mode value must be a number",
     }),
@@ -30,35 +30,40 @@ const formSchema = z
       required_error: "Max value is required",
       invalid_type_error: "Max value must be a number",
     }),
+    distSD: z.coerce.number({
+      required_error: "Standard Deviation value is required",
+      invalid_type_error: "Standard Deviation value must be a number",
+    }),
   })
   .refine(
     (fields) =>
-      fields.distMin <= fields.distMode &&
-      fields.distMode <= fields.distMax &&
-      fields.distMin < fields.distMax,
+      fields.distMin <= fields.distMean &&
+      fields.distMean <= fields.distMax &&
+      fields.distMin < fields.distMax &&
+      fields.distSD > 0,
     {
       message: "Please check that: 1) min <= mode <= max and 2) min < max",
       path: ["distMin"],
     },
   );
 
-export default function TriangularForm() {
+export default function TruncatedNormalForm() {
   const router = useRouter();
   // define form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       distMin: 0,
-      distMode: 0,
+      distMean: 0,
       distMax: 0,
     },
   });
 
   // define submit handler
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const { distMin, distMode, distMax } = values;
+    const { distMin, distMean, distMax } = values;
     router.push(
-      `/results/triangular?distMin=${distMin}&distMode=${distMode}&distMax=${distMax}`,
+      `/results/triangular?distMin=${distMin}&distMean=${distMean}&distMax=${distMax}`,
     );
   }
 
@@ -83,10 +88,10 @@ export default function TriangularForm() {
         />
         <FormField
           control={form.control}
-          name="distMode"
+          name="distMean"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Most Common Value</FormLabel>
+              <FormLabel>Expected Value</FormLabel>
               <FormControl>
                 <Input type="number" {...field} />
               </FormControl>
