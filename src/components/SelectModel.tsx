@@ -11,9 +11,6 @@ import {
 
 export default function SelectModel() {
   // client component imports
-  const FinanceForm = dynamic(() => import("@/components/FinanceForm"), {
-    ssr: false,
-  });
   const ProductionForm = dynamic(() => import("@/components/ProductionForm"), {
     ssr: false,
   });
@@ -28,12 +25,10 @@ export default function SelectModel() {
           <SelectValue placeholder="Select a model" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="finance">Finance</SelectItem>
           <SelectItem value="production">Production</SelectItem>
         </SelectContent>
       </Select>
 
-      {model === "finance" && <FinanceForm />}
       {model === "production" && <ProductionForm />}
     </section>
   );
