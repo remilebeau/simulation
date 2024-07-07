@@ -1,5 +1,5 @@
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
-import SelectModel from "@/components/SelectModel";
+import SelectOption from "@/components/SelectOption";
 
 export default function HomePage() {
   return (
@@ -18,7 +18,7 @@ export default function HomePage() {
           API docs
         </a>
       </p>
-      <SelectModel />
+      <SelectOption />
       <ThemeSwitch />
     </main>
   );
