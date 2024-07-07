@@ -31,21 +31,21 @@ export default function SelectModel() {
           <SelectValue placeholder="" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="production">
-            Monte Carlo Simulation for Production
-          </SelectItem>
           <SelectItem value="triangular">
             Generate Values from a Triangular Distribution
           </SelectItem>
           <SelectItem value="truncnorm">
             Generate Values from a Truncated Normal Distribution
           </SelectItem>
+          <SelectItem value="production">
+            Monte Carlo Simulation for Production
+          </SelectItem>
         </SelectContent>
       </Select>
 
-      {option === "production" && <ProductionForm />}
       {option === "triangular" && <TriangularForm />}
       {option === "truncnorm" && <TruncNormForm />}
+      {option === "production" && <ProductionForm />}
     </section>
   );
 }
