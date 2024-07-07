@@ -56,14 +56,15 @@ export default function TruncatedNormalForm() {
       distMin: 0,
       distMean: 0,
       distMax: 0,
+      distSD: 0,
     },
   });
 
   // define submit handler
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const { distMin, distMean, distMax } = values;
+    const { distMin, distMean, distMax, distSD } = values;
     router.push(
-      `/results/triangular?distMin=${distMin}&distMean=${distMean}&distMax=${distMax}`,
+      `/results/truncnorm?distMin=${distMin}&distMean=${distMean}&distMax=${distMax}&distSD=${distSD}`,
     );
   }
 
@@ -91,7 +92,7 @@ export default function TruncatedNormalForm() {
           name="distMean"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Expected Value</FormLabel>
+              <FormLabel>Mean Value</FormLabel>
               <FormControl>
                 <Input type="number" {...field} />
               </FormControl>
@@ -105,6 +106,20 @@ export default function TruncatedNormalForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Maximum Value</FormLabel>
+              <FormControl>
+                <Input type="number" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="distSD"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Standard Deviation</FormLabel>
               <FormControl>
                 <Input type="number" {...field} />
               </FormControl>

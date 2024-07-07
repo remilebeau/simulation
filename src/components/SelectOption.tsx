@@ -17,9 +17,9 @@ export default function SelectModel() {
   const TriangularForm = dynamic(() => import("@/components/TriangularForm"), {
     ssr: false,
   });
-  // const TruncNormForm = dynamic(() => import("@/components/TruncNormForm"), {
-  //   ssr: false,
-  // });
+  const TruncNormForm = dynamic(() => import("@/components/TruncNormForm"), {
+    ssr: false,
+  });
 
   const [option, setOption] = useState("");
 
@@ -45,7 +45,7 @@ export default function SelectModel() {
 
       {option === "production" && <ProductionForm />}
       {option === "triangular" && <TriangularForm />}
-      {/* {option === "truncnorm" && <TruncNormForm />} */}
+      {option === "truncnorm" && <TruncNormForm />}
     </section>
   );
 }

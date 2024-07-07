@@ -1,11 +1,11 @@
 "use client";
 import dynamic from "next/dynamic";
-import getTriValues from "@/lib/getTriValues";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 import ResultsHeader from "@/components/ResultsHeader";
+import getTruncNormValues from "@/lib/getTruncNormValues";
 
-export default async function TriangleResults() {
+export default async function TruncNormResults() {
   // client component imports
   const SimPlot = dynamic(() => import("@/components/SimPlot"), {
     ssr: false,
@@ -15,15 +15,21 @@ export default async function TriangleResults() {
 
   // get query params
   const distMin = searchParams.get("distMin");
-  const distMode = searchParams.get("distMode");
+  const distMean = searchParams.get("distMean");
   const distMax = searchParams.get("distMax");
+  const distSD = searchParams.get("distSD");
 
   // validate query params
-  if (!distMin || !distMode || !distMax) {
+  if (!distMin || !distMean || !distMax || !distSD) {
     router.push("/");
   }
 
-  const { distValues } = await getTriValues(distMin!, distMode!, distMax!);
+  const { distValues } = await getTruncNormValues(
+    distMin!,
+    distMean!,
+    distMax!,
+    distSD!,
+  );
   return (
     <>
       {distValues && (
