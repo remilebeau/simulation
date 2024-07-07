@@ -17,14 +17,14 @@ export default async function FinanceResults() {
   const searchParams = useSearchParams();
 
   // get query params
-  const unitCost = Number(searchParams.get("unitCost"));
-  const unitPrice = Number(searchParams.get("unitPrice"));
-  const salvagePrice = Number(searchParams.get("salvagePrice"));
-  const demandMin = Number(searchParams.get("demandMin"));
-  const demandMode = Number(searchParams.get("demandMode"));
-  const demandMax = Number(searchParams.get("demandMax"));
-  const fixedCost = Number(searchParams.get("fixedCost"));
-  const productionQuantity = Number(searchParams.get("productionQuantity"));
+  const unitCost = searchParams.get("unitCost");
+  const unitPrice = searchParams.get("unitPrice");
+  const salvagePrice = searchParams.get("salvagePrice");
+  const demandMin = searchParams.get("demandMin");
+  const demandMode = searchParams.get("demandMode");
+  const demandMax = searchParams.get("demandMax");
+  const fixedCost = searchParams.get("fixedCost");
+  const productionQuantity = searchParams.get("productionQuantity");
 
   // validate query params
   if (
@@ -55,14 +55,14 @@ export default async function FinanceResults() {
     pLoseMoneyLowerCI,
     pLoseMoneyUpperCI,
   } = await simulateProduction(
-    unitCost,
-    unitPrice,
-    salvagePrice,
-    demandMin,
-    demandMode,
-    demandMax,
-    fixedCost,
-    productionQuantity,
+    unitCost!,
+    unitPrice!,
+    salvagePrice!,
+    demandMin!,
+    demandMode!,
+    demandMax!,
+    fixedCost!,
+    productionQuantity!,
   );
   return (
     <>

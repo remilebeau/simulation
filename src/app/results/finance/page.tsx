@@ -17,17 +17,17 @@ export default async function FinanceResults() {
   const searchParams = useSearchParams();
 
   // get query params
-  const fixedCost = Number(searchParams.get("fixedCost"));
-  const demandMin = Number(searchParams.get("demandMin"));
-  const demandMode = Number(searchParams.get("demandMode"));
-  const demandMax = Number(searchParams.get("demandMax"));
-  const yearOneMargin = Number(searchParams.get("yearOneMargin"));
-  const annualMarginDecrease = Number(searchParams.get("annualMarginDecrease"));
-  const taxRate = Number(searchParams.get("taxRate"));
-  const discountRate = Number(searchParams.get("discountRate"));
-  const demandDecayMin = Number(searchParams.get("demandDecayMin"));
-  const demandDecayMode = Number(searchParams.get("demandDecayMode"));
-  const demandDecayMax = Number(searchParams.get("demandDecayMax"));
+  const fixedCost = searchParams.get("fixedCost");
+  const demandMin = searchParams.get("demandMin");
+  const demandMode = searchParams.get("demandMode");
+  const demandMax = searchParams.get("demandMax");
+  const yearOneMargin = searchParams.get("yearOneMargin");
+  const annualMarginDecrease = searchParams.get("annualMarginDecrease");
+  const taxRate = searchParams.get("taxRate");
+  const discountRate = searchParams.get("discountRate");
+  const demandDecayMin = searchParams.get("demandDecayMin");
+  const demandDecayMode = searchParams.get("demandDecayMode");
+  const demandDecayMax = searchParams.get("demandDecayMax");
 
   // validate query params
   if (
@@ -61,17 +61,17 @@ export default async function FinanceResults() {
     pLoseMoneyLowerCI,
     pLoseMoneyUpperCI,
   } = await simulateFinance(
-    fixedCost,
-    demandMin,
-    demandMode,
-    demandMax,
-    yearOneMargin,
-    annualMarginDecrease,
-    taxRate,
-    discountRate,
-    demandDecayMin,
-    demandDecayMode,
-    demandDecayMax,
+    fixedCost!,
+    demandMin!,
+    demandMode!,
+    demandMax!,
+    yearOneMargin!,
+    annualMarginDecrease!,
+    taxRate!,
+    discountRate!,
+    demandDecayMin!,
+    demandDecayMode!,
+    demandDecayMax!,
   );
 
   return (

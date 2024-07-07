@@ -1,15 +1,15 @@
 export async function simulateFinance(
-  fixedCost: number,
-  demandMin: number,
-  demandMode: number,
-  demandMax: number,
-  yearOneMargin: number,
-  annualMarginDecrease: number,
-  taxRate: number,
-  discountRate: number,
-  demandDecayMin: number,
-  demandDecayMode: number,
-  demandDecayMax: number,
+  fixedCost: string,
+  demandMin: string,
+  demandMode: string,
+  demandMax: string,
+  yearOneMargin: string,
+  annualMarginDecrease: string,
+  taxRate: string,
+  discountRate: string,
+  demandDecayMin: string,
+  demandDecayMode: string,
+  demandDecayMax: string,
 ) {
   const DATA_URL =
     process.env.NODE_ENV === "production"

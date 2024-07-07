@@ -1,12 +1,12 @@
 export async function simulateProduction(
-  unitCost: number,
-  unitPrice: number,
-  salvagePrice: number,
-  demandMin: number,
-  demandMode: number,
-  demandMax: number,
-  fixedCost: number,
-  productionQuantity: number,
+  unitCost: string,
+  unitPrice: string,
+  salvagePrice: string,
+  demandMin: string,
+  demandMode: string,
+  demandMax: string,
+  fixedCost: string,
+  productionQuantity: string,
 ) {
   const DATA_URL =
     process.env.NODE_ENV === "production"
