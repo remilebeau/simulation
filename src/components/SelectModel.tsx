@@ -14,22 +14,38 @@ export default function SelectModel() {
   const ProductionForm = dynamic(() => import("@/components/ProductionForm"), {
     ssr: false,
   });
+  const TriangularForm = dynamic(() => import("@/components/TriangularForm"), {
+    ssr: false,
+  });
+  // const TruncNormForm = dynamic(() => import("@/components/TruncNormForm"), {
+  //   ssr: false,
+  // });
 
-  const [model, setModel] = useState("");
+  const [option, setOption] = useState("");
 
   return (
     <section className="flex flex-col gap-4 p-4">
-      <label htmlFor="model">Select Model</label>
-      <Select onValueChange={(value) => setModel(value)} value={model}>
+      <label htmlFor="option">Select Option</label>
+      <Select onValueChange={(value) => setOption(value)} value={option}>
         <SelectTrigger>
-          <SelectValue placeholder="Select a model" />
+          <SelectValue placeholder="" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="production">Production</SelectItem>
+          <SelectItem value="production">
+            Monte Carlo Simulation for Production
+          </SelectItem>
+          <SelectItem value="triangular">
+            Generate values from a triangular distribution
+          </SelectItem>
+          <SelectItem value="truncnorm">
+            Generate values from a truncated normal distribution
+          </SelectItem>
         </SelectContent>
       </Select>
 
-      {model === "production" && <ProductionForm />}
+      {option === "production" && <ProductionForm />}
+      {option === "triangular" && <TriangularForm />}
+      {/* {option === "truncnorm" && <TruncNormForm />} */}
     </section>
   );
 }

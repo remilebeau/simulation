@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 import ResultsHeader from "@/components/ResultsHeader";
 
-export default async function FinanceResults() {
+export default async function ProductionResults() {
   // client component imports
   const SimPlot = dynamic(() => import("@/components/SimPlot"), {
     ssr: false,
