@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import simulateProduction from "@/lib/simulateProduction";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
-import ResultsHeader from "@/components/ResultsHeader";
 
 export default async function ProductionResults() {
   // client component imports
@@ -11,6 +10,9 @@ export default async function ProductionResults() {
     ssr: false,
   });
   const SimStats = dynamic(() => import("@/components/SimStats"), {
+    ssr: false,
+  });
+  const BackButton = dynamic(() => import("@/components/BackButton"), {
     ssr: false,
   });
   const router = useRouter();
@@ -68,7 +70,14 @@ export default async function ProductionResults() {
     <>
       {simValues && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
-          <ResultsHeader />
+          <BackButton />
+          <h1>Production Simulation Results</h1>
+          <h2>Unit Cost = {unitCost}</h2> <h2>Unit Price = {unitPrice}</h2>
+          <h2>Salvage Price = {salvagePrice}</h2>
+          <h2>
+            Demand = [{demandMin}, {demandMode}, {demandMax}]
+          </h2>
+          <h2>Fixed Cost = {fixedCost}</h2>
           <SimPlot
             simValues={simValues!}
             min={demandMin!}
