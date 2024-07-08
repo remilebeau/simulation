@@ -7,7 +7,7 @@ import getTruncNormValues from "@/lib/getTruncNormValues";
 
 export default async function TruncNormResults() {
   // client component imports
-  const SimPlot = dynamic(() => import("@/components/SimPlot"), {
+  const DistPlot = dynamic(() => import("@/components/DistPlot"), {
     ssr: false,
   });
   const router = useRouter();
@@ -35,7 +35,13 @@ export default async function TruncNormResults() {
       {distValues && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
           <ResultsHeader />
-          <SimPlot simValues={distValues} />
+          <DistPlot
+            simValues={distValues}
+            min={distMin!}
+            mode={distMean!}
+            max={distMax!}
+            sd={distSD!}
+          />
           <ThemeSwitch />
         </main>
       )}

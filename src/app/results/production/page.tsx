@@ -69,7 +69,17 @@ export default async function ProductionResults() {
       {simValues && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
           <ResultsHeader />
-          <SimPlot simValues={simValues} />
+          <SimPlot
+            simValues={simValues!}
+            min={demandMin!}
+            mode={demandMode!}
+            max={demandMax!}
+            unitCost={unitCost!}
+            unitPrice={unitPrice!}
+            salvagePrice={salvagePrice!}
+            fixedCost={fixedCost!}
+            productionQuantity={productionQuantity!}
+          />
           <SimStats
             minProfit={minProfit}
             maxProfit={maxProfit}

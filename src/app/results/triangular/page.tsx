@@ -7,7 +7,7 @@ import ResultsHeader from "@/components/ResultsHeader";
 
 export default async function TriangleResults() {
   // client component imports
-  const SimPlot = dynamic(() => import("@/components/SimPlot"), {
+  const DistPlot = dynamic(() => import("@/components/DistPlot"), {
     ssr: false,
   });
   const router = useRouter();
@@ -29,7 +29,12 @@ export default async function TriangleResults() {
       {distValues && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
           <ResultsHeader />
-          <SimPlot simValues={distValues} />
+          <DistPlot
+            simValues={distValues}
+            min={distMin!}
+            mode={distMode!}
+            max={distMax!}
+          />
           <ThemeSwitch />
         </main>
       )}
