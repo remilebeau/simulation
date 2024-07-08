@@ -39,7 +39,12 @@ export default async function TruncNormResults() {
           <BackButton />
           <h1 className="text-3xl font-bold">Truncated Normal Distribution</h1>
           {/* display formatted inputs */}
-          <p className="text-2xl">{`Min: ${distMin}, Mean: ${distMean}, Max: ${distMax}, SD: ${distSD}`}</p>
+          <section className="grid grid-cols-2 gap-4 p-4">
+            <p className="text-2xl">{`Min: ${distMin}`}</p>
+            <p className="text-2xl">{`Mean: ${distMean}`}</p>
+            <p className="text-2xl">{`Max: ${distMax}`}</p>
+            <p className="text-2xl">{`Standard Deviation: ${distSD}`}</p>
+          </section>
           <Histogram simValues={distValues} />
           <ThemeSwitch />
         </main>
