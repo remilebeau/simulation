@@ -1,9 +1,13 @@
+type ResponseType = {
+  distValues: number[];
+};
+
 export async function getTruncNormValues(
   distMin: string,
   distMean: string,
   distMax: string,
   distSD: string,
-) {
+): Promise<ResponseType> {
   const DATA_URL =
     process.env.NODE_ENV === "production"
       ? `https://simulation-api-t28w.onrender.com/api/distributions/truncated_normal?distMin=${distMin}&distMean=${distMean}&distMax=${distMax}&distSD=${distSD}`

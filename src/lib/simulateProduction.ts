@@ -1,3 +1,17 @@
+type ResponseType = {
+  simValues: number[];
+  meanProfit: number;
+  lowerCI: number;
+  upperCI: number;
+  minProfit: number;
+  maxProfit: number;
+  q1: number;
+  q2: number;
+  q3: number;
+  pLoseMoneyLowerCI: number;
+  pLoseMoneyUpperCI: number;
+};
+
 export async function simulateProduction(
   unitCost: string,
   unitPrice: string,
@@ -7,7 +21,7 @@ export async function simulateProduction(
   demandMax: string,
   fixedCost: string,
   productionQuantity: string,
-) {
+): Promise<ResponseType> {
   const DATA_URL =
     process.env.NODE_ENV === "production"
       ? `https://simulation-api-t28w.onrender.com/api/simulations/production?unitCost=${unitCost}&unitPrice=${unitPrice}&salvagePrice=${salvagePrice}&demandMin=${demandMin}&demandMode=${demandMode}&demandMax=${demandMax}&fixedCost=${fixedCost}&productionQuantity=${productionQuantity}`

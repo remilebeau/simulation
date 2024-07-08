@@ -71,13 +71,22 @@ export default async function ProductionResults() {
       {simValues && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
           <BackButton />
-          <h1>Production Simulation Results</h1>
-          <h2>Unit Cost = {unitCost}</h2> <h2>Unit Price = {unitPrice}</h2>
-          <h2>Salvage Price = {salvagePrice}</h2>
-          <h2>
-            Demand = [{demandMin}, {demandMode}, {demandMax}]
-          </h2>
-          <h2>Fixed Cost = {fixedCost}</h2>
+          <h1 className="text-3xl font-bold">Production Simulation Results</h1>
+          {/* display formatted inputs */}
+          <section className="grid grid-cols-2 gap-4 p-4 text-left">
+            <p>Unit Cost: {Number(unitCost).toLocaleString("en-US")}</p>
+            <p>Unit Price: {Number(unitPrice).toLocaleString("en-US")}</p>
+            <p>Salvage Price: {Number(salvagePrice).toLocaleString("en-US")}</p>
+            <p>Fixed Cost: {Number(fixedCost).toLocaleString("en-US")}</p>
+            <p>Demand Min: {Number(demandMin).toLocaleString("en-US")}</p>
+            <p>Demand Mode: {Number(demandMode).toLocaleString("en-US")}</p>
+            <p>Demand Max: {Number(demandMax).toLocaleString("en-US")}</p>
+            <p>
+              Production Quantity:{" "}
+              {Number(productionQuantity).toLocaleString("en-US")}
+            </p>
+          </section>
+
           <Histogram simValues={simValues} />
           <SimStats
             minProfit={minProfit}

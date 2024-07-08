@@ -32,6 +32,7 @@ export default async function TriangleResults() {
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
           <BackButton />
           <h1 className="text-3xl font-bold">Triangular Distribution</h1>
+          {/* display formatted inputs */}
           <p className="text-2xl">{`Min: ${distMin}, Mode: ${distMode}, Max: ${distMax}`}</p>
           <Histogram simValues={distValues} />
           <ThemeSwitch />
