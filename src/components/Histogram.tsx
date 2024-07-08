@@ -2,22 +2,9 @@ import Plot from "react-plotly.js";
 
 type Props = {
   simValues: number[];
-  min: string;
-  mode: string;
-  max: string;
-  sd?: string;
 };
 
-export default async function DistPlot({
-  simValues,
-  min,
-  mode,
-  max,
-  sd,
-}: Props) {
-  const title = `Distribution = [${min}, ${mode}, ${max}]${
-    sd ? ` SD = ${sd}` : ""
-  }`;
+export default async function Histogram({ simValues }: Props) {
   return (
     <>
       <Plot
@@ -32,7 +19,6 @@ export default async function DistPlot({
           plot_bgcolor: "white",
           paper_bgcolor: "white",
           font: { color: "black" },
-          title: title,
         }}
       />
     </>

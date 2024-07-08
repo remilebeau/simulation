@@ -3,12 +3,10 @@ import dynamic from "next/dynamic";
 import simulateProduction from "@/lib/simulateProduction";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
+import Histogram from "@/components/Histogram";
 
 export default async function ProductionResults() {
   // client component imports
-  const SimPlot = dynamic(() => import("@/components/SimPlot"), {
-    ssr: false,
-  });
   const SimStats = dynamic(() => import("@/components/SimStats"), {
     ssr: false,
   });
@@ -78,17 +76,7 @@ export default async function ProductionResults() {
             Demand = [{demandMin}, {demandMode}, {demandMax}]
           </h2>
           <h2>Fixed Cost = {fixedCost}</h2>
-          <SimPlot
-            simValues={simValues!}
-            min={demandMin!}
-            mode={demandMode!}
-            max={demandMax!}
-            unitCost={unitCost!}
-            unitPrice={unitPrice!}
-            salvagePrice={salvagePrice!}
-            fixedCost={fixedCost!}
-            productionQuantity={productionQuantity!}
-          />
+          <Histogram simValues={simValues} />
           <SimStats
             minProfit={minProfit}
             maxProfit={maxProfit}

@@ -3,12 +3,10 @@ import dynamic from "next/dynamic";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 import getTruncNormValues from "@/lib/getTruncNormValues";
+import Histogram from "@/components/Histogram";
 
 export default async function TruncNormResults() {
   // client component imports
-  const DistPlot = dynamic(() => import("@/components/DistPlot"), {
-    ssr: false,
-  });
   const BackButton = dynamic(() => import("@/components/BackButton"), {
     ssr: false,
   });
@@ -37,13 +35,7 @@ export default async function TruncNormResults() {
       {distValues && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
           <BackButton />
-          <DistPlot
-            simValues={distValues}
-            min={distMin!}
-            mode={distMean!}
-            max={distMax!}
-            sd={distSD!}
-          />
+          <Histogram simValues={distValues} />
           <ThemeSwitch />
         </main>
       )}
