@@ -3,10 +3,12 @@ import dynamic from "next/dynamic";
 import simulateProduction from "@/lib/simulateProduction";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
-import Histogram from "@/components/Histogram";
 
 export default async function ProductionResults() {
   // client component imports
+  const Histogram = dynamic(() => import("@/components/Histogram"), {
+    ssr: false,
+  });
   const SimStats = dynamic(() => import("@/components/SimStats"), {
     ssr: false,
   });

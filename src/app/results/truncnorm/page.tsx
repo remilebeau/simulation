@@ -3,10 +3,12 @@ import dynamic from "next/dynamic";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 import getTruncNormValues from "@/lib/getTruncNormValues";
-import Histogram from "@/components/Histogram";
 
 export default async function TruncNormResults() {
   // client component imports
+  const Histogram = dynamic(() => import("@/components/Histogram"), {
+    ssr: false,
+  });
   const BackButton = dynamic(() => import("@/components/BackButton"), {
     ssr: false,
   });
