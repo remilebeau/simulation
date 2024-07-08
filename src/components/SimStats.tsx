@@ -34,6 +34,18 @@ export default function SimStats({
         <p>25th Percentile:</p>
         <p>{q1.toLocaleString("en-US")}</p>
       </section>
+      <section id="50p" className="flex flex-row justify-between">
+        <p>50th Percentile:</p>
+        <p>{q2.toLocaleString("en-US")}</p>
+      </section>
+      <section id="75p" className="flex flex-row justify-between">
+        <p>75th Percentile:</p>
+        <p>{q3.toLocaleString("en-US")}</p>
+      </section>
+      <section id="max" className="flex flex-row justify-between">
+        <p>Maximum:</p>
+        <p>{maxProfit.toLocaleString("en-US")}</p>
+      </section>
       <section id="mean" className="flex flex-row justify-between">
         <p>Mean:</p>
         <p>{meanProfit.toLocaleString("en-US")}</p>
@@ -45,20 +57,8 @@ export default function SimStats({
           {upperCI.toLocaleString("en-US")}]
         </p>
       </section>
-      <section id="50p" className="flex flex-row justify-between">
-        <p>Median:</p>
-        <p>{q2.toLocaleString("en-US")}</p>
-      </section>
-      <section id="75p" className="flex flex-row justify-between">
-        <p>75th Percentile:</p>
-        <p>{q3.toLocaleString("en-US")}</p>
-      </section>
-      <section id="max" className="flex flex-row justify-between">
-        <p>Maximum:</p>
-        <p>{maxProfit.toLocaleString("en-US")}</p>
-      </section>
       <section id="pLoseMoney" className="flex flex-row justify-between">
-        <p>Probability of Losing Money:</p>
+        <p>95% Confidence Interval for Probability of Losing Money:</p>
         <p>
           [{pLoseMoneyLowerCI.toLocaleString("en-US")} to{" "}
           {pLoseMoneyUpperCI.toLocaleString("en-US")}]
