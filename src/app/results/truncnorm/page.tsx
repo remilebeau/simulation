@@ -16,10 +16,10 @@ export default async function TruncNormResults() {
   const searchParams = useSearchParams();
 
   // get query params
-  const distMin = searchParams.get("distMin");
-  const distMean = searchParams.get("distMean");
-  const distMax = searchParams.get("distMax");
-  const distSD = searchParams.get("distSD");
+  const distMin = Number(searchParams.get("distMin")) || undefined;
+  const distMean = Number(searchParams.get("distMean")) || undefined;
+  const distMax = Number(searchParams.get("distMax")) || undefined;
+  const distSD = Number(searchParams.get("distSD")) || undefined;
 
   // validate query params
   if (!distMin || !distMean || !distMax || !distSD) {
@@ -40,10 +40,10 @@ export default async function TruncNormResults() {
           <h1 className="text-3xl font-bold">Truncated Normal Distribution</h1>
           {/* display formatted inputs */}
           <section className="grid grid-cols-2 gap-4 p-4">
-            <p className="text-2xl">{`Min: ${distMin}`}</p>
-            <p className="text-2xl">{`Mean: ${distMean}`}</p>
-            <p className="text-2xl">{`Max: ${distMax}`}</p>
-            <p className="text-2xl">{`Standard Deviation: ${distSD}`}</p>
+            <p className="text-2xl font-bold">{`Min: ${distMin}`}</p>
+            <p className="text-2xl font-bold">{`Mean: ${distMean}`}</p>
+            <p className="text-2xl font-bold">{`Max: ${distMax}`}</p>
+            <p className="text-2xl font-bold">{`Standard Deviation: ${distSD}`}</p>
           </section>
           <Histogram simValues={distValues} />
           <ThemeSwitch />

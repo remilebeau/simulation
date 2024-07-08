@@ -16,12 +16,16 @@ export default async function TriangleResults() {
   const searchParams = useSearchParams();
 
   // get query params
-  const distMin = searchParams.get("distMin");
-  const distMode = searchParams.get("distMode");
-  const distMax = searchParams.get("distMax");
+  const distMin = Number(searchParams.get("distMin")) || undefined;
+  const distMode = Number(searchParams.get("distMode")) || undefined;
+  const distMax = Number(searchParams.get("distMax")) || undefined;
 
   // validate query params
-  if (!distMin || !distMode || !distMax) {
+  if (
+    distMin === undefined ||
+    distMode === undefined ||
+    distMax === undefined
+  ) {
     router.push("/");
   }
 
@@ -33,7 +37,7 @@ export default async function TriangleResults() {
           <BackButton />
           <h1 className="text-3xl font-bold">Triangular Distribution</h1>
           {/* display formatted inputs */}
-          <p className="text-2xl">{`Min: ${distMin}, Mode: ${distMode}, Max: ${distMax}`}</p>
+          <p className="text-2xl font-bold">{`Min: ${distMin}, Mode: ${distMode}, Max: ${distMax}`}</p>
           <Histogram simValues={distValues} />
           <ThemeSwitch />
         </main>

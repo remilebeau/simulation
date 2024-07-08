@@ -3,9 +3,9 @@ type ResponseType = {
 };
 
 export async function getTriValues(
-  distMin: string,
-  distMode: string,
-  distMax: string,
+  distMin: number,
+  distMode: number,
+  distMax: number,
 ): Promise<ResponseType> {
   const DATA_URL =
     process.env.NODE_ENV === "production"
