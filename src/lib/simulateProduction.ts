@@ -24,7 +24,7 @@ export async function simulateProduction(
 ): Promise<ResponseType> {
   const DATA_URL =
     process.env.NODE_ENV === "production"
-      ? `https://remilbeau-simulation-api.vercel.app/api/simulations/production?unitCost=${unitCost}&unitPrice=${unitPrice}&salvagePrice=${salvagePrice}&demandMin=${demandMin}&demandMode=${demandMode}&demandMax=${demandMax}&fixedCost=${fixedCost}&productionQuantity=${productionQuantity}`
+      ? `https://remilebeau-simulation-api.vercel.app/api/simulations/production?unitCost=${unitCost}&unitPrice=${unitPrice}&salvagePrice=${salvagePrice}&demandMin=${demandMin}&demandMode=${demandMode}&demandMax=${demandMax}&fixedCost=${fixedCost}&productionQuantity=${productionQuantity}`
       : `http://localhost:8000/api/simulations/production?unitCost=${unitCost}&unitPrice=${unitPrice}&salvagePrice=${salvagePrice}&demandMin=${demandMin}&demandMode=${demandMode}&demandMax=${demandMax}&fixedCost=${fixedCost}&productionQuantity=${productionQuantity}`;
   const res = await fetch(DATA_URL, {
     method: "GET",

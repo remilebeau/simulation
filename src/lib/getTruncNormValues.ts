@@ -10,7 +10,7 @@ export async function getTruncNormValues(
 ): Promise<ResponseType> {
   const DATA_URL =
     process.env.NODE_ENV === "production"
-      ? `https://remilbeau-simulation-api.vercel.app/api/distributions/truncated_normal?distMin=${distMin}&distMean=${distMean}&distMax=${distMax}&distSD=${distSD}`
+      ? `https://remilebeau-simulation-api.vercel.app/api/distributions/truncated_normal?distMin=${distMin}&distMean=${distMean}&distMax=${distMax}&distSD=${distSD}`
       : `http://localhost:8000/api/distributions/truncated_normal?distMin=${distMin}&distMean=${distMean}&distMax=${distMax}&distSD=${distSD}`;
   const res = await fetch(DATA_URL, {
     method: "GET",
