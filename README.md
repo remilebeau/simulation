@@ -1,10 +1,11 @@
-# Cash Flow Simulator
+# Simulation
 
-A Monte Carlo simulation that uses a triangular distribution of daily cash flow to forecast annual cash flow.
+A web app that features the following business analytics tools:
 
-Upcoming features:
-
-- Add option to use truncated normal distribution
+- Monte Carlo simulation for production planning
+- Demand forecasting using a triangular distribution
+- Demand forecasting using a truncated normal distribution
+- Demand forecasting using a uniform distribution
 
 Created with:
 
