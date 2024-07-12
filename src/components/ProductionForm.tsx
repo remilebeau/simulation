@@ -163,7 +163,7 @@ export default function ProductionForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Minimum demand based on historical data, industry knowledge, etc. (e.g. 5,000)"
+                  placeholder="Minimum demand (e.g. 5,000)"
                   {...field}
                 />
               </FormControl>
@@ -180,7 +180,7 @@ export default function ProductionForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Expected demand based on historical data, industry knowledge, etc. (e.g. 12,000)"
+                  placeholder="Expected demand (e.g. 12,000)"
                   {...field}
                 />
               </FormControl>
@@ -197,7 +197,7 @@ export default function ProductionForm() {
               <FormControl>
                 <Input
                   type="number"
-                  placeholder="Expected demand based on historical data, industry knowledge, etc. (e.g. 16,000)"
+                  placeholder="Expected demand (e.g. 16,000)"
                   {...field}
                 />
               </FormControl>
