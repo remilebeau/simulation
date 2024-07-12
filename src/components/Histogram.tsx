@@ -14,11 +14,9 @@ export default async function Histogram({ simValues }: Props) {
             type: "histogram",
           },
         ]}
-        layout={{
-          autosize: true,
-          plot_bgcolor: "white",
-          paper_bgcolor: "white",
-          font: { color: "black" },
+        layout={{}}
+        config={{
+          responsive: true,
         }}
       />
     </>
