@@ -6,9 +6,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Demand / Cash Flow Simulator",
-  description:
-    "Forecast annual demand or cash flow using Monte Carlo simulation.",
+  title: "Simulation",
+  description: "Monte Carlo simulation for production planning.",
 };
 
 export default function RootLayout({
