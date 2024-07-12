@@ -10,7 +10,7 @@ export default function HomePage() {
         If you wish to download the values for your own analysis, please visit
         the{" "}
         <a
-          href="https://simulation-api-t28w.onrender.com/docs"
+          href="https://remilebeau-simulation-api.vercel.app/docs"
           rel="noreferrer"
           target="_blank"
           className="text-blue-500 hover:underline"
