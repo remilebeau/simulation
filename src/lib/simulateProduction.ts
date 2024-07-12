@@ -1,13 +1,9 @@
 type ResponseType = {
-  simValues: number[];
+  simulatedProfits: number[];
   meanProfit: number;
-  lowerCI: number;
-  upperCI: number;
-  minProfit: number;
-  maxProfit: number;
-  q1: number;
-  q2: number;
-  q3: number;
+  meanStandardError: number;
+  meanLowerCI: number;
+  meanUpperCI: number;
   pLoseMoneyLowerCI: number;
   pLoseMoneyUpperCI: number;
 };

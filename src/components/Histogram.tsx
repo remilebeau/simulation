@@ -1,16 +1,16 @@
 import Plot from "react-plotly.js";
 
 type Props = {
-  simValues: number[];
+  simulatedProfits: number[];
 };
 
-export default async function Histogram({ simValues }: Props) {
+export default async function Histogram({ simulatedProfits }: Props) {
   return (
     <>
       <Plot
         data={[
           {
-            x: simValues,
+            x: simulatedProfits,
             type: "histogram",
           },
         ]}

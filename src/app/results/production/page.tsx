@@ -44,15 +44,11 @@ export default async function ProductionResults() {
   }
 
   const {
-    simValues,
+    simulatedProfits,
     meanProfit,
-    lowerCI,
-    upperCI,
-    minProfit,
-    maxProfit,
-    q1,
-    q2,
-    q3,
+    meanStandardError,
+    meanLowerCI,
+    meanUpperCI,
     pLoseMoneyLowerCI,
     pLoseMoneyUpperCI,
   } = await simulateProduction(
@@ -67,7 +63,7 @@ export default async function ProductionResults() {
   );
   return (
     <>
-      {simValues && (
+      {simulatedProfits && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
           <BackButton />
           <h1 className="text-3xl font-bold">Production Simulation Results</h1>
@@ -99,16 +95,12 @@ export default async function ProductionResults() {
             </p>
           </section>
 
-          <Histogram simValues={simValues} />
+          <Histogram simulatedProfits={simulatedProfits} />
           <SimStats
-            minProfit={minProfit}
-            maxProfit={maxProfit}
             meanProfit={meanProfit}
-            lowerCI={lowerCI}
-            upperCI={upperCI}
-            q1={q1}
-            q2={q2}
-            q3={q3}
+            meanStandardError={meanStandardError}
+            meanLowerCI={meanLowerCI}
+            meanUpperCI={meanUpperCI}
             pLoseMoneyLowerCI={pLoseMoneyLowerCI}
             pLoseMoneyUpperCI={pLoseMoneyUpperCI}
           />
