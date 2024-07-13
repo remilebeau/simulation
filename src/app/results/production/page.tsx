@@ -51,6 +51,7 @@ export default async function ProductionResults() {
     meanUpperCI,
     pLoseMoneyLowerCI,
     pLoseMoneyUpperCI,
+    valueAtRisk,
   } = await simulateProduction(
     unitCost!,
     unitPrice!,
@@ -103,6 +104,7 @@ export default async function ProductionResults() {
             meanUpperCI={meanUpperCI}
             pLoseMoneyLowerCI={pLoseMoneyLowerCI}
             pLoseMoneyUpperCI={pLoseMoneyUpperCI}
+            valueAtRisk={valueAtRisk}
           />
           <ThemeSwitch />
         </main>

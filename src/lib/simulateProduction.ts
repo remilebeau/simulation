@@ -6,6 +6,7 @@ type ResponseType = {
   meanUpperCI: number;
   pLoseMoneyLowerCI: number;
   pLoseMoneyUpperCI: number;
+  valueAtRisk: number;
 };
 
 export async function simulateProduction(
