@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 type ResponseType = {
   simulatedProfits: number[];
   meanProfit: number;
@@ -10,14 +12,14 @@ type ResponseType = {
 };
 
 export async function simulateProduction(
-  unitCost: number,
-  unitPrice: number,
-  salvagePrice: number,
-  demandMin: number,
-  demandMode: number,
-  demandMax: number,
-  fixedCost: number,
-  productionQuantity: number,
+  unitCost: string,
+  unitPrice: string,
+  salvagePrice: string,
+  demandMin: string,
+  demandMode: string,
+  demandMax: string,
+  fixedCost: string,
+  productionQuantity: string,
 ): Promise<ResponseType> {
   const DATA_URL =
     process.env.NODE_ENV === "production"
@@ -29,6 +31,9 @@ export async function simulateProduction(
       "Content-Type": "application/json",
     },
   });
+  if (!res.ok) {
+    redirect("/");
+  }
   return res.json();
 }
 

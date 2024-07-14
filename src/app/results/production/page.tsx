@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import simulateProduction from "@/lib/simulateProduction";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 
 export default async function ProductionResults() {
@@ -15,33 +15,17 @@ export default async function ProductionResults() {
   const BackButton = dynamic(() => import("@/components/BackButton"), {
     ssr: false,
   });
-  const router = useRouter();
   const searchParams = useSearchParams();
 
   // get query params
-  const unitCost = Number(searchParams.get("unitCost")) || undefined;
-  const unitPrice = Number(searchParams.get("unitPrice")) || undefined;
-  const salvagePrice = Number(searchParams.get("salvagePrice")) || undefined;
-  const demandMin = Number(searchParams.get("demandMin")) || undefined;
-  const demandMode = Number(searchParams.get("demandMode")) || undefined;
-  const demandMax = Number(searchParams.get("demandMax")) || undefined;
-  const fixedCost = Number(searchParams.get("fixedCost")) || undefined;
-  const productionQuantity =
-    Number(searchParams.get("productionQuantity")) || undefined;
-
-  // validate query params
-  if (
-    unitCost === undefined ||
-    unitPrice === undefined ||
-    salvagePrice === undefined ||
-    demandMin === undefined ||
-    demandMode === undefined ||
-    demandMax === undefined ||
-    fixedCost === undefined ||
-    productionQuantity === undefined
-  ) {
-    router.push("/");
-  }
+  const unitCost = searchParams.get("unitCost");
+  const unitPrice = searchParams.get("unitPrice");
+  const salvagePrice = searchParams.get("salvagePrice");
+  const demandMin = searchParams.get("demandMin");
+  const demandMode = searchParams.get("demandMode");
+  const demandMax = searchParams.get("demandMax");
+  const fixedCost = searchParams.get("fixedCost");
+  const productionQuantity = searchParams.get("productionQuantity");
 
   const {
     simulatedProfits,
@@ -71,28 +55,29 @@ export default async function ProductionResults() {
           {/* display formatted inputs */}
           <section className="grid grid-cols-2 gap-4 p-4 text-left">
             <p className="text-2xl font-bold">
-              Unit Cost: {unitCost?.toLocaleString("en-US")}
+              Unit Cost: {Number(unitCost!).toLocaleString("en-US")}
             </p>
             <p className="text-2xl font-bold">
-              Unit Price: {unitPrice?.toLocaleString("en-US")}
+              Unit Price: {Number(unitPrice!).toLocaleString("en-US")}
             </p>
             <p className="text-2xl font-bold">
-              Salvage Price: {salvagePrice?.toLocaleString("en-US")}
+              Salvage Price: {Number(salvagePrice!).toLocaleString("en-US")}
             </p>
             <p className="text-2xl font-bold">
-              Fixed Cost: {fixedCost?.toLocaleString("en-US")}
+              Fixed Cost: {Number(fixedCost!).toLocaleString("en-US")}
             </p>
             <p className="text-2xl font-bold">
-              Demand Min: {demandMin?.toLocaleString("en-US")}
+              Demand Min: {Number(demandMin!).toLocaleString("en-US")}
             </p>
             <p className="text-2xl font-bold">
-              Demand Mode: {demandMode?.toLocaleString("en-US")}
+              Demand Mode: {Number(demandMode!).toLocaleString("en-US")}
             </p>
             <p className="text-2xl font-bold">
-              Demand Max: {demandMax?.toLocaleString("en-US")}
+              Demand Max: {Number(demandMax!).toLocaleString("en-US")}
             </p>
             <p className="text-2xl font-bold">
-              Production Quantity: {productionQuantity?.toLocaleString("en-US")}
+              Production Quantity:{" "}
+              {Number(productionQuantity!).toLocaleString("en-US")}
             </p>
           </section>
 
