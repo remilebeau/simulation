@@ -81,7 +81,7 @@ export default async function ProductionResults() {
             </p>
           </section>
 
-          <Histogram simulatedProfits={simulatedProfits} />
+          <Histogram values={simulatedProfits} />
           <SimStats
             meanProfit={meanProfit}
             meanStandardError={meanStandardError}

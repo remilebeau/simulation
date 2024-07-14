@@ -45,36 +45,24 @@ const formSchema = z
       required_error: "Year one sales max is required",
       invalid_type_error: "Year one sales max must be a number",
     }),
-    annualMarginDecrease: z.coerce
-      .number({
-        invalid_type_error: "Annual margin decrease must be between 0 and 1",
-      })
-      .optional(),
-    annualSalesDecayMin: z.coerce
-      .number({
-        invalid_type_error: "Annual sales decay min must be between 0 and 1",
-      })
-      .optional(),
-    annualSalesDecayMode: z.coerce
-      .number({
-        invalid_type_error: "Annual sales decay mode must be between 0 and 1",
-      })
-      .optional(),
-    annualSalesDecayMax: z.coerce
-      .number({
-        invalid_type_error: "Annual sales decay max must be between 0 and 1",
-      })
-      .optional(),
-    taxRate: z.coerce
-      .number({
-        invalid_type_error: "Tax rate must be between 0 and 1",
-      })
-      .optional(),
-    discountRate: z.coerce
-      .number({
-        invalid_type_error: "Discount rate must be between 0 and 1",
-      })
-      .optional(),
+    annualMarginDecrease: z.coerce.number({
+      invalid_type_error: "Annual margin decrease must be between 0 and 1",
+    }),
+    annualSalesDecayMin: z.coerce.number({
+      invalid_type_error: "Annual sales decay min must be between 0 and 1",
+    }),
+    annualSalesDecayMode: z.coerce.number({
+      invalid_type_error: "Annual sales decay mode must be between 0 and 1",
+    }),
+    annualSalesDecayMax: z.coerce.number({
+      invalid_type_error: "Annual sales decay max must be between 0 and 1",
+    }),
+    taxRate: z.coerce.number({
+      invalid_type_error: "Tax rate must be between 0 and 1",
+    }),
+    discountRate: z.coerce.number({
+      invalid_type_error: "Discount rate must be between 0 and 1",
+    }),
   })
   // validate data
   .refine(

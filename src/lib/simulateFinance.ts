@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 type ResponseType = {
   simulatedNPVs: number[];
   meanNPV: number;
@@ -10,17 +11,17 @@ type ResponseType = {
 };
 
 export async function simulateFinance(
-  fixedCost: number,
-  yearOneMargin: number,
-  yearOneSalesMin: number,
-  yearOneSalesMode: number,
-  yearOneSalesMax: number,
-  annualMarginDecrease: number | null,
-  annualSalesDecayMin: number | null,
-  annualSalesDecayMode: number | null,
-  annualSalesDecayMax: number | null,
-  taxRate: number | null,
-  discountRate: number | null,
+  fixedCost: string,
+  yearOneMargin: string,
+  yearOneSalesMin: string,
+  yearOneSalesMode: string,
+  yearOneSalesMax: string,
+  annualMarginDecrease: string,
+  annualSalesDecayMin: string,
+  annualSalesDecayMode: string,
+  annualSalesDecayMax: string,
+  taxRate: string,
+  discountRate: string,
 ): Promise<ResponseType> {
   const DATA_URL =
     process.env.NODE_ENV === "production"
@@ -32,6 +33,9 @@ export async function simulateFinance(
       "Content-Type": "application/json",
     },
   });
+  if (!res.ok) {
+    redirect("/");
+  }
   return res.json();
 }
 
