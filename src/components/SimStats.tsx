@@ -73,7 +73,7 @@ export default function SimStats({
         </p>
       </section>
       <section id="valueAtRisk" className="flex flex-row justify-between">
-        <p>Value at Risk:</p>
+        <p>Value at Risk at 5% Level:</p>
         <p>
           {valueAtRisk.toLocaleString("en-US", {
             style: "currency",

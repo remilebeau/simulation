@@ -57,48 +57,60 @@ export default async function FinanceResults() {
       {simulatedNPVs && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
           <BackButton />
-          <h1 className="text-3xl font-bold">Production Simulation Results</h1>
+          <h1 className="text-3xl font-bold">Finance Simulation Results</h1>
           {/* display formatted inputs */}
-          <section className="grid grid-cols-2 gap-4 p-4 text-left">
-            <p className="text-2xl font-bold">
-              Fixed Cost: {Number(fixedCost!).toLocaleString("en-US")}
-            </p>
-            <p className="text-2xl font-bold">
+          <section className="grid grid-cols-2 gap-4 p-4 text-left text-2xl font-bold">
+            <p>Fixed Cost: {Number(fixedCost!).toLocaleString("en-US")}</p>
+            <p>
               Year One Margin: {Number(yearOneMargin!).toLocaleString("en-US")}
             </p>
-            <p className="text-2xl font-bold">
+            <p>
               Year One Sales Min:{" "}
               {Number(yearOneSalesMin!).toLocaleString("en-US")}
             </p>
-            <p className="text-2xl font-bold">
+            <p>
               Year One Sales Mode:{" "}
               {Number(yearOneSalesMode!).toLocaleString("en-US")}
             </p>
-            <p className="text-2xl font-bold">
+            <p>
               Year One Sales Max:{" "}
               {Number(yearOneSalesMax!).toLocaleString("en-US")}
             </p>
-            <p className="text-2xl font-bold">
+            <p>
               Annual Margin Decrease:{" "}
-              {Number(annualMarginDecrease).toLocaleString("en-US")}
+              {Number(annualMarginDecrease).toLocaleString("en-US", {
+                style: "percent",
+              })}
             </p>
-            <p className="text-2xl font-bold">
+            <p>
               Annual Sales Decay Min:{" "}
-              {Number(annualSalesDecayMin).toLocaleString("en-US")}
+              {Number(annualSalesDecayMin).toLocaleString("en-US", {
+                style: "percent",
+              })}
             </p>
-            <p className="text-2xl font-bold">
+            <p>
               Annual Sales Decay Mode:{" "}
-              {Number(annualSalesDecayMode).toLocaleString("en-US")}
+              {Number(annualSalesDecayMode).toLocaleString("en-US", {
+                style: "percent",
+              })}
             </p>
-            <p className="text-2xl font-bold">
+            <p>
               Annual Sales Decay Max:{" "}
-              {Number(annualSalesDecayMax).toLocaleString("en-US")}
+              {Number(annualSalesDecayMax).toLocaleString("en-US", {
+                style: "percent",
+              })}
             </p>
-            <p className="text-2xl font-bold">
-              Tax Rate: {Number(taxRate).toLocaleString("en-US")}
+            <p>
+              Tax Rate:{" "}
+              {Number(taxRate).toLocaleString("en-US", {
+                style: "percent",
+              })}
             </p>
-            <p className="text-2xl font-bold">
-              Discount Rate: {Number(discountRate).toLocaleString("en-US")}
+            <p>
+              Discount Rate:{" "}
+              {Number(discountRate).toLocaleString("en-US", {
+                style: "percent",
+              })}
             </p>
           </section>
 
