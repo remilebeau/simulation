@@ -143,10 +143,9 @@ export default function FinanceForm() {
       taxRate,
       discountRate,
     } = values;
-    //   router.push();
-    console.log({
-      values,
-    });
+    router.push(
+      `/results/finance/?fixedCost=${fixedCost}&yearOneMargin=${yearOneMargin}&yearOneSalesMin=${yearOneSalesMin}&yearOneSalesMode=${yearOneSalesMode}&yearOneSalesMax=${yearOneSalesMax}&annualMarginDecrease=${annualMarginDecrease}&annualSalesDecayMin=${annualSalesDecayMin}&annualSalesDecayMode=${annualSalesDecayMode}&annualSalesDecayMax=${annualSalesDecayMax}&taxRate=${taxRate}&discountRate=${discountRate}`,
+    );
   }
 
   return (
