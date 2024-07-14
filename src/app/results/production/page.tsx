@@ -53,29 +53,43 @@ export default async function ProductionResults() {
           <BackButton />
           <h1 className="text-3xl font-bold">Production Simulation Results</h1>
           {/* display formatted inputs */}
-          <section className="grid grid-cols-2 gap-4 p-4 text-left">
-            <p className="text-2xl font-bold">
-              Unit Cost: {Number(unitCost!).toLocaleString("en-US")}
+          <section className="grid grid-cols-2 gap-4 p-4 text-left text-2xl font-bold">
+            <p>
+              Unit Cost:{" "}
+              {Number(unitCost!).toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+                maximumFractionDigits: 0,
+              })}
             </p>
-            <p className="text-2xl font-bold">
-              Unit Price: {Number(unitPrice!).toLocaleString("en-US")}
+            <p>
+              Unit Price:{" "}
+              {Number(unitPrice!).toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+                maximumFractionDigits: 0,
+              })}
             </p>
-            <p className="text-2xl font-bold">
-              Salvage Price: {Number(salvagePrice!).toLocaleString("en-US")}
+            <p>
+              Salvage Price:{" "}
+              {Number(salvagePrice!).toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+                maximumFractionDigits: 0,
+              })}
             </p>
-            <p className="text-2xl font-bold">
-              Fixed Cost: {Number(fixedCost!).toLocaleString("en-US")}
+            <p>
+              Fixed Cost:{" "}
+              {Number(fixedCost!).toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+                maximumFractionDigits: 0,
+              })}
             </p>
-            <p className="text-2xl font-bold">
-              Demand Min: {Number(demandMin!).toLocaleString("en-US")}
-            </p>
-            <p className="text-2xl font-bold">
-              Demand Mode: {Number(demandMode!).toLocaleString("en-US")}
-            </p>
-            <p className="text-2xl font-bold">
-              Demand Max: {Number(demandMax!).toLocaleString("en-US")}
-            </p>
-            <p className="text-2xl font-bold">
+            <p>Demand Min: {Number(demandMin!).toLocaleString("en-US")}</p>
+            <p>Demand Mode: {Number(demandMode!).toLocaleString("en-US")}</p>
+            <p>Demand Max: {Number(demandMax!).toLocaleString("en-US")}</p>
+            <p>
               Production Quantity:{" "}
               {Number(productionQuantity!).toLocaleString("en-US")}
             </p>

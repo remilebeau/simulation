@@ -60,9 +60,21 @@ export default async function FinanceResults() {
           <h1 className="text-3xl font-bold">Finance Simulation Results</h1>
           {/* display formatted inputs */}
           <section className="grid grid-cols-2 gap-4 p-4 text-left text-2xl font-bold">
-            <p>Fixed Cost: {Number(fixedCost!).toLocaleString("en-US")}</p>
             <p>
-              Year One Margin: {Number(yearOneMargin!).toLocaleString("en-US")}
+              Fixed Cost:{" "}
+              {Number(fixedCost!).toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+                maximumFractionDigits: 0,
+              })}
+            </p>
+            <p>
+              Year One Margin:{" "}
+              {Number(yearOneMargin!).toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+                maximumFractionDigits: 0,
+              })}
             </p>
             <p>
               Year One Sales Min:{" "}
