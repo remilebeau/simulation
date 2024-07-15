@@ -110,11 +110,7 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Production cost per unit (e.g. $80)"
-                  {...field}
-                />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -127,11 +123,7 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Sell price per unit (e.g. $100)"
-                  {...field}
-                />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -144,11 +136,7 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Salvage price per unit (e.g. $30)"
-                  {...field}
-                />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -161,11 +149,7 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Minimum demand (e.g. 5,000)"
-                  {...field}
-                />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -178,11 +162,7 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Expected demand (e.g. 12,000)"
-                  {...field}
-                />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -195,11 +175,7 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Expected demand (e.g. 16,000)"
-                  {...field}
-                />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -212,11 +188,7 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Total fixed costs (e.g. $100,000)"
-                  {...field}
-                />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -229,11 +201,7 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type="number"
-                  placeholder="The number of units to produce (e.g. 7,800)"
-                  {...field}
-                />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
