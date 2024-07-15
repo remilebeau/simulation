@@ -12,6 +12,7 @@ export default async function TriangleResults() {
   const BackButton = dynamic(() => import("@/components/BackButton"), {
     ssr: false,
   });
+
   const searchParams = useSearchParams();
 
   // get query params
@@ -29,7 +30,7 @@ export default async function TriangleResults() {
           {/* display formatted inputs */}
           <section className="grid grid-cols-2 gap-4 p-4 text-left text-2xl font-bold">
             <p>Min: {Number(distMin).toLocaleString("en-US")}</p>
-            <p>Expected Value: {Number(distMode).toLocaleString("en-US")}</p>
+            <p>Mode: {Number(distMode).toLocaleString("en-US")}</p>
             <p>Max: {Number(distMax).toLocaleString("en-US")}</p>
           </section>
           <Histogram values={distValues} />

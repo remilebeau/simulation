@@ -73,7 +73,7 @@ export default function TriangularForm() {
           name="distMin"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Minimum Value</FormLabel>
+              <FormLabel>Minimum</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -86,7 +86,7 @@ export default function TriangularForm() {
           name="distMode"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Expected Value</FormLabel>
+              <FormLabel>Mode</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -99,7 +99,7 @@ export default function TriangularForm() {
           name="distMax"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Maximum Value</FormLabel>
+              <FormLabel>Maximum</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
