@@ -7,8 +7,8 @@ export default function HomePage() {
       <h1 className="text-3xl font-bold">Monte Carlo Simulation</h1>
       <p>Select a model or distribution and input the parameters.</p>
       <p>
-        If you wish to download the values for your own analysis, please visit
-        the{" "}
+        To learn more about the assumptions of the models, or to download the
+        values for your own analysis, please visit the{" "}
         <a
           href="https://remilebeau-simulation-api.vercel.app/docs"
           rel="noreferrer"
@@ -17,6 +17,10 @@ export default function HomePage() {
         >
           API docs
         </a>
+      </p>
+      <p>
+        When inputting values, do not flip the sign (e.g. setting revenues
+        positive and costs negative)
       </p>
       <SelectOption />
       <ThemeSwitch />

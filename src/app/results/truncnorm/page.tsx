@@ -45,7 +45,7 @@ export default async function TruncNormResults() {
             <p className="text-2xl font-bold">{`Max: ${distMax}`}</p>
             <p className="text-2xl font-bold">{`Standard Deviation: ${distSD}`}</p>
           </section>
-          <Histogram simulatedProfits={distValues} />
+          <Histogram values={distValues} />
           <ThemeSwitch />
         </main>
       )}

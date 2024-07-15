@@ -38,7 +38,7 @@ export default async function TriangleResults() {
           <h1 className="text-3xl font-bold">Triangular Distribution</h1>
           {/* display formatted inputs */}
           <p className="text-2xl font-bold">{`Min: ${distMin}, Mode: ${distMode}, Max: ${distMax}`}</p>
-          <Histogram simulatedProfits={distValues} />
+          <Histogram values={distValues} />
           <ThemeSwitch />
         </main>
       )}
