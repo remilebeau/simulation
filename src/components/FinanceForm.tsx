@@ -13,13 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
-const isTriangular = (min: number, mode: number, max: number) => {
-  return min <= mode && mode <= max && min < max;
-};
-const isPercent = (num: number) => {
-  return num >= 0 && num <= 1;
-};
+import { isTriangular, isPercent } from "@/lib/validation";
 
 // define form schema
 

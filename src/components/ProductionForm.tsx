@@ -13,6 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { isTriangular } from "@/lib/validation";
 
 // define form schema
 
@@ -54,11 +55,9 @@ const formSchema = z
   // validate triangular demand distribution
   .refine(
     (fields) =>
-      fields.demandMin <= fields.demandMode &&
-      fields.demandMode <= fields.demandMax &&
-      fields.demandMin < fields.demandMax,
+      isTriangular(fields.demandMin, fields.demandMode, fields.demandMax),
     {
-      message: "Invalid data, please review.",
+      message: "Please check that min <= mode <= max and min < max",
       path: ["unitCost"],
     },
   );

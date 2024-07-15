@@ -48,9 +48,9 @@ export default function TriangularForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      distMin: 0,
-      distMode: 0,
-      distMax: 0,
+      distMin: undefined,
+      distMode: undefined,
+      distMax: undefined,
     },
   });
 
@@ -75,7 +75,7 @@ export default function TriangularForm() {
             <FormItem>
               <FormLabel>Minimum Value</FormLabel>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -86,9 +86,9 @@ export default function TriangularForm() {
           name="distMode"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Most Common Value</FormLabel>
+              <FormLabel>Expected Value</FormLabel>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -101,7 +101,7 @@ export default function TriangularForm() {
             <FormItem>
               <FormLabel>Maximum Value</FormLabel>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
