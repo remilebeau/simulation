@@ -68,31 +68,26 @@ const formSchema = z
   .refine(
     (fields) =>
       //   yearOneSales must fit a triangular distribution
-      (isTriangular(
+      isTriangular(
         fields.yearOneSalesMin,
         fields.yearOneSalesMode,
         fields.yearOneSalesMax,
       ) &&
-        // annualSalesDecay must be undefined or a triangular distribution
-        !fields.annualSalesDecayMin &&
-        !fields.annualSalesDecayMode &&
-        !fields.annualSalesDecayMax) ||
-      (isTriangular(
-        fields.annualSalesDecayMin!,
-        fields.annualSalesDecayMode!,
-        fields.annualSalesDecayMax!,
+      // annualSalesDecay must fit a triangular distribution
+      isTriangular(
+        fields.annualSalesDecayMin,
+        fields.annualSalesDecayMode,
+        fields.annualSalesDecayMax,
       ) &&
-        //   annualMarginDecrease is undefined or a percentage
-        !fields.annualMarginDecrease) ||
-      (isPercent(fields.annualMarginDecrease!) &&
-        //   taxRate is undefined or a percentage
-        !fields.taxRate) ||
-      (isPercent(fields.taxRate!) &&
-        //   discountRate is undefined or a percentage
-        !fields.discountRate) ||
-      isPercent(fields.discountRate!),
+      //   annualMarginDecrease must be a percentage
+      isPercent(fields.annualMarginDecrease) &&
+      //   taxRate must be a percentage
+      isPercent(fields.taxRate) &&
+      //   discountRate must be a percentage
+      isPercent(fields.discountRate),
     {
-      message: "Invalid data, please review.",
+      message:
+        "Please check that: 1) Year one sales is a valid triangular distribution 2) Annual sales decay is a valid triangular distribution 3) Annual margin decrease is between 0 and 1 4) Tax rate is between 0 and 1 5) Discount rate is between 0 and 1",
       path: ["unitCost"],
     },
   );
@@ -149,7 +144,7 @@ export default function FinanceForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -162,7 +157,7 @@ export default function FinanceForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -175,7 +170,7 @@ export default function FinanceForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -188,7 +183,7 @@ export default function FinanceForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -201,7 +196,7 @@ export default function FinanceForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -214,7 +209,7 @@ export default function FinanceForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -227,7 +222,7 @@ export default function FinanceForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -240,7 +235,7 @@ export default function FinanceForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -253,7 +248,7 @@ export default function FinanceForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -266,7 +261,7 @@ export default function FinanceForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -279,7 +274,7 @@ export default function FinanceForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
