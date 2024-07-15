@@ -1,11 +1,13 @@
+import { redirect } from "next/navigation";
+
 type ResponseType = {
   distValues: number[];
 };
 
 export async function getTriValues(
-  distMin: number,
-  distMode: number,
-  distMax: number,
+  distMin: string,
+  distMode: string,
+  distMax: string,
 ): Promise<ResponseType> {
   const DATA_URL =
     process.env.NODE_ENV === "production"
@@ -17,6 +19,9 @@ export async function getTriValues(
       "Content-Type": "application/json",
     },
   });
+  if (!res.ok) {
+    redirect("/");
+  }
   return res.json();
 }
 
