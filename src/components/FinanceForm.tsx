@@ -82,7 +82,7 @@ const formSchema = z
     {
       message:
         "Please check that: 1) Year one sales is a valid triangular distribution 2) Annual sales decay is a valid triangular distribution 3) Annual margin decrease is between 0 and 1 4) Tax rate is between 0 and 1 5) Discount rate is between 0 and 1",
-      path: ["unitCost"],
+      path: ["fixedCost"],
     },
   );
 export default function FinanceForm() {
