@@ -79,7 +79,7 @@ export default function TruncatedNormalForm() {
           name="distMin"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Minimum Value</FormLabel>
+              <FormLabel>Minimum</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -92,7 +92,7 @@ export default function TruncatedNormalForm() {
           name="distMean"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Expected Value</FormLabel>
+              <FormLabel>Mean</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -105,7 +105,7 @@ export default function TruncatedNormalForm() {
           name="distMax"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Maximum Value</FormLabel>
+              <FormLabel>Maximum</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
