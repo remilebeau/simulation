@@ -53,10 +53,10 @@ export default function TruncatedNormalForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      distMin: 0,
-      distMean: 0,
-      distMax: 0,
-      distSD: 0,
+      distMin: undefined,
+      distMean: undefined,
+      distMax: undefined,
+      distSD: undefined,
     },
   });
 
@@ -81,7 +81,7 @@ export default function TruncatedNormalForm() {
             <FormItem>
               <FormLabel>Minimum Value</FormLabel>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -92,9 +92,9 @@ export default function TruncatedNormalForm() {
           name="distMean"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Mean Value</FormLabel>
+              <FormLabel>Expected Value</FormLabel>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -107,7 +107,7 @@ export default function TruncatedNormalForm() {
             <FormItem>
               <FormLabel>Maximum Value</FormLabel>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -121,7 +121,7 @@ export default function TruncatedNormalForm() {
             <FormItem>
               <FormLabel>Standard Deviation</FormLabel>
               <FormControl>
-                <Input type="number" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

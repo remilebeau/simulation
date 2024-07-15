@@ -1,6 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 import getTruncNormValues from "@/lib/getTruncNormValues";
 
@@ -12,19 +12,13 @@ export default async function TruncNormResults() {
   const BackButton = dynamic(() => import("@/components/BackButton"), {
     ssr: false,
   });
-  const router = useRouter();
   const searchParams = useSearchParams();
 
   // get query params
-  const distMin = Number(searchParams.get("distMin")) || undefined;
-  const distMean = Number(searchParams.get("distMean")) || undefined;
-  const distMax = Number(searchParams.get("distMax")) || undefined;
-  const distSD = Number(searchParams.get("distSD")) || undefined;
-
-  // validate query params
-  if (!distMin || !distMean || !distMax || !distSD) {
-    router.push("/");
-  }
+  const distMin = searchParams.get("distMin");
+  const distMean = searchParams.get("distMean");
+  const distMax = searchParams.get("distMax");
+  const distSD = searchParams.get("distSD");
 
   const { distValues } = await getTruncNormValues(
     distMin!,

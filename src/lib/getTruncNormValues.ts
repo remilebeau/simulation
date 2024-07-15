@@ -3,10 +3,10 @@ type ResponseType = {
 };
 
 export async function getTruncNormValues(
-  distMin: number,
-  distMean: number,
-  distMax: number,
-  distSD: number,
+  distMin: string,
+  distMean: string,
+  distMax: string,
+  distSD: string,
 ): Promise<ResponseType> {
   const DATA_URL =
     process.env.NODE_ENV === "production"
