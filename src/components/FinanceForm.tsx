@@ -13,7 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { isTriangular, isPercent } from "@/lib/validation";
+import { isTriangular, isPercent, isAllZero } from "@/lib/validation";
 
 // define form schema
 
@@ -67,12 +67,17 @@ const formSchema = z
         fields.yearOneSalesMode,
         fields.yearOneSalesMax,
       ) &&
-      // annualSalesDecay must fit a triangular distribution
-      isTriangular(
+      // annualSalesDecay must fit a triangular distribution or be all zero
+      (isTriangular(
         fields.annualSalesDecayMin,
         fields.annualSalesDecayMode,
         fields.annualSalesDecayMax,
-      ) &&
+      ) ||
+        isAllZero(
+          fields.annualSalesDecayMin,
+          fields.annualSalesDecayMode,
+          fields.annualSalesDecayMax,
+        )) &&
       //   annualMarginDecrease must be a percentage
       isPercent(fields.annualMarginDecrease) &&
       //   taxRate must be a percentage
