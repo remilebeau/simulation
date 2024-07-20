@@ -201,7 +201,7 @@ export default function FinanceForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Annual Margin Decrease</FormLabel>
+        <FormLabel>Annual Margin Decrease (set to 0 to disable)</FormLabel>
         <FormField
           control={form.control}
           name="annualMarginDecrease"
