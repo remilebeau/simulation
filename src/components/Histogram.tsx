@@ -15,9 +15,6 @@ export default async function Histogram({ values }: Props) {
           },
         ]}
         layout={{}}
-        config={{
-          responsive: true,
-        }}
       />
     </>
   );
