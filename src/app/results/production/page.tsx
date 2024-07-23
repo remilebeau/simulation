@@ -24,6 +24,7 @@ export default async function ProductionResults() {
   const demandMin = searchParams.get("demandMin");
   const demandMode = searchParams.get("demandMode");
   const demandMax = searchParams.get("demandMax");
+  const demandSD = searchParams.get("demandSD");
   const fixedCost = searchParams.get("fixedCost");
   const productionQuantity = searchParams.get("productionQuantity");
 
@@ -43,6 +44,7 @@ export default async function ProductionResults() {
     demandMin!,
     demandMode!,
     demandMax!,
+    demandSD!,
     fixedCost!,
     productionQuantity!,
   );
@@ -89,6 +91,7 @@ export default async function ProductionResults() {
             <p>Demand Min: {Number(demandMin!).toLocaleString("en-US")}</p>
             <p>Demand Mode: {Number(demandMode!).toLocaleString("en-US")}</p>
             <p>Demand Max: {Number(demandMax!).toLocaleString("en-US")}</p>
+            <p>Demand SD: {Number(demandSD!).toLocaleString("en-US")}</p>
             <p>
               Production Quantity:{" "}
               {Number(productionQuantity!).toLocaleString("en-US")}

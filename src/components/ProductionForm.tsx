@@ -43,6 +43,11 @@ const formSchema = z
       required_error: "Demand max is required",
       invalid_type_error: "Demand max must be a number",
     }),
+    demandSD: z.coerce.number({
+      required_error:
+        "Demand standard deviation is required. Set to 0 to use a triangular distribution instead of a truncated normal distribution.",
+      invalid_type_error: "Demand standard deviation must be a number",
+    }),
     fixedCost: z.coerce.number({
       required_error: "Fixed costs are required",
       invalid_type_error: "Fixed costs must be a number",
@@ -52,12 +57,16 @@ const formSchema = z
       invalid_type_error: "Production quantity must be a number",
     }),
   })
-  // validate triangular demand distribution
+
   .refine(
     (fields) =>
-      isTriangular(fields.demandMin, fields.demandMode, fields.demandMax),
+      // validate triangular demand distribution
+      isTriangular(fields.demandMin, fields.demandMode, fields.demandMax) &&
+      // check that standard deviation >= 0
+      fields.demandSD >= 0,
     {
-      message: "Please check that min <= mode <= max and min < max",
+      message:
+        "Please check that 1) min <= mode <= max 2) min < max 3) standard deviation >= 0",
       path: ["unitCost"],
     },
   );
@@ -74,6 +83,7 @@ export default function ProductionForm() {
       demandMin: undefined,
       demandMode: undefined,
       demandMax: undefined,
+      demandSD: 0,
       fixedCost: undefined,
       productionQuantity: undefined,
     },
@@ -88,11 +98,12 @@ export default function ProductionForm() {
       demandMin,
       demandMode,
       demandMax,
+      demandSD,
       fixedCost,
       productionQuantity,
     } = values;
     router.push(
-      `/results/production?unitCost=${unitCost}&unitPrice=${unitPrice}&salvagePrice=${salvagePrice}&demandMin=${demandMin}&demandMode=${demandMode}&demandMax=${demandMax}&fixedCost=${fixedCost}&productionQuantity=${productionQuantity}`,
+      `/results/production?unitCost=${unitCost}&unitPrice=${unitPrice}&salvagePrice=${salvagePrice}&demandMin=${demandMin}&demandMode=${demandMode}&demandMax=${demandMax}&demandSD=${demandSD}&fixedCost=${fixedCost}&productionQuantity=${productionQuantity}`,
     );
   }
 
@@ -171,6 +182,21 @@ export default function ProductionForm() {
         <FormField
           control={form.control}
           name="demandMax"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormLabel>
+          Standard Deviation (set to 0 for triangular distribution)
+        </FormLabel>
+        <FormField
+          control={form.control}
+          name="demandSD"
           render={({ field }) => (
             <FormItem>
               <FormControl>
