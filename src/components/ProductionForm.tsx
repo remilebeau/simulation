@@ -45,7 +45,7 @@ const formSchema = z
     }),
     demandSD: z.coerce.number({
       required_error:
-        "Demand standard deviation is required. Set to 0 to use a triangular distribution instead of a truncated normal distribution.",
+        "Demand standard deviation is required. 0 = triangular distribution. > 0 = truncated normal distribution.",
       invalid_type_error: "Demand standard deviation must be a number",
     }),
     fixedCost: z.coerce.number({
