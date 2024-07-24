@@ -53,10 +53,10 @@ export default function TruncatedNormalForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      distMin: undefined,
-      distMean: undefined,
-      distMax: undefined,
-      distSD: undefined,
+      distMin: 0,
+      distMean: 0,
+      distMax: 0,
+      distSD: 0,
     },
   });
 

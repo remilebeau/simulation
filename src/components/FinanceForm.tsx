@@ -96,17 +96,17 @@ export default function FinanceForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fixedCost: undefined,
-      yearOneMargin: undefined,
-      yearOneSalesMin: undefined,
-      yearOneSalesMode: undefined,
-      yearOneSalesMax: undefined,
-      annualMarginDecrease: undefined,
-      annualSalesDecayMin: undefined,
-      annualSalesDecayMode: undefined,
-      annualSalesDecayMax: undefined,
-      taxRate: undefined,
-      discountRate: undefined,
+      fixedCost: 0,
+      yearOneMargin: 0,
+      yearOneSalesMin: 0,
+      yearOneSalesMode: 0,
+      yearOneSalesMax: 0,
+      annualMarginDecrease: 0,
+      annualSalesDecayMin: 0,
+      annualSalesDecayMode: 0,
+      annualSalesDecayMax: 0,
+      taxRate: 0,
+      discountRate: 0,
     },
   });
 
@@ -201,7 +201,7 @@ export default function FinanceForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Annual Margin Decrease (set to 0 to disable)</FormLabel>
+        <FormLabel>Annual Margin Decrease (set to 0 to ignore)</FormLabel>
         <FormField
           control={form.control}
           name="annualMarginDecrease"
@@ -214,7 +214,7 @@ export default function FinanceForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Annual Sales Decay Min (set to 0 to disable)</FormLabel>
+        <FormLabel>Annual Sales Decay Min (set to 0 to ignore)</FormLabel>
         <FormField
           control={form.control}
           name="annualSalesDecayMin"
@@ -227,7 +227,7 @@ export default function FinanceForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Annual Sales Decay Mode (set to 0 to disable)</FormLabel>
+        <FormLabel>Annual Sales Decay Mode (set to 0 to ignore)</FormLabel>
         <FormField
           control={form.control}
           name="annualSalesDecayMode"
@@ -240,7 +240,7 @@ export default function FinanceForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Annual Sales Decay Max (set to 0 to disable)</FormLabel>
+        <FormLabel>Annual Sales Decay Max (set to 0 to ignore)</FormLabel>
         <FormField
           control={form.control}
           name="annualSalesDecayMax"
@@ -253,7 +253,7 @@ export default function FinanceForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Tax Rate (set to 0 to disable)</FormLabel>
+        <FormLabel>Tax Rate (set to 0 to ignore)</FormLabel>
         <FormField
           control={form.control}
           name="taxRate"
@@ -266,7 +266,7 @@ export default function FinanceForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Discount Rate (set to 0 to disable)</FormLabel>
+        <FormLabel>Discount Rate (set to 0 to ignore)</FormLabel>
         <FormField
           control={form.control}
           name="discountRate"
