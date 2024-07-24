@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 import getTruncNormValues from "@/lib/getTruncNormValues";
+import ModelInputs from "@/components/ModelInputs";
 
 export default async function TruncNormResults() {
   // client component imports
@@ -26,19 +27,31 @@ export default async function TruncNormResults() {
     distMax!,
     distSD!,
   );
+  const inputs = [
+    {
+      name: "Min",
+      value: distMin!,
+    },
+    {
+      name: "Mean",
+      value: distMean!,
+    },
+    {
+      name: "Max",
+      value: distMax!,
+    },
+    {
+      name: "Standard Deviation",
+      value: distSD!,
+    },
+  ];
   return (
     <>
       {distValues && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
           <BackButton />
           <h1 className="text-3xl font-bold">Truncated Normal Distribution</h1>
-          {/* display formatted inputs */}
-          <section className="grid grid-cols-2 gap-4 p-4">
-            <p className="text-2xl font-bold">{`Min: ${distMin}`}</p>
-            <p className="text-2xl font-bold">{`Mean: ${distMean}`}</p>
-            <p className="text-2xl font-bold">{`Max: ${distMax}`}</p>
-            <p className="text-2xl font-bold">{`Standard Deviation: ${distSD}`}</p>
-          </section>
+          <ModelInputs inputs={inputs} />
           <Histogram values={distValues} />
           <ThemeSwitch />
         </main>

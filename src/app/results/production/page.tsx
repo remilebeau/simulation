@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import simulateProduction from "@/lib/simulateProduction";
 import { useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
+import ModelInputs from "@/components/ModelInputs";
 
 export default async function ProductionResults() {
   // client component imports
@@ -48,56 +49,51 @@ export default async function ProductionResults() {
     fixedCost!,
     productionQuantity!,
   );
+  const inputs = [
+    {
+      name: "Unit Cost",
+      value: unitCost!,
+    },
+    {
+      name: "Unit Price",
+      value: unitPrice!,
+    },
+    {
+      name: "Salvage Price",
+      value: salvagePrice!,
+    },
+    {
+      name: "Minimum Demand",
+      value: demandMin!,
+    },
+    {
+      name: "Expected Demand",
+      value: demandMode!,
+    },
+    {
+      name: "Maximum Demand",
+      value: demandMax!,
+    },
+    {
+      name: "Standard Deviation",
+      value: demandSD!,
+    },
+    {
+      name: "Fixed Cost",
+      value: fixedCost!,
+    },
+    {
+      name: "Production Quantity",
+      value: productionQuantity!,
+    },
+  ];
   return (
     <>
       {simulatedProfits && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
           <BackButton />
           <h1 className="text-3xl font-bold">Production Simulation Results</h1>
-          {/* display formatted inputs */}
-          <section className="grid grid-cols-2 gap-4 p-4 text-left text-2xl font-bold">
-            <p>
-              Unit Cost:{" "}
-              {Number(unitCost!).toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-                maximumFractionDigits: 0,
-              })}
-            </p>
-            <p>
-              Unit Price:{" "}
-              {Number(unitPrice!).toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-                maximumFractionDigits: 0,
-              })}
-            </p>
-            <p>
-              Salvage Price:{" "}
-              {Number(salvagePrice!).toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-                maximumFractionDigits: 0,
-              })}
-            </p>
-            <p>
-              Fixed Cost:{" "}
-              {Number(fixedCost!).toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-                maximumFractionDigits: 0,
-              })}
-            </p>
-            <p>Demand Min: {Number(demandMin!).toLocaleString("en-US")}</p>
-            <p>Demand Mode: {Number(demandMode!).toLocaleString("en-US")}</p>
-            <p>Demand Max: {Number(demandMax!).toLocaleString("en-US")}</p>
-            <p>Demand SD: {Number(demandSD!).toLocaleString("en-US")}</p>
-            <p>
-              Production Quantity:{" "}
-              {Number(productionQuantity!).toLocaleString("en-US")}
-            </p>
-          </section>
-
+          <ModelInputs inputs={inputs} />
           <Histogram values={simulatedProfits} />
           <SimStats
             meanProfit={meanProfit}

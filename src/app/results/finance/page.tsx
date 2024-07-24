@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import simulateFinance from "@/lib/simulateFinance";
 import { useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
+import ModelInputs from "@/components/ModelInputs";
 
 export default async function FinanceResults() {
   // client component imports
@@ -52,80 +53,59 @@ export default async function FinanceResults() {
     taxRate!,
     discountRate!,
   );
+  const inputs = [
+    {
+      name: "Fixed Cost",
+      value: fixedCost!,
+    },
+    {
+      name: "Year One Margin",
+      value: yearOneMargin!,
+    },
+    {
+      name: "Year One Sales Min",
+      value: yearOneSalesMin!,
+    },
+    {
+      name: "Year One Sales Mode",
+      value: yearOneSalesMode!,
+    },
+    {
+      name: "Year One Sales Max",
+      value: yearOneSalesMax!,
+    },
+    {
+      name: "Annual Margin Decrease",
+      value: annualMarginDecrease!,
+    },
+    {
+      name: "Annual Sales Decay Min",
+      value: annualSalesDecayMin!,
+    },
+    {
+      name: "Annual Sales Decay Mode",
+      value: annualSalesDecayMode!,
+    },
+    {
+      name: "Annual Sales Decay Max",
+      value: annualSalesDecayMax!,
+    },
+    {
+      name: "Tax Rate",
+      value: taxRate!,
+    },
+    {
+      name: "Discount Rate",
+      value: discountRate!,
+    },
+  ];
   return (
     <>
       {simulatedNPVs && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
           <BackButton />
           <h1 className="text-3xl font-bold">Finance Simulation Results</h1>
-          {/* display formatted inputs */}
-          <section className="grid grid-cols-2 gap-4 p-4 text-left text-2xl font-bold">
-            <p>
-              Fixed Cost:{" "}
-              {Number(fixedCost!).toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-                maximumFractionDigits: 0,
-              })}
-            </p>
-            <p>
-              Year One Margin:{" "}
-              {Number(yearOneMargin!).toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-                maximumFractionDigits: 0,
-              })}
-            </p>
-            <p>
-              Year One Sales Min:{" "}
-              {Number(yearOneSalesMin!).toLocaleString("en-US")}
-            </p>
-            <p>
-              Year One Sales Mode:{" "}
-              {Number(yearOneSalesMode!).toLocaleString("en-US")}
-            </p>
-            <p>
-              Year One Sales Max:{" "}
-              {Number(yearOneSalesMax!).toLocaleString("en-US")}
-            </p>
-            <p>
-              Annual Margin Decrease:{" "}
-              {Number(annualMarginDecrease).toLocaleString("en-US", {
-                style: "percent",
-              })}
-            </p>
-            <p>
-              Annual Sales Decay Min:{" "}
-              {Number(annualSalesDecayMin).toLocaleString("en-US", {
-                style: "percent",
-              })}
-            </p>
-            <p>
-              Annual Sales Decay Mode:{" "}
-              {Number(annualSalesDecayMode).toLocaleString("en-US", {
-                style: "percent",
-              })}
-            </p>
-            <p>
-              Annual Sales Decay Max:{" "}
-              {Number(annualSalesDecayMax).toLocaleString("en-US", {
-                style: "percent",
-              })}
-            </p>
-            <p>
-              Tax Rate:{" "}
-              {Number(taxRate).toLocaleString("en-US", {
-                style: "percent",
-              })}
-            </p>
-            <p>
-              Discount Rate:{" "}
-              {Number(discountRate).toLocaleString("en-US", {
-                style: "percent",
-              })}
-            </p>
-          </section>
-
+          <ModelInputs inputs={inputs} />
           <Histogram values={simulatedNPVs} />
           <SimStats
             meanProfit={meanNPV}
