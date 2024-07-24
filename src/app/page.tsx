@@ -10,7 +10,7 @@ export default function HomePage() {
         To learn more about the assumptions of the models, or to download the
         values for your own analysis, please visit the{" "}
         <a
-          href="https://remilebeau-simulation-api.vercel.app/docs"
+          href="https://simulation-api-rsaw.onrender.com/docs"
           rel="noreferrer"
           target="_blank"
           className="text-blue-500 hover:underline"
