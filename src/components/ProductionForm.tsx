@@ -192,7 +192,8 @@ export default function ProductionForm() {
           )}
         />
         <FormLabel>
-          Standard Deviation (set to 0 for triangular distribution)
+          Standard Deviation of Demand (0 = triangular distribution. &gt; 0 =
+          truncated normal distribution)
         </FormLabel>
         <FormField
           control={form.control}
