@@ -26,6 +26,9 @@ export default function SelectModel() {
   const UniformForm = dynamic(() => import("@/components/UniformForm"), {
     ssr: false,
   });
+  const NormForm = dynamic(() => import("@/components/NormForm"), {
+    ssr: false,
+  });
 
   const [option, setOption] = useState("");
 
@@ -46,6 +49,9 @@ export default function SelectModel() {
           <SelectItem value="uniform">
             Generate Values from a Uniform Distribution
           </SelectItem>
+          <SelectItem value="norm">
+            Generate Values from a Normal Distribution
+          </SelectItem>
           <SelectItem value="production">
             Monte Carlo Simulation for Production
           </SelectItem>
@@ -58,6 +64,7 @@ export default function SelectModel() {
       {option === "triangular" && <TriangularForm />}
       {option === "truncnorm" && <TruncNormForm />}
       {option === "uniform" && <UniformForm />}
+      {option === "norm" && <NormForm />}
       {option === "production" && <ProductionForm />}
       {option === "finance" && <FinanceForm />}
     </section>
