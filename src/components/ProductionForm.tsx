@@ -44,9 +44,8 @@ const formSchema = z
       invalid_type_error: "Demand max must be a number",
     }),
     demandSD: z.coerce.number({
-      required_error:
-        "Demand standard deviation is required. 0 = triangular distribution. > 0 = truncated normal distribution.",
-      invalid_type_error: "Demand standard deviation must be a number",
+      required_error: "Demand standard deviation is required.",
+      invalid_type_error: "Demand standard deviation must be >= 0",
     }),
     fixedCost: z.coerce.number({
       required_error: "Fixed costs are required",
@@ -77,15 +76,15 @@ export default function ProductionForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      unitCost: undefined,
-      unitPrice: undefined,
-      salvagePrice: undefined,
-      demandMin: undefined,
-      demandMode: undefined,
-      demandMax: undefined,
+      unitCost: 0,
+      unitPrice: 0,
+      salvagePrice: 0,
+      demandMin: 0,
+      demandMode: 0,
+      demandMax: 0,
       demandSD: 0,
-      fixedCost: undefined,
-      productionQuantity: undefined,
+      fixedCost: 0,
+      productionQuantity: 0,
     },
   });
 
@@ -152,7 +151,7 @@ export default function ProductionForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Minimum Demand</FormLabel>
+        <FormLabel>Minimum Demand (set to 0 to ignore)</FormLabel>
         <FormField
           control={form.control}
           name="demandMin"
@@ -165,7 +164,7 @@ export default function ProductionForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Expected Demand</FormLabel>
+        <FormLabel>Expected Demand (set to 0 to ignore)</FormLabel>
         <FormField
           control={form.control}
           name="demandMode"
@@ -178,7 +177,7 @@ export default function ProductionForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Maximum Demand</FormLabel>
+        <FormLabel>Maximum Demand (set to 0 to ignore)</FormLabel>
         <FormField
           control={form.control}
           name="demandMax"
@@ -191,10 +190,7 @@ export default function ProductionForm() {
             </FormItem>
           )}
         />
-        <FormLabel>
-          Standard Deviation of Demand (0 = triangular distribution. &gt; 0 =
-          truncated normal distribution)
-        </FormLabel>
+        <FormLabel>Standard Deviation of Demand (set to 0 to ignore)</FormLabel>
         <FormField
           control={form.control}
           name="demandSD"
