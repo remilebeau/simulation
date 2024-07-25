@@ -66,12 +66,14 @@ const formSchema = z
         fields.yearOneSalesMin,
         fields.yearOneSalesMode,
         fields.yearOneSalesMax,
+        0,
       ) &&
       // annualSalesDecay must fit a triangular distribution or be all zero
       (isTriangular(
         fields.annualSalesDecayMin,
         fields.annualSalesDecayMode,
         fields.annualSalesDecayMax,
+        0,
       ) ||
         isAllZero(
           fields.annualSalesDecayMin,

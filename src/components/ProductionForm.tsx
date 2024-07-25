@@ -13,7 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { isTriangular } from "@/lib/validation";
+import { determineDistribution } from "@/lib/validation";
 
 // define form schema
 
@@ -59,13 +59,16 @@ const formSchema = z
 
   .refine(
     (fields) =>
-      // validate triangular demand distribution
-      isTriangular(fields.demandMin, fields.demandMode, fields.demandMax) &&
-      // check that standard deviation >= 0
-      fields.demandSD >= 0,
+      // validate at least one of these distributions
+      determineDistribution(
+        fields.unitCost,
+        fields.demandMin,
+        fields.demandMode,
+        fields.demandMax,
+      ) !== null,
     {
       message:
-        "Please check that 1) min <= mode <= max 2) min < max 3) standard deviation >= 0",
+        "Demand must follow a triangular, truncated normal, uniform, or normal distribution",
       path: ["unitCost"],
     },
   );
