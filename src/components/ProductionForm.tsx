@@ -115,7 +115,7 @@ export default function ProductionForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-4 p-4"
       >
-        <h2 className="text-2xl font-bold">
+        <h2>
           Demand must follow a triangular, truncated normal, uniform, or normal
           distribution
         </h2>
