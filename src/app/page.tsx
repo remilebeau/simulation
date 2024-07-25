@@ -19,8 +19,12 @@ export default function HomePage() {
         </a>
       </p>
       <p>
-        When entering values for the models, do not flip the sign (e.g. making
+        When entering inputs for the models, do not flip the sign (e.g. making
         revenues positive and costs negative)
+      </p>
+      <p>
+        When using the models, demand must follow one of these distributions:
+        triangular, truncated normal, uniform, or normal
       </p>
       <SelectOption />
       <ThemeSwitch />
