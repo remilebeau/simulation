@@ -86,7 +86,7 @@ export default function TriangularForm() {
           name="distMode"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Mode</FormLabel>
+              <FormLabel>Mean</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
