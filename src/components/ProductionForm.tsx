@@ -115,6 +115,25 @@ export default function ProductionForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-4 p-4"
       >
+        <h2 className="text-2xl font-bold">
+          Demand must follow a triangular, truncated normal, uniform, or normal
+          distribution
+        </h2>
+        <section className="grid grid-cols-2">
+          <section className="flex flex-col gap-2">
+            <p>Triangular</p>
+            <p>Truncated Normal</p>
+            <p>Uniform</p>
+            <p>Normal</p>
+          </section>
+          <section className="flex flex-col gap-2">
+            <p>min &lt;= mean &lt;= max; min &lt; max; sd = 0</p>
+            <p>min &lt;= mean &lt;= max; min &lt; max; sd &gt; 0</p>
+            <p>min &lt; max; mean = 0; sd = 0</p>
+            <p>min = 0; max = 0; mean &gt; 0; sd &gt; 0</p>
+          </section>
+        </section>
+
         <FormLabel>Unit Cost</FormLabel>
         <FormField
           control={form.control}
@@ -154,58 +173,6 @@ export default function ProductionForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Minimum Demand (set to 0 to ignore)</FormLabel>
-        <FormField
-          control={form.control}
-          name="demandMin"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Expected Demand (set to 0 to ignore)</FormLabel>
-        <FormField
-          control={form.control}
-          name="demandMode"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Maximum Demand (set to 0 to ignore)</FormLabel>
-        <FormField
-          control={form.control}
-          name="demandMax"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Standard Deviation of Demand (set to 0 to ignore)</FormLabel>
-        <FormField
-          control={form.control}
-          name="demandSD"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <FormLabel>Fixed Costs</FormLabel>
         <FormField
           control={form.control}
@@ -232,6 +199,60 @@ export default function ProductionForm() {
             </FormItem>
           )}
         />
+        <h3 className="text-xl font-bold">Demand</h3>
+        <FormLabel>Minimum</FormLabel>
+        <FormField
+          control={form.control}
+          name="demandMin"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormLabel>Mean</FormLabel>
+        <FormField
+          control={form.control}
+          name="demandMode"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormLabel>Maximum</FormLabel>
+        <FormField
+          control={form.control}
+          name="demandMax"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormLabel>Standard Deviation</FormLabel>
+        <FormField
+          control={form.control}
+          name="demandSD"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <Button className="w-full" type="submit">
           Submit
         </Button>
