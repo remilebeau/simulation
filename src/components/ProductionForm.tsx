@@ -8,6 +8,14 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
+import { useState } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -75,6 +83,7 @@ const formSchema = z
 
 export default function ProductionForm() {
   const router = useRouter();
+  const [distribution, setDistribution] = useState<string>("");
   // define form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -154,58 +163,99 @@ export default function ProductionForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Demand Minimum (enter 0 to ignore)</FormLabel>
-        <FormField
-          control={form.control}
-          name="demandMin"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Demand Mean (enter 0 to ignore)</FormLabel>
-        <FormField
-          control={form.control}
-          name="demandMode"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Demand Maximum (enter 0 to ignore)</FormLabel>
-        <FormField
-          control={form.control}
-          name="demandMax"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Demand Standard Deviation (enter 0 to ignore)</FormLabel>
-        <FormField
-          control={form.control}
-          name="demandSD"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <label htmlFor="option">Demand Distribution</label>
+        <Select
+          onValueChange={(value) => setDistribution(value)}
+          value={distribution}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="triangular">Triangular</SelectItem>
+            <SelectItem value="truncnorm">Truncated Normal</SelectItem>
+            <SelectItem value="uniform">Uniform</SelectItem>
+            <SelectItem value="norm">Normal</SelectItem>
+          </SelectContent>
+        </Select>
+        {/* conditional rendering for demand minimum */}
+        {(distribution === "triangular" ||
+          distribution === "truncnorm" ||
+          distribution === "uniform") && (
+          <>
+            <FormLabel>Demand Minimum</FormLabel>
+            <FormField
+              control={form.control}
+              name="demandMin"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </>
+        )}
+        {/* conditional rendering for demand mean */}
+        {(distribution === "triangular" ||
+          distribution === "truncnorm" ||
+          distribution === "norm") && (
+          <>
+            <FormLabel>Demand Mean</FormLabel>
+            <FormField
+              control={form.control}
+              name="demandMode"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </>
+        )}
+        {/* conditional rendering for demand maximum */}
+        {(distribution === "triangular" ||
+          distribution === "truncnorm" ||
+          distribution === "uniform") && (
+          <>
+            <FormLabel>Demand Maximum</FormLabel>
+            <FormField
+              control={form.control}
+              name="demandMax"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </>
+        )}
+        {/* conditional rendering for demand standard deviation */}
+        {(distribution === "truncnorm" || distribution === "norm") && (
+          <>
+            <FormLabel>Demand Standard Deviation</FormLabel>
+            <FormField
+              control={form.control}
+              name="demandSD"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </>
+        )}
         <FormLabel>Fixed Costs</FormLabel>
         <FormField
           control={form.control}
