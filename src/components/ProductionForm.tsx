@@ -69,10 +69,10 @@ const formSchema = z
     (fields) =>
       // validate that demand follows a triangular, truncated normal, uniform, or normal distribution
       determineDistribution(
-        fields.unitCost,
         fields.demandMin,
         fields.demandMode,
         fields.demandMax,
+        fields.demandSD,
       ) !== null,
     {
       message:
