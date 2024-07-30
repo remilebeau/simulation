@@ -27,10 +27,12 @@ import { determineDistribution } from "@/lib/validation";
 
 const formSchema = z
   .object({
-    periodsPerYear: z.coerce.number({
-      required_error: "Periods per year is required",
-      invalid_type_error: "Periods per year must be a number",
-    }),
+    periodsPerYear: z.coerce
+      .number({
+        required_error: "Periods per year is required",
+        invalid_type_error: "Periods per year must be greater than 0",
+      })
+      .gt(0),
     min: z.coerce.number({
       required_error: "Min value is required",
       invalid_type_error: "Min value must be a number",
@@ -79,10 +81,9 @@ export default function CashFlowForm() {
   // define submit handler
   function onSubmit(values: z.infer<typeof formSchema>) {
     const { periodsPerYear, min, mean, max, sd } = values;
-    console.log({ periodsPerYear, min, mean, max, sd });
-    // router.push(
-    //   `/results/cashflow?periodsPerYear=${periodsPerYear}&min=${min}&mean=${mean}&max=${max}&sd=${sd}`,
-    // );
+    router.push(
+      `/results/cashflow?periodsPerYear=${periodsPerYear}&min=${min}&mean=${mean}&max=${max}&sd=${sd}`,
+    );
   }
 
   return (
@@ -119,7 +120,7 @@ export default function CashFlowForm() {
             <SelectItem value="norm">Normal</SelectItem>
           </SelectContent>
         </Select>
-        {/* conditional rendering for minimum */}
+        {/* conditional rendering for min cash flow */}
         {(distribution === "triangular" ||
           distribution === "truncnorm" ||
           distribution === "uniform") && (

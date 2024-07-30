@@ -5,7 +5,7 @@ type ResponseType = {
 };
 
 export async function simulateCashFlow(
-  periodsPerYear: number,
+  periodsPerYear: string,
   min: string,
   mean: string,
   max: string,
