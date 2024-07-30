@@ -104,7 +104,7 @@ export default function CashFlowForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Demand Distribution</FormLabel>
+        <FormLabel>Distribution of Cash Flows</FormLabel>
         <Select
           onValueChange={(value) => setDistribution(value)}
           value={distribution}
