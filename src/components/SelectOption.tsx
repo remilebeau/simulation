@@ -17,6 +17,9 @@ export default function SelectModel() {
   const FinanceForm = dynamic(() => import("@/components/FinanceForm"), {
     ssr: false,
   });
+  const CashFlowForm = dynamic(() => import("@/components/CashFlowForm"), {
+    ssr: false,
+  });
   const TriangularForm = dynamic(() => import("@/components/TriangularForm"), {
     ssr: false,
   });
@@ -59,6 +62,9 @@ export default function SelectModel() {
             Monte Carlo Simulation for Financial Planning (Triangular
             Distribution Only)
           </SelectItem>
+          <SelectItem value="cashflow">
+            Monte Carlo Simulation for Cash Flow
+          </SelectItem>
         </SelectContent>
       </Select>
 
@@ -68,6 +74,7 @@ export default function SelectModel() {
       {option === "norm" && <NormForm />}
       {option === "production" && <ProductionForm />}
       {option === "finance" && <FinanceForm />}
+      {option === "cashflow" && <CashFlowForm />}
     </section>
   );
 }
