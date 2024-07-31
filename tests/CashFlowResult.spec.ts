@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Production Results Page", () => {
+test.describe("Cash Flow Results Page", () => {
   test("should display 'Cash Flow Simulation Results' after successful api request with truncated normal distribution", async ({
     page,
   }) => {
