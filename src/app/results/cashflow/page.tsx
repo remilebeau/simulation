@@ -18,6 +18,7 @@ export default async function FinanceResults() {
 
   // get query params
   const periodsPerYear = searchParams.get("periodsPerYear");
+  const fixedCost = searchParams.get("fixedCost");
   const min = searchParams.get("min");
   const mean = searchParams.get("mean");
   const max = searchParams.get("max");
@@ -25,12 +26,21 @@ export default async function FinanceResults() {
 
   const { annualCashFlows } = await simulateCashFlow(
     periodsPerYear!,
+    fixedCost!,
     min!,
     mean!,
     max!,
     sd!,
   );
   const inputs = [
+    {
+      name: "Periods per Year",
+      value: periodsPerYear!,
+    },
+    {
+      name: "Total Annual Fixed Cost",
+      value: fixedCost!,
+    },
     {
       name: "Min",
       value: min!,

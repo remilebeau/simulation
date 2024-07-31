@@ -6,6 +6,7 @@ type ResponseType = {
 
 export async function simulateCashFlow(
   periodsPerYear: string,
+  fixedCost: string,
   min: string,
   mean: string,
   max: string,
@@ -13,8 +14,8 @@ export async function simulateCashFlow(
 ): Promise<ResponseType> {
   const DATA_URL =
     process.env.NODE_ENV === "production"
-      ? `https://simulation-api-rsaw.onrender.com/api/simulations/cash_flow?periodsPerYear=${periodsPerYear}&min=${min}&mean=${mean}&max=${max}&sd=${sd}`
-      : `http://localhost:8000/api/simulations/cash_flow?periodsPerYear=${periodsPerYear}&min=${min}&mean=${mean}&max=${max}&sd=${sd}`;
+      ? `https://simulation-api-rsaw.onrender.com/api/simulations/cash_flow?periodsPerYear=${periodsPerYear}&fixedCost=${fixedCost}&min=${min}&mean=${mean}&max=${max}&sd=${sd}`
+      : `http://localhost:8000/api/simulations/cash_flow?periodsPerYear=${periodsPerYear}&fixedCost=${fixedCost}&min=${min}&mean=${mean}&max=${max}&sd=${sd}`;
   const res = await fetch(DATA_URL, {
     method: "GET",
     headers: {

@@ -5,7 +5,7 @@ test.describe("Production Results Page", () => {
     page,
   }) => {
     await page.goto(
-      "/results/cashflow?periodsPerYear=12&min=5000&mean=12000&max=16000&sd=3496",
+      "/results/cashflow?periodsPerYear=12&fixedCost=100000&min=5000&mean=12000&max=16000&sd=3496",
     );
     await expect(
       page.getByRole("heading", { name: "Cash Flow Simulation Results" }),
@@ -15,7 +15,7 @@ test.describe("Production Results Page", () => {
     page,
   }) => {
     await page.goto(
-      "/results/cashflow?periodsPerYear=12&min=5000&mean=12000&max=16000&sd=0",
+      "/results/cashflow?periodsPerYear=12&fixedCost=100000&min=5000&mean=12000&max=16000&sd=0",
     );
     await expect(
       page.getByRole("heading", { name: "Cash Flow Simulation Results" }),
@@ -25,7 +25,7 @@ test.describe("Production Results Page", () => {
     page,
   }) => {
     await page.goto(
-      "/results/cashflow?periodsPerYear=12&min=0&mean=12000&max=0&sd=3496",
+      "/results/cashflow?periodsPerYear=12&fixedCost=100000&min=0&mean=12000&max=0&sd=3496",
     );
     await expect(
       page.getByRole("heading", { name: "Cash Flow Simulation Results" }),
@@ -35,7 +35,7 @@ test.describe("Production Results Page", () => {
     page,
   }) => {
     await page.goto(
-      "/results/cashflow?periodsPerYear=12&min=5000&mean=0&max=16000&sd=0",
+      "/results/cashflow?periodsPerYear=12&fixedCost=100000&min=5000&mean=0&max=16000&sd=0",
     );
     await expect(
       page.getByRole("heading", { name: "Cash Flow Simulation Results" }),

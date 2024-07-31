@@ -33,6 +33,10 @@ const formSchema = z
         invalid_type_error: "Periods per year must be greater than 0",
       })
       .gt(0),
+    fixedCost: z.coerce.number({
+      required_error: "Fixed cost is required",
+      invalid_type_error: "Fixed cost must be a number",
+    }),
     min: z.coerce.number({
       required_error: "Min value is required",
       invalid_type_error: "Min value must be a number",
@@ -71,6 +75,7 @@ export default function CashFlowForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       periodsPerYear: 0,
+      fixedCost: 0,
       min: 0,
       mean: 0,
       max: 0,
@@ -80,9 +85,9 @@ export default function CashFlowForm() {
 
   // define submit handler
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const { periodsPerYear, min, mean, max, sd } = values;
+    const { periodsPerYear, fixedCost, min, mean, max, sd } = values;
     router.push(
-      `/results/cashflow?periodsPerYear=${periodsPerYear}&min=${min}&mean=${mean}&max=${max}&sd=${sd}`,
+      `/results/cashflow?periodsPerYear=${periodsPerYear}&fixedCost=${fixedCost}&min=${min}&mean=${mean}&max=${max}&sd=${sd}`,
     );
   }
 
@@ -105,7 +110,20 @@ export default function CashFlowForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Distribution of Cash Flows</FormLabel>
+        <FormLabel>Total Annual Fixed Costs</FormLabel>
+        <FormField
+          control={form.control}
+          name="fixedCost"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormLabel>Distribution of Periodic Cash Flows</FormLabel>
         <Select
           onValueChange={(value) => setDistribution(value)}
           value={distribution}
