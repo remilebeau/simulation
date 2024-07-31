@@ -15,6 +15,6 @@ A web app that features the following business analytics tools:
 - Plotly.js
 - FastAPI
 
-## [API Docs](https://simulation-api-t28w.onrender.com/docs)
+## [API Docs](https://simulation-api-t28w.onrender.com/docs](https://simulation-api-rsaw.onrender.com/docs)
 
 ## [API Source Code](https://github.com/remilebeau/simulation-api)
