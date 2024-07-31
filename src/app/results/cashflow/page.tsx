@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 import ModelInputs from "@/components/ModelInputs";
 import simulateCashFlow from "@/lib/simulateCashFlow";
+import { determineDistribution } from "@/lib/validation";
 
 export default async function FinanceResults() {
   // client component imports
@@ -47,12 +48,21 @@ export default async function FinanceResults() {
       value: sd!,
     },
   ];
+  const distribution = determineDistribution(
+    Number(min),
+    Number(mean),
+    Number(max),
+    Number(sd),
+  );
   return (
     <>
       {annualCashFlows && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
           <BackButton />
           <h1 className="text-3xl font-bold">Cash Flow Simulation Results</h1>
+          <h2 className="text-2xl font-bold">
+            Distribution: {distribution?.toUpperCase()}
+          </h2>
           <ModelInputs inputs={inputs} />
           <Histogram values={annualCashFlows} />
           <ThemeSwitch />
