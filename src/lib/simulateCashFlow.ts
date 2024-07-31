@@ -2,6 +2,13 @@ import { redirect } from "next/navigation";
 
 type ResponseType = {
   annualCashFlows: number[];
+  meanProfit: number;
+  meanStandardError: number;
+  meanLowerCI: number;
+  meanUpperCI: number;
+  pLoseMoneyLowerCI: number;
+  pLoseMoneyUpperCI: number;
+  valueAtRisk: number;
 };
 
 export async function simulateCashFlow(

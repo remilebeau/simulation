@@ -5,6 +5,7 @@ import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 import ModelInputs from "@/components/ModelInputs";
 import simulateCashFlow from "@/lib/simulateCashFlow";
 import { determineDistribution } from "@/lib/validation";
+import SimStats from "@/components/SimStats";
 
 export default async function FinanceResults() {
   // client component imports
@@ -24,7 +25,16 @@ export default async function FinanceResults() {
   const max = searchParams.get("max");
   const sd = searchParams.get("sd");
 
-  const { annualCashFlows } = await simulateCashFlow(
+  const {
+    annualCashFlows,
+    meanProfit,
+    meanStandardError,
+    meanLowerCI,
+    meanUpperCI,
+    pLoseMoneyLowerCI,
+    pLoseMoneyUpperCI,
+    valueAtRisk,
+  } = await simulateCashFlow(
     periodsPerYear!,
     fixedCost!,
     min!,
@@ -75,6 +85,15 @@ export default async function FinanceResults() {
           </h2>
           <ModelInputs inputs={inputs} />
           <Histogram values={annualCashFlows} />
+          <SimStats
+            meanProfit={meanProfit}
+            meanStandardError={meanStandardError}
+            meanLowerCI={meanLowerCI}
+            meanUpperCI={meanUpperCI}
+            pLoseMoneyLowerCI={pLoseMoneyLowerCI}
+            pLoseMoneyUpperCI={pLoseMoneyUpperCI}
+            valueAtRisk={valueAtRisk}
+          />
           <ThemeSwitch />
         </main>
       )}
