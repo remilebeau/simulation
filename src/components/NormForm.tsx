@@ -33,8 +33,8 @@ export default function NormForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      distMean: 0,
-      distSD: 0,
+      distMean: undefined,
+      distSD: undefined,
     },
   });
 

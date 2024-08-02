@@ -88,15 +88,15 @@ export default function ProductionForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      unitCost: 0,
-      unitPrice: 0,
-      salvagePrice: 0,
-      demandMin: 0,
-      demandMode: 0,
-      demandMax: 0,
-      demandSD: 0,
-      fixedCost: 0,
-      productionQuantity: 0,
+      unitCost: undefined,
+      unitPrice: undefined,
+      salvagePrice: undefined,
+      demandMin: undefined,
+      demandMode: undefined,
+      demandMax: undefined,
+      demandSD: undefined,
+      fixedCost: undefined,
+      productionQuantity: undefined,
     },
   });
 

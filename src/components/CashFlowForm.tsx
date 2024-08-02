@@ -74,12 +74,12 @@ export default function CashFlowForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      periodsPerYear: 0,
-      fixedCost: 0,
-      min: 0,
-      mean: 0,
-      max: 0,
-      sd: 0,
+      periodsPerYear: undefined,
+      fixedCost: undefined,
+      min: undefined,
+      mean: undefined,
+      max: undefined,
+      sd: undefined,
     },
   });
 

@@ -38,8 +38,8 @@ export default function UniformForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      distMin: 0,
-      distMax: 0,
+      distMin: undefined,
+      distMax: undefined,
     },
   });
 

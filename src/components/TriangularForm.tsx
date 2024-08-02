@@ -48,9 +48,9 @@ export default function TriangularForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      distMin: 0,
-      distMode: 0,
-      distMax: 0,
+      distMin: undefined,
+      distMode: undefined,
+      distMax: undefined,
     },
   });
 
