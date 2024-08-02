@@ -17,6 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -163,7 +164,7 @@ export default function ProductionForm() {
             </FormItem>
           )}
         />
-        <label htmlFor="option">Demand Distribution</label>
+        <Label htmlFor="option">Demand Distribution</Label>
         <Select
           onValueChange={(value) => setDistribution(value)}
           value={distribution}
