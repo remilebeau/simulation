@@ -3,14 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  /* || Typography */
-  h1 {
-    @apply text-5xl;
-  }
-  p {
-    @apply text-xl;
-  }
-
   :root {
     --background: 0 0% 95%;
     --foreground: 0 0% 0%;
