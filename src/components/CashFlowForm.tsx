@@ -32,6 +32,7 @@ const formSchema = z
         required_error: "Periods per year is required",
         invalid_type_error: "Periods per year must be greater than 0",
       })
+      .int()
       .gt(0),
     fixedCost: z.coerce.number({
       required_error: "Fixed cost is required",
