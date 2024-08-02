@@ -8,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
 
 export default function SelectModel() {
   // client component imports
@@ -37,7 +38,7 @@ export default function SelectModel() {
 
   return (
     <section className="flex flex-col gap-4 p-4">
-      <label htmlFor="option">Select Option</label>
+      <Label htmlFor="option">Select Option</Label>
       <Select onValueChange={(value) => setOption(value)} value={option}>
         <SelectTrigger>
           <SelectValue placeholder="" />
