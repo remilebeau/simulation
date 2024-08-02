@@ -9,8 +9,8 @@ export default function HomePage() {
         Select a model or distribution and input the parameters
       </p>
       <p className="text-xl">
-        To learn more about the assumptions of the models, or to download the
-        values for your own analysis, please visit the{" "}
+        For more information on the assumptions of the models, or to download
+        the values for your own analysis, please visit the{" "}
         <a
           href="https://simulation-api-rsaw.onrender.com/docs"
           rel="noreferrer"
@@ -19,14 +19,6 @@ export default function HomePage() {
         >
           API docs
         </a>
-      </p>
-      <p className="text-xl">
-        When entering inputs for the models, do not flip the sign (e.g. making
-        revenues positive and costs negative)
-      </p>
-      <p className="text-xl">
-        When using the models, demand must follow one of these distributions:
-        triangular, truncated normal, uniform, or normal
       </p>
       <SelectOption />
       <ThemeSwitch />
