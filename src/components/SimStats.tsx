@@ -19,10 +19,10 @@ export default function SimStats({
 }: Props) {
   return (
     <article className="flex w-full flex-col rounded-md border p-2 font-bold">
-      <h2 className="text-center">Simulation Statistics</h2>
+      <h2 className="text-center text-2xl">Simulation Statistics</h2>
       <section id="mean" className="flex flex-row justify-between">
-        <p>Mean:</p>
-        <p>
+        <p className="text-xl">Mean:</p>
+        <p className="text-xl">
           {meanProfit.toLocaleString("en-US", {
             style: "currency",
             currency: "USD",
@@ -31,8 +31,8 @@ export default function SimStats({
         </p>
       </section>
       <section id="standardError" className="flex flex-row justify-between">
-        <p>Standard Error:</p>
-        <p>
+        <p className="text-xl">Standard Error:</p>
+        <p className="text-xl">
           {meanStandardError.toLocaleString("en-US", {
             style: "currency",
             currency: "USD",
@@ -41,8 +41,8 @@ export default function SimStats({
         </p>
       </section>
       <section id="ci" className="flex flex-row justify-between text-right">
-        <p className="text-left">95% Confidence Interval for Mean:</p>
-        <p>
+        <p className="text-xl">95% Confidence Interval for Mean:</p>
+        <p className="text-xl">
           [
           {meanLowerCI.toLocaleString("en-US", {
             style: "currency",
@@ -59,8 +59,8 @@ export default function SimStats({
         </p>
       </section>
       <section id="pLoseMoney" className="flex flex-row justify-between">
-        <p>95% Confidence Interval for Probability of Losing Money:</p>
-        <p>
+        <p className="text-xl">Probability of Losing Money:</p>
+        <p className="text-xl">
           [
           {pLoseMoneyLowerCI.toLocaleString("en-US", {
             style: "percent",
@@ -73,8 +73,8 @@ export default function SimStats({
         </p>
       </section>
       <section id="valueAtRisk" className="flex flex-row justify-between">
-        <p>Value at Risk at 5% Level:</p>
-        <p>
+        <p className="text-xl">Value at Risk at 5% Level:</p>
+        <p className="text-xl">
           {valueAtRisk.toLocaleString("en-US", {
             style: "currency",
             currency: "USD",
