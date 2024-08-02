@@ -30,10 +30,10 @@ const formSchema = z
     periodsPerYear: z.coerce
       .number({
         required_error: "Periods per year is required",
-        invalid_type_error: "Periods per year must be greater than 0",
+        invalid_type_error: "Periods per year must be a number",
       })
       .int()
-      .gt(0),
+      .positive(),
     fixedCost: z.coerce.number({
       required_error: "Fixed cost is required",
       invalid_type_error: "Fixed cost must be a number",
@@ -75,12 +75,12 @@ export default function CashFlowForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      periodsPerYear: undefined,
-      fixedCost: undefined,
-      min: undefined,
-      mean: undefined,
-      max: undefined,
-      sd: undefined,
+      periodsPerYear: 0,
+      fixedCost: 0,
+      min: 0,
+      mean: 0,
+      max: 0,
+      sd: 0,
     },
   });
 

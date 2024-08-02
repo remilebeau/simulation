@@ -98,17 +98,17 @@ export default function FinanceForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fixedCost: undefined,
-      yearOneMargin: undefined,
-      yearOneSalesMin: undefined,
-      yearOneSalesMode: undefined,
-      yearOneSalesMax: undefined,
-      annualMarginDecrease: undefined,
-      annualSalesDecayMin: undefined,
-      annualSalesDecayMode: undefined,
-      annualSalesDecayMax: undefined,
-      taxRate: undefined,
-      discountRate: undefined,
+      fixedCost: 0,
+      yearOneMargin: 0,
+      yearOneSalesMin: 0,
+      yearOneSalesMode: 0,
+      yearOneSalesMax: 0,
+      annualMarginDecrease: 0,
+      annualSalesDecayMin: 0,
+      annualSalesDecayMode: 0,
+      annualSalesDecayMax: 0,
+      taxRate: 0,
+      discountRate: 0,
     },
   });
 
