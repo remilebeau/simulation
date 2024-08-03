@@ -28,41 +28,18 @@ import { determineDistribution } from "@/lib/validation";
 
 const formSchema = z
   .object({
-    unitCost: z.coerce.number({
-      required_error: "Unit cost is required",
-      invalid_type_error: "Unit cost must be a number",
+    unitCost: z.coerce.number(),
+    unitPrice: z.coerce.number(),
+    salvagePrice: z.coerce.number(),
+    demandMin: z.coerce.number(),
+    demandMode: z.coerce.number(),
+    demandMax: z.coerce.number(),
+    demandSD: z.coerce.number().gt(0, {
+      message: "Standard deviation must be greater than 0",
     }),
-    unitPrice: z.coerce.number({
-      required_error: "Unit price is required",
-      invalid_type_error: "Unit price must be a number",
-    }),
-    salvagePrice: z.coerce.number({
-      required_error: "Salvage price is required",
-      invalid_type_error: "Salvage price must be a number",
-    }),
-    demandMin: z.coerce.number({
-      required_error: "Demand min is required",
-      invalid_type_error: "Demand min must be a number",
-    }),
-    demandMode: z.coerce.number({
-      required_error: "Demand mode is required",
-      invalid_type_error: "Demand mode must be a number",
-    }),
-    demandMax: z.coerce.number({
-      required_error: "Demand max is required",
-      invalid_type_error: "Demand max must be a number",
-    }),
-    demandSD: z.coerce.number({
-      required_error: "Demand standard deviation is required.",
-      invalid_type_error: "Demand standard deviation must be >= 0",
-    }),
-    fixedCost: z.coerce.number({
-      required_error: "Fixed costs are required",
-      invalid_type_error: "Fixed costs must be a number",
-    }),
-    productionQuantity: z.coerce.number({
-      required_error: "Production quantity is required",
-      invalid_type_error: "Production quantity must be a number",
+    fixedCost: z.coerce.number(),
+    productionQuantity: z.coerce.number().gt(0, {
+      message: "Production quantity must be greater than 0",
     }),
   })
 
