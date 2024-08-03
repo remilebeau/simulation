@@ -18,14 +18,8 @@ import { z } from "zod";
 
 const formSchema = z
   .object({
-    distMin: z.coerce.number({
-      required_error: "Min value is required",
-      invalid_type_error: "Min value must be a number",
-    }),
-    distMax: z.coerce.number({
-      required_error: "Max value is required",
-      invalid_type_error: "Max value must be a number",
-    }),
+    distMin: z.coerce.number(),
+    distMax: z.coerce.number(),
   })
   .refine((fields) => fields.distMin < fields.distMax, {
     message: "Min must be less than max",

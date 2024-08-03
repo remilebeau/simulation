@@ -13,6 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { isTriangular } from "@/lib/validation";
 
 // define form schema
 
@@ -25,9 +26,7 @@ const formSchema = z
   // validate that min, mode, and max fit a triangular distribution
   .refine(
     (fields) =>
-      fields.distMin <= fields.distMode &&
-      fields.distMode <= fields.distMax &&
-      fields.distMin < fields.distMax,
+      isTriangular(fields.distMin, fields.distMode, fields.distMax, 0),
     {
       message: "Please check that: 1) min <= mode <= max 2) min < max",
       path: ["distMin"],

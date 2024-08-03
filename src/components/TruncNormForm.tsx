@@ -13,36 +13,24 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { isTriangular } from "@/lib/validation";
 
 // define form schema
 
 const formSchema = z
   .object({
-    distMin: z.coerce.number({
-      required_error: "Min value is required",
-      invalid_type_error: "Min value must be a number",
-    }),
-    distMean: z.coerce.number({
-      required_error: "Mode value is required",
-      invalid_type_error: "Mode value must be a number",
-    }),
-    distMax: z.coerce.number({
-      required_error: "Max value is required",
-      invalid_type_error: "Max value must be a number",
-    }),
-    distSD: z.coerce.number({
-      required_error: "Standard Deviation value is required",
-      invalid_type_error: "Standard Deviation value must be a number",
+    distMin: z.coerce.number(),
+    distMean: z.coerce.number(),
+    distMax: z.coerce.number(),
+    distSD: z.coerce.number().gt(0, {
+      message: "Standard deviation must be greater than 0",
     }),
   })
   .refine(
     (fields) =>
-      fields.distMin <= fields.distMean &&
-      fields.distMean <= fields.distMax &&
-      fields.distMin < fields.distMax &&
-      fields.distSD > 0,
+      isTriangular(fields.distMin, fields.distMean, fields.distMax, 0),
     {
-      message: "Please check that: 1) min <= mode <= max and 2) min < max",
+      message: "Please check that: 1) min <= mode <= max 2) min < max",
       path: ["distMin"],
     },
   );
