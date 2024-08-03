@@ -60,8 +60,7 @@ export default function SelectModel() {
             Monte Carlo Simulation for Production
           </SelectItem>
           <SelectItem value="finance">
-            Monte Carlo Simulation for Financial Planning (Triangular
-            Distribution Only)
+            Monte Carlo Simulation for Finance
           </SelectItem>
           <SelectItem value="cashflow">
             Monte Carlo Simulation for Cash Flow
