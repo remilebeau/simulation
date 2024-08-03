@@ -27,13 +27,7 @@ import { determineDistribution } from "@/lib/validation";
 
 const formSchema = z
   .object({
-    periodsPerYear: z.coerce
-      .number({
-        required_error: "Periods per year is required",
-        invalid_type_error: "Periods per year must be a number",
-      })
-      .int()
-      .positive(),
+    periodsPerYear: z.coerce.number().int().positive(),
     fixedCost: z.coerce.number({
       required_error: "Fixed cost is required",
       invalid_type_error: "Fixed cost must be a number",
