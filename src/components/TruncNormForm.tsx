@@ -74,12 +74,12 @@ export default function TruncatedNormalForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-4 p-4"
       >
+        <FormLabel>Minimum</FormLabel>
         <FormField
           control={form.control}
           name="distMin"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Minimum</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -87,12 +87,12 @@ export default function TruncatedNormalForm() {
             </FormItem>
           )}
         />
+        <FormLabel>Mean</FormLabel>
         <FormField
           control={form.control}
           name="distMean"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Mean</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -100,12 +100,12 @@ export default function TruncatedNormalForm() {
             </FormItem>
           )}
         />
+        <FormLabel>Maximum</FormLabel>
         <FormField
           control={form.control}
           name="distMax"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Maximum</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -113,13 +113,12 @@ export default function TruncatedNormalForm() {
             </FormItem>
           )}
         />
-
+        <FormLabel>Standard Deviation</FormLabel>
         <FormField
           control={form.control}
           name="distSD"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Standard Deviation</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>

@@ -50,12 +50,12 @@ export default function NormForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-4 p-4"
       >
+        <FormLabel>Mean</FormLabel>
         <FormField
           control={form.control}
           name="distMean"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Mean</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -63,12 +63,12 @@ export default function NormForm() {
             </FormItem>
           )}
         />
+        <FormLabel>Standard Deviation</FormLabel>
         <FormField
           control={form.control}
           name="distSD"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Standard Deviation</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>

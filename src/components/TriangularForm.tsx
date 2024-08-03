@@ -68,12 +68,12 @@ export default function TriangularForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-4 p-4"
       >
+        <FormLabel>Minimum</FormLabel>
         <FormField
           control={form.control}
           name="distMin"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Minimum</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -81,12 +81,12 @@ export default function TriangularForm() {
             </FormItem>
           )}
         />
+        <FormLabel>Mean</FormLabel>
         <FormField
           control={form.control}
           name="distMode"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Mean</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -94,12 +94,12 @@ export default function TriangularForm() {
             </FormItem>
           )}
         />
+        <FormLabel>Maximum</FormLabel>
         <FormField
           control={form.control}
           name="distMax"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Maximum</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>

@@ -55,12 +55,12 @@ export default function UniformForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-4 p-4"
       >
+        <FormLabel>Minimum</FormLabel>
         <FormField
           control={form.control}
           name="distMin"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Minimum</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -68,12 +68,12 @@ export default function UniformForm() {
             </FormItem>
           )}
         />
+        <FormLabel>Maximum</FormLabel>
         <FormField
           control={form.control}
           name="distMax"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Maximum</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
