@@ -144,7 +144,7 @@ export default function CashFlowForm() {
           distribution === "truncnorm" ||
           distribution === "uniform") && (
           <>
-            <FormLabel>Min Cash Flow</FormLabel>
+            <FormLabel>Min Periodic Cash Flow</FormLabel>
             <FormField
               control={form.control}
               name="min"
@@ -164,7 +164,7 @@ export default function CashFlowForm() {
           distribution === "truncnorm" ||
           distribution === "norm") && (
           <>
-            <FormLabel>Mean Cash Flow</FormLabel>
+            <FormLabel>Expected Periodic Cash Flow</FormLabel>
             <FormField
               control={form.control}
               name="mean"
@@ -184,7 +184,7 @@ export default function CashFlowForm() {
           distribution === "truncnorm" ||
           distribution === "uniform") && (
           <>
-            <FormLabel>Max Cash Flow</FormLabel>
+            <FormLabel>Max Periodic Cash Flow</FormLabel>
             <FormField
               control={form.control}
               name="max"

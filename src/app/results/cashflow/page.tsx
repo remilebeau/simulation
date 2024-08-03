@@ -52,15 +52,15 @@ export default async function FinanceResults() {
       value: fixedCost!,
     },
     {
-      name: "Min",
+      name: "Min Periodic Cash Flow",
       value: min!,
     },
     {
-      name: "Mean",
+      name: "Expected Periodic Cash Flow",
       value: mean!,
     },
     {
-      name: "Max",
+      name: "Max Periodic Cash Flow",
       value: max!,
     },
     {
