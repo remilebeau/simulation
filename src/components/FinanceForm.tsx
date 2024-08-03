@@ -13,7 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { isTriangular, isPercent, isAllZero } from "@/lib/validation";
+import { isTriangular, isAllZero } from "@/lib/validation";
 
 // define form schema
 
