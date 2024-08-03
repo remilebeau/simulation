@@ -19,43 +19,22 @@ import { isTriangular, isPercent, isAllZero } from "@/lib/validation";
 
 const formSchema = z
   .object({
-    fixedCost: z.coerce.number({
-      required_error: "Fixed costs are required",
-      invalid_type_error: "Fixed costs must be a number",
+    fixedCost: z.number(),
+    yearOneMargin: z.number(),
+    yearOneSalesMin: z.number(),
+    yearOneSalesMode: z.number(),
+    yearOneSalesMax: z.number(),
+    annualMarginDecrease: z.number().gte(0).lt(1, {
+      message: "Annual margin decrease must be between 0 and 1",
     }),
-    yearOneMargin: z.coerce.number({
-      required_error: "Year one margin is required",
-      invalid_type_error: "Year one margin must be a number",
+    annualSalesDecayMin: z.number(),
+    annualSalesDecayMode: z.number(),
+    annualSalesDecayMax: z.number(),
+    taxRate: z.number().gte(0).lt(1, {
+      message: "Tax rate must be between 0 and 1",
     }),
-    yearOneSalesMin: z.coerce.number({
-      required_error: "Year one sales min is required",
-      invalid_type_error: "Year one sales min must be a number",
-    }),
-    yearOneSalesMode: z.coerce.number({
-      required_error: "Year one sales mode is required",
-      invalid_type_error: "Year one sales mode must be a number",
-    }),
-    yearOneSalesMax: z.coerce.number({
-      required_error: "Year one sales max is required",
-      invalid_type_error: "Year one sales max must be a number",
-    }),
-    annualMarginDecrease: z.coerce.number({
-      invalid_type_error: "Annual margin decrease must be between 0 and 1",
-    }),
-    annualSalesDecayMin: z.coerce.number({
-      invalid_type_error: "Annual sales decay min must be between 0 and 1",
-    }),
-    annualSalesDecayMode: z.coerce.number({
-      invalid_type_error: "Annual sales decay mode must be between 0 and 1",
-    }),
-    annualSalesDecayMax: z.coerce.number({
-      invalid_type_error: "Annual sales decay max must be between 0 and 1",
-    }),
-    taxRate: z.coerce.number({
-      invalid_type_error: "Tax rate must be between 0 and 1",
-    }),
-    discountRate: z.coerce.number({
-      invalid_type_error: "Discount rate must be between 0 and 1",
+    discountRate: z.number().gte(0).lt(1, {
+      message: "Discount rate must be between 0 and 1",
     }),
   })
   // validate data
@@ -79,16 +58,10 @@ const formSchema = z
           fields.annualSalesDecayMin,
           fields.annualSalesDecayMode,
           fields.annualSalesDecayMax,
-        )) &&
-      //   annualMarginDecrease must be a percentage
-      isPercent(fields.annualMarginDecrease) &&
-      //   taxRate must be a percentage
-      isPercent(fields.taxRate) &&
-      //   discountRate must be a percentage
-      isPercent(fields.discountRate),
+        )),
     {
       message:
-        "Please check that: 1) Year one sales is a valid triangular distribution 2) Annual sales decay is a valid triangular distribution 3) Annual margin decrease is between 0 and 1 4) Tax rate is between 0 and 1 5) Discount rate is between 0 and 1",
+        "Please check that: 1) Year one sales is a valid triangular distribution 2) Annual sales decay is a valid triangular distribution or all zero",
       path: ["fixedCost"],
     },
   );
