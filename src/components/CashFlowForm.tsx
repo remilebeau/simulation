@@ -28,26 +28,11 @@ import { determineDistribution } from "@/lib/validation";
 const formSchema = z
   .object({
     periodsPerYear: z.coerce.number().int().positive(),
-    fixedCost: z.coerce.number({
-      required_error: "Fixed cost is required",
-      invalid_type_error: "Fixed cost must be a number",
-    }),
-    min: z.coerce.number({
-      required_error: "Min value is required",
-      invalid_type_error: "Min value must be a number",
-    }),
-    mean: z.coerce.number({
-      required_error: "Mean is required",
-      invalid_type_error: "Mean must be a number",
-    }),
-    max: z.coerce.number({
-      required_error: "Max value is required",
-      invalid_type_error: "Max value must be a number",
-    }),
-    sd: z.coerce.number({
-      required_error: "Standard deviation is required",
-      invalid_type_error: "Standard deviation must be a number",
-    }),
+    fixedCost: z.coerce.number(),
+    min: z.coerce.number(),
+    mean: z.coerce.number(),
+    max: z.coerce.number(),
+    sd: z.coerce.number(),
   })
 
   .refine(

@@ -19,21 +19,21 @@ import { isTriangular, isPercent, isAllZero } from "@/lib/validation";
 
 const formSchema = z
   .object({
-    fixedCost: z.number(),
-    yearOneMargin: z.number(),
-    yearOneSalesMin: z.number(),
-    yearOneSalesMode: z.number(),
-    yearOneSalesMax: z.number(),
-    annualMarginDecrease: z.number().gte(0).lt(1, {
+    fixedCost: z.coerce.number(),
+    yearOneMargin: z.coerce.number(),
+    yearOneSalesMin: z.coerce.number(),
+    yearOneSalesMode: z.coerce.number(),
+    yearOneSalesMax: z.coerce.number(),
+    annualMarginDecrease: z.coerce.number().gte(0).lt(1, {
       message: "Annual margin decrease must be between 0 and 1",
     }),
-    annualSalesDecayMin: z.number(),
-    annualSalesDecayMode: z.number(),
-    annualSalesDecayMax: z.number(),
-    taxRate: z.number().gte(0).lt(1, {
+    annualSalesDecayMin: z.coerce.number(),
+    annualSalesDecayMode: z.coerce.number(),
+    annualSalesDecayMax: z.coerce.number(),
+    taxRate: z.coerce.number().gte(0).lt(1, {
       message: "Tax rate must be between 0 and 1",
     }),
-    discountRate: z.number().gte(0).lt(1, {
+    discountRate: z.coerce.number().gte(0).lt(1, {
       message: "Discount rate must be between 0 and 1",
     }),
   })
