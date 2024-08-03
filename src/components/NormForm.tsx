@@ -17,13 +17,9 @@ import { z } from "zod";
 // define form schema
 
 const formSchema = z.object({
-  distMean: z.coerce.number({
-    required_error: "Mean is required",
-    invalid_type_error: "Mean must be a number",
-  }),
-  distSD: z.coerce.number({
-    required_error: "Standard deviation is required",
-    invalid_type_error: "Standard deviation must be > 0",
+  distMean: z.coerce.number(),
+  distSD: z.coerce.number().gt(0, {
+    message: "Standard deviation must be greater than 0",
   }),
 });
 
