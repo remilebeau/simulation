@@ -18,26 +18,18 @@ import { z } from "zod";
 
 const formSchema = z
   .object({
-    distMin: z.coerce.number({
-      required_error: "Min value is required",
-      invalid_type_error: "Min value must be a number",
-    }),
-    distMode: z.coerce.number({
-      required_error: "Mode value is required",
-      invalid_type_error: "Mode value must be a number",
-    }),
-    distMax: z.coerce.number({
-      required_error: "Max value is required",
-      invalid_type_error: "Max value must be a number",
-    }),
+    distMin: z.coerce.number(),
+    distMode: z.coerce.number(),
+    distMax: z.coerce.number(),
   })
+  // validate that min, mode, and max fit a triangular distribution
   .refine(
     (fields) =>
       fields.distMin <= fields.distMode &&
       fields.distMode <= fields.distMax &&
       fields.distMin < fields.distMax,
     {
-      message: "Please check that: 1) min <= mode <= max and 2) min < max",
+      message: "Please check that: 1) min <= mode <= max 2) min < max",
       path: ["distMin"],
     },
   );
