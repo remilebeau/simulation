@@ -75,7 +75,7 @@ export default function UniformForm() {
             </FormItem>
           )}
         />
-        <Button className="w-full text-foreground" type="submit">
+        <Button className="w-full" type="submit">
           Submit
         </Button>
       </form>

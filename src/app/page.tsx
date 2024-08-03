@@ -4,7 +4,7 @@ import SelectOption from "@/components/SelectOption";
 export default function HomePage() {
   return (
     <main className="mx-auto flex max-w-4xl flex-col gap-8 p-8">
-      <h1 className="rounded-xl bg-primary p-4 text-center text-5xl font-bold">
+      <h1 className="rounded-xl bg-primary p-4 text-center text-5xl font-bold text-primary-foreground">
         Monte Carlo Simulation
       </h1>
       <p className="text-xl">
