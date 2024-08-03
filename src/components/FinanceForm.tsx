@@ -46,23 +46,30 @@ const formSchema = z
         fields.yearOneSalesMode,
         fields.yearOneSalesMax,
         0,
-      ) &&
-      // annualSalesDecay must fit a triangular distribution or be all zero
-      (isTriangular(
+      ),
+    {
+      message: "Year one sales must fit a triangular distribution",
+      path: ["yearOneSalesMin"],
+    },
+  )
+  .refine(
+    (fields) =>
+      //   annualSalesDecay must fit a triangular distribution or be all zero
+      isTriangular(
         fields.annualSalesDecayMin,
         fields.annualSalesDecayMode,
         fields.annualSalesDecayMax,
         0,
       ) ||
-        isAllZero(
-          fields.annualSalesDecayMin,
-          fields.annualSalesDecayMode,
-          fields.annualSalesDecayMax,
-        )),
+      isAllZero(
+        fields.annualSalesDecayMin,
+        fields.annualSalesDecayMode,
+        fields.annualSalesDecayMax,
+      ),
     {
       message:
-        "Please check that: 1) Year one sales is a valid triangular distribution 2) Annual sales decay is a valid triangular distribution or all zero",
-      path: ["fixedCost"],
+        "Annual sales decay must fit a triangular distribution or be all zero",
+      path: ["annualSalesDecayMin"],
     },
   );
 export default function FinanceForm() {
@@ -228,7 +235,7 @@ export default function FinanceForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Tax Rate (set to 0 to ignore)</FormLabel>
+        <FormLabel>Tax Rate</FormLabel>
         <FormField
           control={form.control}
           name="taxRate"
@@ -241,7 +248,7 @@ export default function FinanceForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Discount Rate (set to 0 to ignore)</FormLabel>
+        <FormLabel>Discount Rate</FormLabel>
         <FormField
           control={form.control}
           name="discountRate"
