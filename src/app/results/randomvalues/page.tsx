@@ -1,11 +1,11 @@
 "use client";
 import dynamic from "next/dynamic";
-import getTriValues from "@/lib/getTriValues";
+import simulateRandomValues from "@/lib/simulateRandomValues";
 import { useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 import ModelInputs from "@/components/ModelInputs";
 
-export default async function TriangleResults() {
+export default async function ProductionResults() {
   // client component imports
   const Histogram = dynamic(() => import("@/components/Histogram"), {
     ssr: false,
@@ -13,35 +13,44 @@ export default async function TriangleResults() {
   const BackButton = dynamic(() => import("@/components/BackButton"), {
     ssr: false,
   });
-
   const searchParams = useSearchParams();
 
   // get query params
-  const distMin = searchParams.get("distMin");
-  const distMode = searchParams.get("distMode");
-  const distMax = searchParams.get("distMax");
+  const min = searchParams.get("min");
+  const mean = searchParams.get("mean");
+  const max = searchParams.get("max");
+  const sd = searchParams.get("sd");
 
-  const { distValues } = await getTriValues(distMin!, distMode!, distMax!);
-  const inputs = [
+  const { distribution, distValues } = await simulateRandomValues(
+    min,
+    mean,
+    max,
+    sd,
+  );
+  let inputs = [
     {
-      name: "Min",
-      value: distMin!,
-    },
-    {
-      name: "Mode",
-      value: distMode!,
-    },
-    {
-      name: "Max",
-      value: distMax!,
+      name: "Distribution",
+      value: distribution,
     },
   ];
+  if (min) {
+    inputs.push({ name: "Min", value: min });
+  }
+  if (mean) {
+    inputs.push({ name: "Mean", value: mean });
+  }
+  if (max) {
+    inputs.push({ name: "Max", value: max });
+  }
+  if (sd) {
+    inputs.push({ name: "Standard Deviation", value: sd });
+  }
   return (
     <>
       {distValues && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
           <BackButton />
-          <h1 className="text-3xl font-bold">Triangular Distribution</h1>
+          <h1 className="text-3xl font-bold">Production Simulation Results</h1>
           <ModelInputs inputs={inputs} />
           <Histogram values={distValues} />
           <ThemeSwitch />

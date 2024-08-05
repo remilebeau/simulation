@@ -6,10 +6,10 @@ type ResponseType = {
 };
 
 export async function simulateRandomValues(
-  min?: string,
-  mean?: string,
-  max?: string,
-  sd?: string,
+  min: string | null,
+  mean: string | null,
+  max: string | null,
+  sd: string | null,
 ): Promise<ResponseType> {
   const DATA_URL =
     process.env.NODE_ENV === "production"
