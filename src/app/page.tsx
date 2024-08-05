@@ -8,18 +8,19 @@ export default function HomePage() {
         Monte Carlo Simulation
       </h1>
       <p className="text-xl">
-        Select a model or distribution and input the parameters
+        Select a probability distribution or business model and input the
+        parameters below.
       </p>
       <p className="text-xl">
-        For more information on the assumptions of the models, or to download
-        the values for your own analysis, please visit the{" "}
+        To learn more about the models, or to download the output values for
+        your own analysis, please visit the{" "}
         <a
           href="https://simulation-api-rsaw.onrender.com/docs"
           rel="noreferrer"
           target="_blank"
           className="text-blue-500 hover:underline"
         >
-          API docs
+          API docs.
         </a>
       </p>
       <SelectOption />
