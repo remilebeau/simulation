@@ -34,8 +34,8 @@ const formSchema = z
     demandMin: z.coerce.number(),
     demandMode: z.coerce.number(),
     demandMax: z.coerce.number(),
-    demandSD: z.coerce.number().gt(0, {
-      message: "Standard deviation must be greater than 0",
+    demandSD: z.coerce.number().gte(0, {
+      message: "Standard deviation must be greater than or equal to 0",
     }),
     fixedCost: z.coerce.number(),
     productionQuantity: z.coerce.number().gt(0, {

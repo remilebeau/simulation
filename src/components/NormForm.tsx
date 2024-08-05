@@ -18,8 +18,8 @@ import { z } from "zod";
 
 const formSchema = z.object({
   distMean: z.coerce.number(),
-  distSD: z.coerce.number().gt(0, {
-    message: "Standard deviation must be greater than 0",
+  distSD: z.coerce.number().gte(0, {
+    message: "Standard deviation must be greater than or equal to 0",
   }),
 });
 

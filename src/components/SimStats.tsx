@@ -18,7 +18,7 @@ export default function SimStats({
   valueAtRisk,
 }: Props) {
   return (
-    <article className="flex w-full flex-col rounded-md border p-2 font-bold">
+    <article className="flex w-full flex-col rounded-md border border-border p-4 font-bold">
       <h2 className="text-center text-2xl">Simulation Statistics</h2>
       <section id="mean" className="flex flex-row justify-between">
         <p className="text-xl">Mean:</p>

@@ -32,7 +32,9 @@ const formSchema = z
     min: z.coerce.number(),
     mean: z.coerce.number(),
     max: z.coerce.number(),
-    sd: z.coerce.number(),
+    sd: z.coerce.number().gte(0, {
+      message: "Standard deviation must be greater than or equal to 0",
+    }),
   })
 
   .refine(
