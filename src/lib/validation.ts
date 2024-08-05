@@ -7,15 +7,20 @@ export function isTriangular(
   return min <= mode && mode <= max && min < max && sd === 0;
 }
 
-function isTruncatedNormal(min: number, mean: number, max: number, sd: number) {
+export function isTruncatedNormal(
+  min: number,
+  mean: number,
+  max: number,
+  sd: number,
+) {
   return min <= mean && mean <= max && min < max && sd > 0;
 }
 
-function isUniform(min: number, mode: number, max: number, sd: number) {
+export function isUniform(min: number, mode: number, max: number, sd: number) {
   return min < max && mode === 0 && sd === 0;
 }
 
-function isNormal(min: number, mode: number, max: number, sd: number) {
+export function isNormal(min: number, mode: number, max: number, sd: number) {
   return min === 0 && max === 0 && mode > 0 && sd > 0;
 }
 

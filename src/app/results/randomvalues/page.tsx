@@ -27,12 +27,7 @@ export default async function ProductionResults() {
     max,
     sd,
   );
-  let inputs = [
-    {
-      name: "Distribution",
-      value: distribution,
-    },
-  ];
+  let inputs = [];
   if (min) {
     inputs.push({ name: "Min", value: min });
   }
@@ -50,7 +45,9 @@ export default async function ProductionResults() {
       {distValues && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
           <BackButton />
-          <h1 className="text-3xl font-bold">Production Simulation Results</h1>
+          <h1 className="text-3xl font-bold">
+            Distribution: {distribution.toUpperCase()}
+          </h1>
           <ModelInputs inputs={inputs} />
           <Histogram values={distValues} />
           <ThemeSwitch />
