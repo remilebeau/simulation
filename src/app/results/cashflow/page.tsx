@@ -18,12 +18,12 @@ export default async function FinanceResults() {
   const searchParams = useSearchParams();
 
   // get query params
-  const periodsPerYear = searchParams.get("periodsPerYear");
-  const fixedCost = searchParams.get("fixedCost");
-  const min = searchParams.get("min");
-  const mean = searchParams.get("mean");
-  const max = searchParams.get("max");
-  const sd = searchParams.get("sd");
+  const periodsPerYear = searchParams.get("periodsPerYear")!;
+  const fixedCost = searchParams.get("fixedCost")!;
+  const min = searchParams.get("min")!;
+  const mean = searchParams.get("mean")!;
+  const max = searchParams.get("max")!;
+  const sd = searchParams.get("sd")!;
 
   const {
     annualCashFlows,
@@ -34,40 +34,36 @@ export default async function FinanceResults() {
     pLoseMoneyLowerCI,
     pLoseMoneyUpperCI,
     valueAtRisk,
-  } = await simulateCashFlow(
-    periodsPerYear!,
-    fixedCost!,
-    min!,
-    mean!,
-    max!,
-    sd!,
-  );
-  const inputs = [
+  } = await simulateCashFlow(periodsPerYear, fixedCost, min, mean, max, sd);
+  const inputs: { name: string; value: string }[] = [
     {
       name: "Periods per Year",
-      value: periodsPerYear!,
+      value: periodsPerYear,
     },
     {
       name: "Total Annual Fixed Cost",
-      value: fixedCost!,
+      value: fixedCost,
     },
     {
       name: "Min Periodic Cash Flow",
-      value: min!,
+      value: min,
     },
     {
       name: "Expected Periodic Cash Flow",
-      value: mean!,
+      value: mean,
     },
     {
       name: "Max Periodic Cash Flow",
-      value: max!,
+      value: max,
     },
     {
       name: "Standard Deviation",
-      value: sd!,
+      value: sd,
     },
   ];
+  const validatedInputs = inputs.filter(
+    (input) => input.value !== null && Number(input.value) > 0,
+  );
   const distribution = determineDistribution(
     Number(min),
     Number(mean),
@@ -83,7 +79,7 @@ export default async function FinanceResults() {
           <h2 className="text-2xl font-bold">
             Distribution: {distribution?.toUpperCase()}
           </h2>
-          <ModelInputs inputs={inputs} />
+          <ModelInputs inputs={validatedInputs} />
           <Histogram values={annualCashFlows} />
           <SimStats
             meanProfit={meanProfit}

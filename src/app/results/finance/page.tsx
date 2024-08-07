@@ -19,17 +19,17 @@ export default async function FinanceResults() {
   const searchParams = useSearchParams();
 
   // get query params
-  const fixedCost = searchParams.get("fixedCost");
-  const yearOneMargin = searchParams.get("yearOneMargin");
-  const yearOneSalesMin = searchParams.get("yearOneSalesMin");
-  const yearOneSalesMode = searchParams.get("yearOneSalesMode");
-  const yearOneSalesMax = searchParams.get("yearOneSalesMax");
-  const annualMarginDecrease = searchParams.get("annualMarginDecrease");
-  const annualSalesDecayMin = searchParams.get("annualSalesDecayMin");
-  const annualSalesDecayMode = searchParams.get("annualSalesDecayMode");
-  const annualSalesDecayMax = searchParams.get("annualSalesDecayMax");
-  const taxRate = searchParams.get("taxRate");
-  const discountRate = searchParams.get("discountRate");
+  const fixedCost = searchParams.get("fixedCost")!;
+  const yearOneMargin = searchParams.get("yearOneMargin")!;
+  const yearOneSalesMin = searchParams.get("yearOneSalesMin")!;
+  const yearOneSalesMode = searchParams.get("yearOneSalesMode")!;
+  const yearOneSalesMax = searchParams.get("yearOneSalesMax")!;
+  const annualMarginDecrease = searchParams.get("annualMarginDecrease")!;
+  const annualSalesDecayMin = searchParams.get("annualSalesDecayMin")!;
+  const annualSalesDecayMode = searchParams.get("annualSalesDecayMode")!;
+  const annualSalesDecayMax = searchParams.get("annualSalesDecayMax")!;
+  const taxRate = searchParams.get("taxRate")!;
+  const discountRate = searchParams.get("discountRate")!;
 
   const {
     simulatedNPVs,
@@ -41,71 +41,74 @@ export default async function FinanceResults() {
     pLoseMoneyUpperCI,
     valueAtRisk,
   } = await simulateFinance(
-    fixedCost!,
-    yearOneMargin!,
-    yearOneSalesMin!,
-    yearOneSalesMode!,
-    yearOneSalesMax!,
-    annualMarginDecrease!,
-    annualSalesDecayMin!,
-    annualSalesDecayMode!,
-    annualSalesDecayMax!,
-    taxRate!,
-    discountRate!,
+    fixedCost,
+    yearOneMargin,
+    yearOneSalesMin,
+    yearOneSalesMode,
+    yearOneSalesMax,
+    annualMarginDecrease,
+    annualSalesDecayMin,
+    annualSalesDecayMode,
+    annualSalesDecayMax,
+    taxRate,
+    discountRate,
   );
-  const inputs = [
+  const inputs: { name: string; value: string }[] = [
     {
       name: "Fixed Cost",
-      value: fixedCost!,
+      value: fixedCost,
     },
     {
       name: "Year One Margin",
-      value: yearOneMargin!,
+      value: yearOneMargin,
     },
     {
       name: "Year One Sales Min",
-      value: yearOneSalesMin!,
+      value: yearOneSalesMin,
     },
     {
       name: "Year One Sales Mode",
-      value: yearOneSalesMode!,
+      value: yearOneSalesMode,
     },
     {
       name: "Year One Sales Max",
-      value: yearOneSalesMax!,
+      value: yearOneSalesMax,
     },
     {
       name: "Annual Margin Decrease",
-      value: annualMarginDecrease!,
+      value: annualMarginDecrease,
     },
     {
       name: "Annual Sales Decay Min",
-      value: annualSalesDecayMin!,
+      value: annualSalesDecayMin,
     },
     {
       name: "Annual Sales Decay Mode",
-      value: annualSalesDecayMode!,
+      value: annualSalesDecayMode,
     },
     {
       name: "Annual Sales Decay Max",
-      value: annualSalesDecayMax!,
+      value: annualSalesDecayMax,
     },
     {
       name: "Tax Rate",
-      value: taxRate!,
+      value: taxRate,
     },
     {
       name: "Discount Rate",
-      value: discountRate!,
+      value: discountRate,
     },
   ];
+  const validatedInputs = inputs.filter(
+    (input) => input.value !== null && Number(input.value) > 0,
+  );
   return (
     <>
       {simulatedNPVs && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
           <BackButton />
           <h1 className="text-3xl font-bold">Finance Simulation Results</h1>
-          <ModelInputs inputs={inputs} />
+          <ModelInputs inputs={validatedInputs} />
           <Histogram values={simulatedNPVs} />
           <SimStats
             meanProfit={meanNPV}

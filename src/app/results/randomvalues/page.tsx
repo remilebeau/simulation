@@ -16,10 +16,10 @@ export default async function ProductionResults() {
   const searchParams = useSearchParams();
 
   // get query params
-  const min = searchParams.get("min");
-  const mean = searchParams.get("mean");
-  const max = searchParams.get("max");
-  const sd = searchParams.get("sd");
+  const min = searchParams.get("min")!;
+  const mean = searchParams.get("mean")!;
+  const max = searchParams.get("max")!;
+  const sd = searchParams.get("sd")!;
 
   const { distribution, distValues } = await simulateRandomValues(
     min,
@@ -27,19 +27,15 @@ export default async function ProductionResults() {
     max,
     sd,
   );
-  let inputs = [];
-  if (min && Number(min) > 0) {
-    inputs.push({ name: "Min", value: min });
-  }
-  if (mean && Number(mean) > 0) {
-    inputs.push({ name: "Mean", value: mean });
-  }
-  if (max && Number(max) > 0) {
-    inputs.push({ name: "Max", value: max });
-  }
-  if (sd && Number(sd) > 0) {
-    inputs.push({ name: "Standard Deviation", value: sd });
-  }
+  const inputs: { name: string; value: string }[] = [
+    { name: "Min", value: min },
+    { name: "Mean", value: mean },
+    { name: "Max", value: max },
+    { name: "Standard Deviation", value: sd },
+  ];
+  const validatedInputs = inputs.filter(
+    (input) => input.value !== null && Number(input.value) > 0,
+  );
   return (
     <>
       {distValues && (
@@ -48,7 +44,7 @@ export default async function ProductionResults() {
           <h1 className="text-3xl font-bold">
             Distribution: {distribution.toUpperCase()}
           </h1>
-          <ModelInputs inputs={inputs} />
+          <ModelInputs inputs={validatedInputs} />
           <Histogram values={distValues} />
           <ThemeSwitch />
         </main>
