@@ -28,16 +28,16 @@ export default async function ProductionResults() {
     sd,
   );
   let inputs = [];
-  if (min) {
+  if (min && Number(min) > 0) {
     inputs.push({ name: "Min", value: min });
   }
-  if (mean) {
+  if (mean && Number(mean) > 0) {
     inputs.push({ name: "Mean", value: mean });
   }
-  if (max) {
+  if (max && Number(max) > 0) {
     inputs.push({ name: "Max", value: max });
   }
-  if (sd) {
+  if (sd && Number(sd) > 0) {
     inputs.push({ name: "Standard Deviation", value: sd });
   }
   return (

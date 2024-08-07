@@ -49,44 +49,34 @@ export default async function ProductionResults() {
     fixedCost!,
     productionQuantity!,
   );
-  const inputs = [
-    {
-      name: "Unit Cost",
-      value: unitCost!,
-    },
-    {
-      name: "Unit Price",
-      value: unitPrice!,
-    },
-    {
-      name: "Salvage Price",
-      value: salvagePrice!,
-    },
-    {
-      name: "Minimum Demand",
-      value: demandMin!,
-    },
-    {
-      name: "Expected Demand",
-      value: demandMode!,
-    },
-    {
-      name: "Maximum Demand",
-      value: demandMax!,
-    },
-    {
-      name: "Standard Deviation",
-      value: demandSD!,
-    },
-    {
-      name: "Fixed Cost",
-      value: fixedCost!,
-    },
-    {
-      name: "Production Quantity",
-      value: productionQuantity!,
-    },
-  ];
+  let inputs = [];
+  if (unitCost && Number(unitCost) > 0) {
+    inputs.push({ name: "Unit Cost", value: unitCost });
+  }
+  if (unitPrice && Number(unitPrice) > 0) {
+    inputs.push({ name: "Unit Price", value: unitPrice });
+  }
+  if (salvagePrice && Number(salvagePrice) > 0) {
+    inputs.push({ name: "Salvage Price", value: salvagePrice });
+  }
+  if (demandMin && Number(demandMin) > 0) {
+    inputs.push({ name: "Min Demand", value: demandMin });
+  }
+  if (demandMode && Number(demandMode) > 0) {
+    inputs.push({ name: "Mean Demand", value: demandMode });
+  }
+  if (demandMax && Number(demandMax) > 0) {
+    inputs.push({ name: "Max Demand", value: demandMax });
+  }
+  if (demandSD && Number(demandSD) > 0) {
+    inputs.push({ name: "Demand Standard Deviation", value: demandSD });
+  }
+  if (fixedCost && Number(fixedCost) > 0) {
+    inputs.push({ name: "Fixed Cost", value: fixedCost });
+  }
+  if (productionQuantity && Number(productionQuantity) > 0) {
+    inputs.push({ name: "Production Quantity", value: productionQuantity });
+  }
   return (
     <>
       {simulatedProfits && (
