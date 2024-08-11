@@ -3,9 +3,8 @@
 A web app that features the following business analytics tools:
 
 - Monte Carlo simulation for production planning
-- Demand forecasting using a triangular distribution
-- Demand forecasting using a truncated normal distribution
-- Demand forecasting using a uniform distribution
+- Monte Carlo simulation for financial planning
+- Monte Carlo simulation for cash flow
 
 ## Created with:
 
