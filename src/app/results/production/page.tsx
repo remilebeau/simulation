@@ -4,6 +4,7 @@ import simulateProduction from "@/lib/simulateProduction";
 import { useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 import ModelInputs from "@/components/ModelInputs";
+import SimulationOutputExplanation from "@/components/SimulationOutputExplanation";
 
 export default async function ProductionResults() {
   // client component imports
@@ -80,6 +81,7 @@ export default async function ProductionResults() {
             pLoseMoneyUpperCI={pLoseMoneyUpperCI}
             valueAtRisk={valueAtRisk}
           />
+          <SimulationOutputExplanation />
           <ThemeSwitch />
         </main>
       )}

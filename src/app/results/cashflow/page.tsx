@@ -6,6 +6,7 @@ import ModelInputs from "@/components/ModelInputs";
 import simulateCashFlow from "@/lib/simulateCashFlow";
 import { determineDistribution } from "@/lib/validation";
 import SimStats from "@/components/SimStats";
+import SimulationOutputExplanation from "@/components/SimulationOutputExplanation";
 
 export default async function FinanceResults() {
   // client component imports
@@ -90,6 +91,7 @@ export default async function FinanceResults() {
             pLoseMoneyUpperCI={pLoseMoneyUpperCI}
             valueAtRisk={valueAtRisk}
           />
+          <SimulationOutputExplanation />
           <ThemeSwitch />
         </main>
       )}
