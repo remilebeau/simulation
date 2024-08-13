@@ -1,7 +1,9 @@
 export default function ProductionInstructions() {
   return (
     <section className="flex flex-col gap-4 p-4">
-      <h2 className="text-center text-2xl">Model Parameters Explained</h2>
+      <h2 className="text-center text-2xl">
+        Production Model Parameters Explained
+      </h2>
       <p>
         <b>Unit cost:</b> The variable costs per unit
       </p>
