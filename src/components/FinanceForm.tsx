@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { isTriangular, isAllZero } from "@/lib/validation";
+import FinanceInstructions from "@/components/FinanceInstructions";
 
 // define form schema
 
@@ -113,158 +114,161 @@ export default function FinanceForm() {
   }
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-4 p-4"
-      >
-        <FormLabel>Fixed Costs</FormLabel>
-        <FormField
-          control={form.control}
-          name="fixedCost"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Year One Margin</FormLabel>
-        <FormField
-          control={form.control}
-          name="yearOneMargin"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Year One Sales Min</FormLabel>
-        <FormField
-          control={form.control}
-          name="yearOneSalesMin"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Year One Sales Mode</FormLabel>
-        <FormField
-          control={form.control}
-          name="yearOneSalesMode"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Year One Sales Max</FormLabel>
-        <FormField
-          control={form.control}
-          name="yearOneSalesMax"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Annual Margin Decrease (set to 0 to ignore)</FormLabel>
-        <FormField
-          control={form.control}
-          name="annualMarginDecrease"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Annual Sales Decay Min (set to 0 to ignore)</FormLabel>
-        <FormField
-          control={form.control}
-          name="annualSalesDecayMin"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Annual Sales Decay Mode (set to 0 to ignore)</FormLabel>
-        <FormField
-          control={form.control}
-          name="annualSalesDecayMode"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Annual Sales Decay Max (set to 0 to ignore)</FormLabel>
-        <FormField
-          control={form.control}
-          name="annualSalesDecayMax"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Tax Rate</FormLabel>
-        <FormField
-          control={form.control}
-          name="taxRate"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Discount Rate</FormLabel>
-        <FormField
-          control={form.control}
-          name="discountRate"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button className="w-full" type="submit">
-          Submit
-        </Button>
-      </form>
-    </Form>
+    <>
+      <FinanceInstructions />
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col gap-4 p-4"
+        >
+          <FormLabel>Fixed Costs</FormLabel>
+          <FormField
+            control={form.control}
+            name="fixedCost"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormLabel>Year One Margin</FormLabel>
+          <FormField
+            control={form.control}
+            name="yearOneMargin"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormLabel>Year One Sales Min</FormLabel>
+          <FormField
+            control={form.control}
+            name="yearOneSalesMin"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormLabel>Year One Sales Mode</FormLabel>
+          <FormField
+            control={form.control}
+            name="yearOneSalesMode"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormLabel>Year One Sales Max</FormLabel>
+          <FormField
+            control={form.control}
+            name="yearOneSalesMax"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormLabel>Annual Margin Decrease (set to 0 to ignore)</FormLabel>
+          <FormField
+            control={form.control}
+            name="annualMarginDecrease"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormLabel>Annual Sales Decay Min (set to 0 to ignore)</FormLabel>
+          <FormField
+            control={form.control}
+            name="annualSalesDecayMin"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormLabel>Annual Sales Decay Mode (set to 0 to ignore)</FormLabel>
+          <FormField
+            control={form.control}
+            name="annualSalesDecayMode"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormLabel>Annual Sales Decay Max (set to 0 to ignore)</FormLabel>
+          <FormField
+            control={form.control}
+            name="annualSalesDecayMax"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormLabel>Tax Rate</FormLabel>
+          <FormField
+            control={form.control}
+            name="taxRate"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormLabel>Discount Rate</FormLabel>
+          <FormField
+            control={form.control}
+            name="discountRate"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button className="w-full" type="submit">
+            Submit
+          </Button>
+        </form>
+      </Form>
+    </>
   );
 }
