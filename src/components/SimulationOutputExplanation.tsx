@@ -15,11 +15,10 @@ export default function SimulationOutputExplanation() {
       </p>
       <p>
         <b>95% Confidence Interval for Mean:</b> The 95% confidence interval for
-        the expected profit. This is calculated as mean +/- 1.96 * standard
-        error. 95% of the time, the expected profit will lie within this
-        interval. Note: This is the confidence interval for the MEAN or EXPECTED
-        profit. It is NOT a confidence interval for the profit from a single
-        simulation.
+        the expected profit. The expected profit will lie within this interval
+        95% of the time. Note: This is the confidence interval for the MEAN or
+        EXPECTED profit. This does NOT mean that there's a 95% chance the profit
+        from a single simulation will fall within this interval.
       </p>
       <p>
         <b>Probability of Losing Money:</b> The probability of losing money.
