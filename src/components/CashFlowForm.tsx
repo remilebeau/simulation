@@ -22,6 +22,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { determineDistribution } from "@/lib/validation";
+import CashFlowInstructions from "@/components/CashFlowInstructions";
 
 // define form schema
 
@@ -74,135 +75,138 @@ export default function CashFlowForm() {
   }
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-4 p-4"
-      >
-        <FormLabel>Periods per Year</FormLabel>
-        <FormField
-          control={form.control}
-          name="periodsPerYear"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Total Annual Fixed Costs</FormLabel>
-        <FormField
-          control={form.control}
-          name="fixedCost"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormLabel>Distribution of Periodic Cash Flows</FormLabel>
-        <Select
-          onValueChange={(value) => setDistribution(value)}
-          value={distribution}
+    <>
+      <CashFlowInstructions />
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col gap-4 p-4"
         >
-          <SelectTrigger>
-            <SelectValue placeholder="" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="triangular">Triangular</SelectItem>
-            <SelectItem value="truncnorm">Truncated Normal</SelectItem>
-            <SelectItem value="uniform">Uniform</SelectItem>
-            <SelectItem value="norm">Normal</SelectItem>
-          </SelectContent>
-        </Select>
-        {/* conditional rendering for min cash flow */}
-        {(distribution === "triangular" ||
-          distribution === "truncnorm" ||
-          distribution === "uniform") && (
-          <>
-            <FormLabel>Min Periodic Cash Flow</FormLabel>
-            <FormField
-              control={form.control}
-              name="min"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        )}
-        {/* conditional rendering for mean cash flow */}
-        {(distribution === "triangular" ||
-          distribution === "truncnorm" ||
-          distribution === "norm") && (
-          <>
-            <FormLabel>Expected Periodic Cash Flow</FormLabel>
-            <FormField
-              control={form.control}
-              name="mean"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        )}
-        {/* conditional rendering for max cash flow */}
-        {(distribution === "triangular" ||
-          distribution === "truncnorm" ||
-          distribution === "uniform") && (
-          <>
-            <FormLabel>Max Periodic Cash Flow</FormLabel>
-            <FormField
-              control={form.control}
-              name="max"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        )}
-        {/* conditional rendering for standard deviation of cash flows */}
-        {(distribution === "truncnorm" || distribution === "norm") && (
-          <>
-            <FormLabel>Standard Deviation of Cash Flows</FormLabel>
-            <FormField
-              control={form.control}
-              name="sd"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        )}
+          <FormLabel>Periods per Year</FormLabel>
+          <FormField
+            control={form.control}
+            name="periodsPerYear"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormLabel>Total Annual Fixed Costs</FormLabel>
+          <FormField
+            control={form.control}
+            name="fixedCost"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormLabel>Distribution of Periodic Cash Flows</FormLabel>
+          <Select
+            onValueChange={(value) => setDistribution(value)}
+            value={distribution}
+          >
+            <SelectTrigger>
+              <SelectValue placeholder="" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="triangular">Triangular</SelectItem>
+              <SelectItem value="truncnorm">Truncated Normal</SelectItem>
+              <SelectItem value="uniform">Uniform</SelectItem>
+              <SelectItem value="norm">Normal</SelectItem>
+            </SelectContent>
+          </Select>
+          {/* conditional rendering for min cash flow */}
+          {(distribution === "triangular" ||
+            distribution === "truncnorm" ||
+            distribution === "uniform") && (
+            <>
+              <FormLabel>Min Periodic Cash Flow</FormLabel>
+              <FormField
+                control={form.control}
+                name="min"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </>
+          )}
+          {/* conditional rendering for mean cash flow */}
+          {(distribution === "triangular" ||
+            distribution === "truncnorm" ||
+            distribution === "norm") && (
+            <>
+              <FormLabel>Expected Periodic Cash Flow</FormLabel>
+              <FormField
+                control={form.control}
+                name="mean"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </>
+          )}
+          {/* conditional rendering for max cash flow */}
+          {(distribution === "triangular" ||
+            distribution === "truncnorm" ||
+            distribution === "uniform") && (
+            <>
+              <FormLabel>Max Periodic Cash Flow</FormLabel>
+              <FormField
+                control={form.control}
+                name="max"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </>
+          )}
+          {/* conditional rendering for standard deviation of cash flows */}
+          {(distribution === "truncnorm" || distribution === "norm") && (
+            <>
+              <FormLabel>Standard Deviation of Cash Flows</FormLabel>
+              <FormField
+                control={form.control}
+                name="sd"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </>
+          )}
 
-        <Button className="w-full" type="submit">
-          Submit
-        </Button>
-      </form>
-    </Form>
+          <Button className="w-full" type="submit">
+            Submit
+          </Button>
+        </form>
+      </Form>
+    </>
   );
 }
