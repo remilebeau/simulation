@@ -17,7 +17,7 @@ export default function SimulationOutputExplanation() {
         <b>95% Confidence Interval for Mean:</b> The 95% confidence interval for
         the expected profit. We are 95% confident that the expected profit will
         fall within this interval. Note: This is the confidence interval for the
-        MEAN or EXPECTED profit. This does NOT mean that there's a 95% chance
+        MEAN or EXPECTED profit. This does NOT mean that there is a 95% chance
         the profit from a single simulation will fall within this interval.
       </p>
       <p>
