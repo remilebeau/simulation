@@ -31,10 +31,8 @@ export default function SelectModel() {
   const [option, setOption] = useState("");
 
   return (
-    <section className="flex flex-col gap-4 p-4">
-      <Label className="w-full" htmlFor="option">
-        Select Option
-      </Label>
+    <section className="flex flex-col gap-4">
+      <Label htmlFor="option">Select Option</Label>
       <Select onValueChange={(value) => setOption(value)} value={option}>
         <SelectTrigger>
           <SelectValue placeholder="" />
