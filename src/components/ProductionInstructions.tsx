@@ -20,7 +20,7 @@ export default function ProductionInstructions() {
         distributions.
       </p>
       <p>
-        <b>Fixed costs:</b> The total fixed costs of the production.
+        <b>Fixed Costs:</b> The total fixed costs of the production.
       </p>
       <p>
         <b>Production Quantity:</b> The number of units to be produced.
