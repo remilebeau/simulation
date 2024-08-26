@@ -8,6 +8,7 @@ export default async function Histogram({ values }: Props) {
   return (
     <>
       <Plot
+        className="max-w-sm"
         data={[
           {
             x: values,
