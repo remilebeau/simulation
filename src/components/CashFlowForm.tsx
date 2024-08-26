@@ -108,7 +108,7 @@ export default function CashFlowForm() {
               </FormItem>
             )}
           />
-          <FormLabel>Distribution of Periodic Cash Flows</FormLabel>
+          <FormLabel>Distribution of Cash Flows</FormLabel>
           <Select
             onValueChange={(value) => setDistribution(value)}
             value={distribution}
@@ -128,7 +128,7 @@ export default function CashFlowForm() {
             distribution === "truncnorm" ||
             distribution === "uniform") && (
             <>
-              <FormLabel>Min Periodic Cash Flow</FormLabel>
+              <FormLabel>Min Cash Flow</FormLabel>
               <FormField
                 control={form.control}
                 name="min"
@@ -148,7 +148,7 @@ export default function CashFlowForm() {
             distribution === "truncnorm" ||
             distribution === "norm") && (
             <>
-              <FormLabel>Expected Periodic Cash Flow</FormLabel>
+              <FormLabel>Mean Cash Flow</FormLabel>
               <FormField
                 control={form.control}
                 name="mean"
@@ -168,7 +168,7 @@ export default function CashFlowForm() {
             distribution === "truncnorm" ||
             distribution === "uniform") && (
             <>
-              <FormLabel>Max Periodic Cash Flow</FormLabel>
+              <FormLabel>Max Cash Flow</FormLabel>
               <FormField
                 control={form.control}
                 name="max"
@@ -186,7 +186,7 @@ export default function CashFlowForm() {
           {/* conditional rendering for standard deviation of cash flows */}
           {(distribution === "truncnorm" || distribution === "norm") && (
             <>
-              <FormLabel>Standard Deviation of Cash Flows</FormLabel>
+              <FormLabel>Cash Flow Standard Deviation</FormLabel>
               <FormField
                 control={form.control}
                 name="sd"
