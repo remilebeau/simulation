@@ -38,18 +38,12 @@ export default function SelectModel() {
           <SelectValue placeholder="" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="randomvalues">
-            Generate Pseudorandom Values
-          </SelectItem>
-          <SelectItem value="production">
-            Monte Carlo Simulation for Production
-          </SelectItem>
+          <SelectItem value="randomvalues">Pseudorandom Values</SelectItem>
+          <SelectItem value="production">Production Planning</SelectItem>
           {/* <SelectItem value="finance">
             Monte Carlo Simulation for Finance
           </SelectItem> */}
-          <SelectItem value="cashflow">
-            Monte Carlo Simulation for Cash Flow
-          </SelectItem>
+          <SelectItem value="cashflow">Cash Flow</SelectItem>
         </SelectContent>
       </Select>
 
