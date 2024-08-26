@@ -76,7 +76,7 @@ export default async function FinanceResults() {
       {annualCashFlows && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-4 p-4">
           <BackButton />
-          <h1>Simulation Results</h1>
+          <h1>Cash Flow Simulation Results</h1>
           <h2>Distribution: {distribution?.toUpperCase()}</h2>
           <ModelInputs inputs={validatedInputs} />
           <Histogram values={annualCashFlows} />

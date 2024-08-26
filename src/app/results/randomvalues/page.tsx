@@ -41,9 +41,7 @@ export default async function ProductionResults() {
       {distValues && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-4 p-4">
           <BackButton />
-          <h1 className="text-3xl font-bold">
-            Distribution: {distribution.toUpperCase()}
-          </h1>
+          <h1>Distribution: {distribution.toUpperCase()}</h1>
           <ModelInputs inputs={validatedInputs} />
           <Histogram values={distValues} />
           <BackButton />
