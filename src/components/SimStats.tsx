@@ -19,7 +19,7 @@ export default function SimStats({
 }: Props) {
   return (
     <article className="flex w-full flex-col rounded-md border border-border p-4">
-      <h2 className="text-center text-xl">Simulation Statistics</h2>
+      <h2 className="text-center font-bold">Simulation Statistics</h2>
       <section id="mean" className="flex flex-row justify-between">
         <p className="text-md">Mean:</p>
         <p className="text-md">
@@ -59,7 +59,7 @@ export default function SimStats({
         </p>
       </section>
       <section id="pLoseMoney" className="flex flex-row justify-between">
-        <p className="text-md">Probability of Losing Money:</p>
+        <p className="text-md">P(Lose Money):</p>
         <p className="text-md">
           [
           {pLoseMoneyLowerCI.toLocaleString("en-US", {
@@ -73,7 +73,7 @@ export default function SimStats({
         </p>
       </section>
       <section id="valueAtRisk" className="flex flex-row justify-between">
-        <p className="text-md">Value at Risk:</p>
+        <p className="text-md">VaR:</p>
         <p className="text-md">
           {valueAtRisk.toLocaleString("en-US", {
             style: "currency",
