@@ -44,9 +44,9 @@ export default function SelectModel() {
           <SelectItem value="production">
             Monte Carlo Simulation for Production
           </SelectItem>
-          <SelectItem value="finance">
+          {/* <SelectItem value="finance">
             Monte Carlo Simulation for Finance
-          </SelectItem>
+          </SelectItem> */}
           <SelectItem value="cashflow">
             Monte Carlo Simulation for Cash Flow
           </SelectItem>
