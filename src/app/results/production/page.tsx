@@ -67,7 +67,7 @@ export default async function ProductionResults() {
   return (
     <>
       {simulatedProfits && (
-        <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
+        <main className="mx-auto flex max-w-4xl flex-col items-center gap-4 p-4">
           <BackButton />
           <h1 className="text-3xl font-bold">Production Simulation Results</h1>
           <ModelInputs inputs={validatedInputs} />

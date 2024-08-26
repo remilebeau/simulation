@@ -3,11 +3,6 @@ export default function SimulationOutputExplanation() {
     <section className="flex flex-col gap-4 p-4">
       <h2 className="font-bold">Explanation of Simulation Output</h2>
       <p>
-        The simulation was run 1000 times. Each run outputs a profit value. The
-        histogram above is a plot of those 1000 profit values. From this
-        histogram, we can extract the following information:
-      </p>
-      <p>
         <b>Mean:</b> The mean profit.
       </p>
       <p>
