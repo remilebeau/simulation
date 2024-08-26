@@ -112,7 +112,7 @@ export default function ProductionForm() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input {...field} />
+                  <Input type="number" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -125,7 +125,7 @@ export default function ProductionForm() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input {...field} />
+                  <Input type="number" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -138,7 +138,7 @@ export default function ProductionForm() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input {...field} />
+                  <Input type="number" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -159,19 +159,19 @@ export default function ProductionForm() {
               <SelectItem value="norm">Normal</SelectItem>
             </SelectContent>
           </Select>
-          {/* conditional rendering for demand minimum */}
+          {/* conditional rendering for min demand */}
           {(distribution === "triangular" ||
             distribution === "truncnorm" ||
             distribution === "uniform") && (
             <>
-              <FormLabel>Demand Minimum</FormLabel>
+              <FormLabel>Min Demand</FormLabel>
               <FormField
                 control={form.control}
                 name="demandMin"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input {...field} />
+                      <Input type="number" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -179,19 +179,19 @@ export default function ProductionForm() {
               />
             </>
           )}
-          {/* conditional rendering for demand mean */}
+          {/* conditional rendering for mean demand*/}
           {(distribution === "triangular" ||
             distribution === "truncnorm" ||
             distribution === "norm") && (
             <>
-              <FormLabel>Demand Mean</FormLabel>
+              <FormLabel>Mean Demand</FormLabel>
               <FormField
                 control={form.control}
                 name="demandMode"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input {...field} />
+                      <Input type="number" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -199,19 +199,19 @@ export default function ProductionForm() {
               />
             </>
           )}
-          {/* conditional rendering for demand maximum */}
+          {/* conditional rendering for max demand */}
           {(distribution === "triangular" ||
             distribution === "truncnorm" ||
             distribution === "uniform") && (
             <>
-              <FormLabel>Demand Maximum</FormLabel>
+              <FormLabel>Max Demand</FormLabel>
               <FormField
                 control={form.control}
                 name="demandMax"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input {...field} />
+                      <Input type="number" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -229,7 +229,7 @@ export default function ProductionForm() {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input {...field} />
+                      <Input type="number" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -244,7 +244,7 @@ export default function ProductionForm() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input {...field} />
+                  <Input type="number" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -257,7 +257,7 @@ export default function ProductionForm() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input {...field} />
+                  <Input type="number" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
