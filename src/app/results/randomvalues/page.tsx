@@ -4,7 +4,6 @@ import simulateRandomValues from "@/lib/simulateRandomValues";
 import { useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 import ModelInputs from "@/components/ModelInputs";
-import SimulationOutputExplanation from "@/components/SimulationOutputExplanation";
 
 export default async function ProductionResults() {
   // client component imports
@@ -47,7 +46,6 @@ export default async function ProductionResults() {
           </h1>
           <ModelInputs inputs={validatedInputs} />
           <Histogram values={distValues} />
-          <SimulationOutputExplanation />
           <BackButton />
           <ThemeSwitch />
         </main>
