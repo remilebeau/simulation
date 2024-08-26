@@ -47,8 +47,9 @@ export default async function ProductionResults() {
           </h1>
           <ModelInputs inputs={validatedInputs} />
           <Histogram values={distValues} />
-          <ThemeSwitch />
           <SimulationOutputExplanation />
+          <BackButton />
+          <ThemeSwitch />
         </main>
       )}
     </>

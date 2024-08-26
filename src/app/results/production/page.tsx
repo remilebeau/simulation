@@ -82,6 +82,7 @@ export default async function ProductionResults() {
             valueAtRisk={valueAtRisk}
           />
           <SimulationOutputExplanation />
+          <BackButton />
           <ThemeSwitch />
         </main>
       )}

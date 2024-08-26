@@ -90,6 +90,7 @@ export default async function FinanceResults() {
             valueAtRisk={valueAtRisk}
           />
           <SimulationOutputExplanation />
+          <BackButton />
           <ThemeSwitch />
         </main>
       )}
