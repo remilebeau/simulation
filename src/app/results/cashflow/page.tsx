@@ -42,19 +42,19 @@ export default async function FinanceResults() {
       value: periodsPerYear,
     },
     {
-      name: "Total Annual Fixed Cost",
+      name: "Total Fixed Costs",
       value: fixedCost,
     },
     {
-      name: "Min Periodic Cash Flow",
+      name: "Min Cash Flow",
       value: min,
     },
     {
-      name: "Expected Periodic Cash Flow",
+      name: "Mean Cash Flow",
       value: mean,
     },
     {
-      name: "Max Periodic Cash Flow",
+      name: "Max Cash Flow",
       value: max,
     },
     {
@@ -74,12 +74,10 @@ export default async function FinanceResults() {
   return (
     <>
       {annualCashFlows && (
-        <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
+        <main className="mx-auto flex max-w-4xl flex-col items-center gap-4 p-4">
           <BackButton />
-          <h1 className="text-xl font-bold">Cash Flow Simulation Results</h1>
-          <h2 className="text-xl font-bold">
-            Distribution: {distribution?.toUpperCase()}
-          </h2>
+          <h1>Simulation Results</h1>
+          <h2>Distribution: {distribution?.toUpperCase()}</h2>
           <ModelInputs inputs={validatedInputs} />
           <Histogram values={annualCashFlows} />
           <SimStats

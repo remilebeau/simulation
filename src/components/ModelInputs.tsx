@@ -8,9 +8,5 @@ export default function ModelInputs({ inputs }: Props) {
       {input.name}: {Number(input.value).toLocaleString("en-US")}
     </p>
   ));
-  return (
-    <section className="grid grid-cols-2 text-left text-lg">
-      {formattedInputs}
-    </section>
-  );
+  return <section>{formattedInputs}</section>;
 }
