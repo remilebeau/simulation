@@ -19,10 +19,10 @@ export default function SimStats({
 }: Props) {
   return (
     <article className="flex w-full flex-col rounded-md border border-border p-4 font-bold">
-      <h2 className="text-center text-2xl">Simulation Statistics</h2>
+      <h2 className="text-center text-xl">Simulation Statistics</h2>
       <section id="mean" className="flex flex-row justify-between">
-        <p className="text-xl">Mean:</p>
-        <p className="text-xl">
+        <p className="text-md">Mean:</p>
+        <p className="text-md">
           {meanProfit.toLocaleString("en-US", {
             style: "currency",
             currency: "USD",
@@ -31,8 +31,8 @@ export default function SimStats({
         </p>
       </section>
       <section id="standardError" className="flex flex-row justify-between">
-        <p className="text-xl">Standard Error:</p>
-        <p className="text-xl">
+        <p className="text-md">Standard Error:</p>
+        <p className="text-md">
           {meanStandardError.toLocaleString("en-US", {
             style: "currency",
             currency: "USD",
@@ -41,8 +41,8 @@ export default function SimStats({
         </p>
       </section>
       <section id="ci" className="flex flex-row justify-between text-right">
-        <p className="text-xl">95% Confidence Interval for Mean:</p>
-        <p className="text-xl">
+        <p className="text-md">95% Confidence Interval for Mean:</p>
+        <p className="text-md">
           [
           {meanLowerCI.toLocaleString("en-US", {
             style: "currency",
@@ -59,8 +59,8 @@ export default function SimStats({
         </p>
       </section>
       <section id="pLoseMoney" className="flex flex-row justify-between">
-        <p className="text-xl">Probability of Losing Money:</p>
-        <p className="text-xl">
+        <p className="text-md">Probability of Losing Money:</p>
+        <p className="text-md">
           [
           {pLoseMoneyLowerCI.toLocaleString("en-US", {
             style: "percent",
@@ -73,8 +73,8 @@ export default function SimStats({
         </p>
       </section>
       <section id="valueAtRisk" className="flex flex-row justify-between">
-        <p className="text-xl">Value at Risk at 5% Level:</p>
-        <p className="text-xl">
+        <p className="text-md">Value at Risk at 5% Level:</p>
+        <p className="text-md">
           {valueAtRisk.toLocaleString("en-US", {
             style: "currency",
             currency: "USD",

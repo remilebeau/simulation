@@ -9,7 +9,7 @@ export default function ModelInputs({ inputs }: Props) {
     </p>
   ));
   return (
-    <section className="grid grid-cols-2 gap-4 p-4 text-left text-2xl font-bold">
+    <section className="grid grid-cols-2 text-left text-lg">
       {formattedInputs}
     </section>
   );

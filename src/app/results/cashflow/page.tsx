@@ -76,8 +76,8 @@ export default async function FinanceResults() {
       {annualCashFlows && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-8 p-8">
           <BackButton />
-          <h1 className="text-3xl font-bold">Cash Flow Simulation Results</h1>
-          <h2 className="text-2xl font-bold">
+          <h1 className="text-xl font-bold">Cash Flow Simulation Results</h1>
+          <h2 className="text-xl font-bold">
             Distribution: {distribution?.toUpperCase()}
           </h2>
           <ModelInputs inputs={validatedInputs} />
