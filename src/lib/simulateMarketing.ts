@@ -9,23 +9,21 @@ export async function simulateMarketing(
   retentionRate: number,
   discountRate: number,
   stDev: number,
-  meanProfits: number[],
+  yearOneMeanProfit: number,
+  yearTwoMeanProfit: number,
+  yearThreeMeanProfit: number,
+  yearFourMeanProfit: number,
+  yearFiveMeanProfit: number,
 ): Promise<ResponseType> {
   const DATA_URL =
     process.env.NODE_ENV === "production"
-      ? `https://simulation-api-rsaw.onrender.com/api/simulations/marketing`
-      : `http://localhost:8000/api/simulations/marketing`;
+      ? `https://simulation-api-rsaw.onrender.com/api/simulations/marketing?retentionRate=${retentionRate}&discountRate=${discountRate}&stDev=${stDev}&yearOneMeanProfit=${yearOneMeanProfit}&yearTwoMeanProfit=${yearTwoMeanProfit}&yearThreeMeanProfit=${yearThreeMeanProfit}&yearFourMeanProfit=${yearFourMeanProfit}&yearFiveMeanProfit=${yearFiveMeanProfit}`
+      : `http://localhost:8000/api/simulations/marketing?retentionRate=${retentionRate}&discountRate=${discountRate}&stDev=${stDev}&yearOneMeanProfit=${yearOneMeanProfit}&yearTwoMeanProfit=${yearTwoMeanProfit}&yearThreeMeanProfit=${yearThreeMeanProfit}&yearFourMeanProfit=${yearFourMeanProfit}&yearFiveMeanProfit=${yearFiveMeanProfit}`;
   const res = await fetch(DATA_URL, {
-    method: "POST",
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      retentionRate,
-      discountRate,
-      stDev,
-      meanProfits,
-    }),
   });
   if (!res.ok) {
     redirect("/");
