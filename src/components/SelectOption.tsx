@@ -27,6 +27,9 @@ export default function SelectModel() {
   const CashFlowForm = dynamic(() => import("@/components/CashFlowForm"), {
     ssr: false,
   });
+  const MarketingForm = dynamic(() => import("@/components/MarketingForm"), {
+    ssr: false,
+  });
 
   const [option, setOption] = useState("");
 
@@ -40,6 +43,7 @@ export default function SelectModel() {
         <SelectContent>
           <SelectItem value="randomvalues">Pseudorandom Values</SelectItem>
           <SelectItem value="production">Production Planning</SelectItem>
+          <SelectItem value="marketing">Marketing Retention Rate</SelectItem>
           {/* <SelectItem value="finance">
             Monte Carlo Simulation for Finance
           </SelectItem> */}
@@ -49,6 +53,7 @@ export default function SelectModel() {
 
       {option === "randomvalues" && <RandomValuesForm />}
       {option === "production" && <ProductionForm />}
+      {option === "marketing" && <MarketingForm />}
       {option === "finance" && <FinanceForm />}
       {option === "cashflow" && <CashFlowForm />}
     </section>

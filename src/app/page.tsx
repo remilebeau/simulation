@@ -1,6 +1,5 @@
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 import SelectOption from "@/components/SelectOption";
-import MarketingForm from "@/components/MarketingForm";
 
 export default function HomePage() {
   return (
@@ -24,7 +23,6 @@ export default function HomePage() {
           API docs.
         </a>
       </p>
-      <MarketingForm />
       <SelectOption />
       <ThemeSwitch />
     </main>
