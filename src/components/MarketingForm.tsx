@@ -19,6 +19,7 @@ import { z } from "zod";
 const formSchema = z.object({
   retentionRate: z.coerce.number(),
   discountRate: z.coerce.number(),
+  stDev: z.coerce.number(),
   yearOneMeanProfit: z.coerce.number(),
   yearTwoMeanProfit: z.coerce.number(),
   yearThreeMeanProfit: z.coerce.number(),
@@ -34,6 +35,7 @@ export default function MarketingForm() {
     defaultValues: {
       retentionRate: 0,
       discountRate: 0,
+      stDev: 0,
       yearOneMeanProfit: 0,
       yearTwoMeanProfit: 0,
       yearThreeMeanProfit: 0,
@@ -47,6 +49,7 @@ export default function MarketingForm() {
     const {
       retentionRate,
       discountRate,
+      stDev,
       yearOneMeanProfit,
       yearTwoMeanProfit,
       yearThreeMeanProfit,
@@ -54,7 +57,7 @@ export default function MarketingForm() {
       yearFiveMeanProfit,
     } = values;
     router.push(
-      `/results/marketing?retentionRate=${retentionRate}&discountRate=${discountRate}&yearOneMeanProfit=${yearOneMeanProfit}&yearTwoMeanProfit=${yearTwoMeanProfit}&yearThreeMeanProfit=${yearThreeMeanProfit}&yearFourMeanProfit=${yearFourMeanProfit}&yearFiveMeanProfit=${yearFiveMeanProfit}`,
+      `/results/marketing?retentionRate=${retentionRate}&discountRate=${discountRate}&stDev=${stDev}&yearOneMeanProfit=${yearOneMeanProfit}&yearTwoMeanProfit=${yearTwoMeanProfit}&yearThreeMeanProfit=${yearThreeMeanProfit}&yearFourMeanProfit=${yearFourMeanProfit}&yearFiveMeanProfit=${yearFiveMeanProfit}`,
     );
   }
 
@@ -82,6 +85,20 @@ export default function MarketingForm() {
           <FormField
             control={form.control}
             name="discountRate"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input type="number" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormLabel>stDev</FormLabel>
+          <FormField
+            control={form.control}
+            name="stDev"
             render={({ field }) => (
               <FormItem>
                 <FormControl>

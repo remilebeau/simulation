@@ -8,7 +8,7 @@ import { determineDistribution } from "@/lib/validation";
 import SimStats from "@/components/SimStats";
 import SimulationOutputExplanation from "@/components/SimulationOutputExplanation";
 
-export default async function FinanceResults() {
+export default async function CashFlowResults() {
   // client component imports
   const Histogram = dynamic(() => import("@/components/Histogram"), {
     ssr: false,

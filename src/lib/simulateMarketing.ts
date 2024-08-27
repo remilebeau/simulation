@@ -6,14 +6,14 @@ type ResponseType = {
 };
 
 export async function simulateMarketing(
-  retentionRate: number,
-  discountRate: number,
-  stDev: number,
-  yearOneMeanProfit: number,
-  yearTwoMeanProfit: number,
-  yearThreeMeanProfit: number,
-  yearFourMeanProfit: number,
-  yearFiveMeanProfit: number,
+  retentionRate: string,
+  discountRate: string,
+  stDev: string,
+  yearOneMeanProfit: string,
+  yearTwoMeanProfit: string,
+  yearThreeMeanProfit: string,
+  yearFourMeanProfit: string,
+  yearFiveMeanProfit: string,
 ): Promise<ResponseType> {
   const DATA_URL =
     process.env.NODE_ENV === "production"

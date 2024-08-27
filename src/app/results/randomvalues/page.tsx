@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 import ModelInputs from "@/components/ModelInputs";
 
-export default async function ProductionResults() {
+export default async function RandomValuesResults() {
   // client component imports
   const Histogram = dynamic(() => import("@/components/Histogram"), {
     ssr: false,
