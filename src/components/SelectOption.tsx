@@ -43,7 +43,7 @@ export default function SelectModel() {
         <SelectContent>
           <SelectItem value="randomvalues">Pseudorandom Values</SelectItem>
           <SelectItem value="production">Production Planning</SelectItem>
-          <SelectItem value="marketing">Marketing Retention Rate</SelectItem>
+          <SelectItem value="marketing">Marketing</SelectItem>
           {/* <SelectItem value="finance">
             Monte Carlo Simulation for Finance
           </SelectItem> */}

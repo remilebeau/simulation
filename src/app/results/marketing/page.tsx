@@ -78,7 +78,14 @@ export default async function MarketingResults() {
           <h1>Marketing Simulation Results</h1>
           <ModelInputs inputs={validatedInputs} />
           <section className="flex flex-col gap-4">
-            <p>Mean NPV: {meanNPV}</p>
+            <p>
+              Mean NPV:{" "}
+              {meanNPV.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+                minimumFractionDigits: 2,
+              })}
+            </p>
             <p>Mean Years Loyal: {meanYearsLoyal}</p>
           </section>
           <BackButton />

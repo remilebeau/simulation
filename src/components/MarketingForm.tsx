@@ -13,6 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import MarketingInstructions from "./MarketingInstructions";
 
 // define form schema
 
@@ -63,6 +64,7 @@ export default function MarketingForm() {
 
   return (
     <>
+      <MarketingInstructions />
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -95,7 +97,7 @@ export default function MarketingForm() {
             )}
           />
 
-          <FormLabel>Standard Deviation (as % of mean)</FormLabel>
+          <FormLabel>Standard Deviation</FormLabel>
           <FormField
             control={form.control}
             name="stDev"
