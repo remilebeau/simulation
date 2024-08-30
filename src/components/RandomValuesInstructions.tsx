@@ -3,8 +3,8 @@ export default function RandomValuesInstructions() {
     <section className="flex flex-col gap-4 p-4">
       <h2 className="font-bold">Generate Pseudorandom Values</h2>
       <p>
-        Generate pseudorandom values from a triangular, truncated normal,
-        uniform, or normal distribution.
+        Generate pseudorandom values from a normal, triangular, truncated
+        normal, or uniform distribution.
       </p>
       <p>
         The values are pseudorandom, meaning the same inputs will produce the

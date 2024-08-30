@@ -30,7 +30,7 @@ import RandomValuesInstructions from "@/components/RandomValuesInstructions";
 const formSchema = z
   .object({
     distMin: z.coerce.number(),
-    distMode: z.coerce.number(),
+    distMean: z.coerce.number(),
     distMax: z.coerce.number(),
     distSD: z.coerce.number().gte(0, {
       message: "Standard Deviation must be greater than or equal to 0",
@@ -41,13 +41,13 @@ const formSchema = z
     (fields) =>
       determineDistribution(
         fields.distMin,
-        fields.distMode,
+        fields.distMean,
         fields.distMax,
         fields.distSD,
       ) !== null,
     {
       message:
-        "Only these distributions are allowed: triangular, normal, uniform, truncated normal",
+        "Only these distributions are allowed: normal, triangular, truncated normal, uniform",
       path: ["distMin"],
     },
   );
@@ -60,7 +60,7 @@ export default function RandomValuesForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       distMin: 0,
-      distMode: 0,
+      distMean: 0,
       distMax: 0,
       distSD: 0,
     },
@@ -68,9 +68,9 @@ export default function RandomValuesForm() {
 
   // define submit handler
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const { distMin, distMode, distMax, distSD } = values;
+    const { distMin, distMean, distMax, distSD } = values;
     router.push(
-      `/results/randomvalues?min=${distMin}&mean=${distMode}&max=${distMax}&sd=${distSD}`,
+      `/results/randomvalues?min=${distMin}&mean=${distMean}&max=${distMax}&sd=${distSD}`,
     );
   }
 
@@ -82,7 +82,7 @@ export default function RandomValuesForm() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col gap-4 p-4"
         >
-          <Label htmlFor="option">Demand Distribution</Label>
+          <Label htmlFor="option">Distribution</Label>
           <Select
             onValueChange={(value) => setDistribution(value)}
             value={distribution}
@@ -91,10 +91,10 @@ export default function RandomValuesForm() {
               <SelectValue placeholder="" />
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="norm">Normal</SelectItem>
               <SelectItem value="triangular">Triangular</SelectItem>
               <SelectItem value="truncnorm">Truncated Normal</SelectItem>
               <SelectItem value="uniform">Uniform</SelectItem>
-              <SelectItem value="norm">Normal</SelectItem>
             </SelectContent>
           </Select>
           {/* conditional rendering for demand minimum */}
@@ -125,7 +125,7 @@ export default function RandomValuesForm() {
               <FormLabel>Mean</FormLabel>
               <FormField
                 control={form.control}
-                name="distMode"
+                name="distMean"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
