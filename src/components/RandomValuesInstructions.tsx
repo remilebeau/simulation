@@ -7,12 +7,9 @@ export default function RandomValuesInstructions() {
         uniform, or normal distribution.
       </p>
       <p>
-        The values are pseudorandom, meaning the same inputs will product the
+        The values are pseudorandom, meaning the same inputs will produce the
         same outputs. This isolates the effects of changing other parameters in
-        our model. Otherwise, every run of the model would be different. And it
-        would be impossible to determine if the difference was because of a
-        change in the distribution, or a change in the other parameters of the
-        model.
+        the model.
       </p>
     </section>
   );
