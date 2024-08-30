@@ -33,7 +33,7 @@ const formSchema = z
     unitPrice: z.coerce.number(),
     salvagePrice: z.coerce.number(),
     demandMin: z.coerce.number(),
-    demandMode: z.coerce.number(),
+    demandMean: z.coerce.number(),
     demandMax: z.coerce.number(),
     demandSD: z.coerce.number().gte(0, {
       message: "Standard deviation must be greater than or equal to 0",
@@ -49,7 +49,7 @@ const formSchema = z
       // validate that demand follows a triangular, truncated normal, uniform, or normal distribution
       determineDistribution(
         fields.demandMin,
-        fields.demandMode,
+        fields.demandMean,
         fields.demandMax,
         fields.demandSD,
       ) !== null,
@@ -71,7 +71,7 @@ export default function ProductionForm() {
       unitPrice: 0,
       salvagePrice: 0,
       demandMin: 0,
-      demandMode: 0,
+      demandMean: 0,
       demandMax: 0,
       demandSD: 0,
       fixedCost: 0,
@@ -86,14 +86,14 @@ export default function ProductionForm() {
       unitPrice,
       salvagePrice,
       demandMin,
-      demandMode,
+      demandMean,
       demandMax,
       demandSD,
       fixedCost,
       productionQuantity,
     } = values;
     router.push(
-      `/results/production?unitCost=${unitCost}&unitPrice=${unitPrice}&salvagePrice=${salvagePrice}&demandMin=${demandMin}&demandMode=${demandMode}&demandMax=${demandMax}&demandSD=${demandSD}&fixedCost=${fixedCost}&productionQuantity=${productionQuantity}`,
+      `/results/production?unitCost=${unitCost}&unitPrice=${unitPrice}&salvagePrice=${salvagePrice}&demandMin=${demandMin}&demandMean=${demandMean}&demandMax=${demandMax}&demandSD=${demandSD}&fixedCost=${fixedCost}&productionQuantity=${productionQuantity}`,
     );
   }
 
@@ -153,10 +153,10 @@ export default function ProductionForm() {
               <SelectValue placeholder="" />
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="norm">Normal</SelectItem>
               <SelectItem value="triangular">Triangular</SelectItem>
               <SelectItem value="truncnorm">Truncated Normal</SelectItem>
               <SelectItem value="uniform">Uniform</SelectItem>
-              <SelectItem value="norm">Normal</SelectItem>
             </SelectContent>
           </Select>
           {/* conditional rendering for min demand */}
@@ -187,7 +187,7 @@ export default function ProductionForm() {
               <FormLabel>Mean Demand</FormLabel>
               <FormField
                 control={form.control}
-                name="demandMode"
+                name="demandMean"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>

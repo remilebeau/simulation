@@ -24,7 +24,7 @@ export default async function ProductionResults() {
   const unitPrice = searchParams.get("unitPrice")!;
   const salvagePrice = searchParams.get("salvagePrice")!;
   const demandMin = searchParams.get("demandMin")!;
-  const demandMode = searchParams.get("demandMode")!;
+  const demandMean = searchParams.get("demandMean")!;
   const demandMax = searchParams.get("demandMax")!;
   const demandSD = searchParams.get("demandSD")!;
   const fixedCost = searchParams.get("fixedCost")!;
@@ -44,7 +44,7 @@ export default async function ProductionResults() {
     unitPrice,
     salvagePrice,
     demandMin,
-    demandMode,
+    demandMean,
     demandMax,
     demandSD,
     fixedCost,
@@ -55,7 +55,7 @@ export default async function ProductionResults() {
     { name: "Unit Price", value: unitPrice },
     { name: "Salvage Price", value: salvagePrice },
     { name: "Min Demand", value: demandMin },
-    { name: "Mean Demand", value: demandMode },
+    { name: "Mean Demand", value: demandMean },
     { name: "Max Demand", value: demandMax },
     { name: "Demand Standard Deviation", value: demandSD },
     { name: "Fixed Cost", value: fixedCost },

@@ -117,10 +117,10 @@ export default function CashFlowForm() {
               <SelectValue placeholder="" />
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="norm">Normal</SelectItem>
               <SelectItem value="triangular">Triangular</SelectItem>
               <SelectItem value="truncnorm">Truncated Normal</SelectItem>
               <SelectItem value="uniform">Uniform</SelectItem>
-              <SelectItem value="norm">Normal</SelectItem>
             </SelectContent>
           </Select>
           {/* conditional rendering for min cash flow */}
