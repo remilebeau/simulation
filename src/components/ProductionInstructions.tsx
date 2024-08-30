@@ -16,7 +16,7 @@ export default function ProductionInstructions() {
         <b>Demand Distribution</b>: The expected distribution of demand. Demand
         is typically forecasted using historical data, industry knowledge,
         conversations with the sales and marketing team, and other means. This
-        model accepts triangular, normal, uniform, or truncated normal demand
+        model accepts normal, triangular, truncated normal, or uniform demand
         distributions.
       </p>
       <p>

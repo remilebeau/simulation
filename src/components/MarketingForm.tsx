@@ -97,7 +97,7 @@ export default function MarketingForm() {
             )}
           />
 
-          <FormLabel>Standard Deviation</FormLabel>
+          <FormLabel>Standard Deviation (as % of mean profit)</FormLabel>
           <FormField
             control={form.control}
             name="stDev"

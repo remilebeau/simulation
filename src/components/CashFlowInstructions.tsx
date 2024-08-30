@@ -11,7 +11,7 @@ export default function CashFlowInstructions() {
       </p>
       <p>
         <b>Distribution of Periodic Cash Flows:</b> The distribution of periodic
-        cash flows. Follows a triangular, truncated normal, uniform, or normal
+        cash flows. Follows a normal, triangular, truncated normal, or uniform
         distribution.
       </p>
     </section>
