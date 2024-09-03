@@ -29,19 +29,25 @@ import ProductionInstructions from "@/components/ProductionInstructions";
 
 const formSchema = z
   .object({
-    unitCost: z.coerce.number(),
-    unitPrice: z.coerce.number(),
-    salvagePrice: z.coerce.number(),
-    demandMin: z.coerce.number(),
-    demandMean: z.coerce.number(),
-    demandMax: z.coerce.number(),
-    demandSD: z.coerce.number().gte(0, {
-      message: "Standard deviation must be greater than or equal to 0",
-    }),
-    fixedCost: z.coerce.number(),
-    productionQuantity: z.coerce.number().gt(0, {
-      message: "Production quantity must be greater than 0",
-    }),
+    unitCost: z.coerce.number().optional(),
+    unitPrice: z.coerce.number().optional(),
+    salvagePrice: z.coerce.number().optional(),
+    demandMin: z.coerce.number().optional(),
+    demandMean: z.coerce.number().optional(),
+    demandMax: z.coerce.number().optional(),
+    demandSD: z.coerce
+      .number()
+      .gte(0, {
+        message: "Standard deviation must be greater than or equal to 0",
+      })
+      .optional(),
+    fixedCost: z.coerce.number().optional(),
+    productionQuantity: z.coerce
+      .number()
+      .gt(0, {
+        message: "Production quantity must be greater than 0",
+      })
+      .optional(),
   })
 
   .refine(
@@ -67,15 +73,15 @@ export default function ProductionForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      unitCost: 0,
-      unitPrice: 0,
-      salvagePrice: 0,
-      demandMin: 0,
-      demandMean: 0,
-      demandMax: 0,
-      demandSD: 0,
-      fixedCost: 0,
-      productionQuantity: 0,
+      unitCost: undefined,
+      unitPrice: undefined,
+      salvagePrice: undefined,
+      demandMin: undefined,
+      demandMean: undefined,
+      demandMax: undefined,
+      demandSD: undefined,
+      fixedCost: undefined,
+      productionQuantity: undefined,
     },
   });
 

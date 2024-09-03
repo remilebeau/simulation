@@ -1,10 +1,5 @@
-export function isTriangular(
-  min: number,
-  mode: number,
-  max: number,
-  sd: number,
-) {
-  return min <= mode && mode <= max && min < max && sd === 0;
+export function isTriangular(min: number, mean: number, max: number) {
+  return min <= mean && mean <= max && min < max;
 }
 
 export function isTruncatedNormal(
@@ -16,27 +11,27 @@ export function isTruncatedNormal(
   return min <= mean && mean <= max && min < max && sd > 0;
 }
 
-export function isUniform(min: number, mode: number, max: number, sd: number) {
-  return min < max && mode === 0 && sd === 0;
+export function isUniform(min: number, max: number) {
+  return min < max;
 }
 
-export function isNormal(min: number, mode: number, max: number, sd: number) {
-  return min === 0 && max === 0 && mode > 0 && sd > 0;
+export function isNormal(sd: number) {
+  return sd >= 0;
 }
 
 export function determineDistribution(
-  min: number,
-  mode: number,
-  max: number,
-  sd: number,
+  min?: number,
+  mean?: number,
+  max?: number,
+  sd?: number,
 ) {
-  if (isTriangular(min, mode, max, sd)) {
-    return "triangular";
-  } else if (isTruncatedNormal(min, mode, max, sd)) {
+  if (min && mean && max && sd && isTruncatedNormal(min, mean, max, sd)) {
     return "truncated normal";
-  } else if (isUniform(min, mode, max, sd)) {
+  } else if (min && mean && max && isTriangular(min, mean, max)) {
+    return "triangular";
+  } else if (min && max && isUniform(min, max)) {
     return "uniform";
-  } else if (isNormal(min, mode, max, sd)) {
+  } else if (sd && isNormal(sd)) {
     return "normal";
   } else {
     return null;
