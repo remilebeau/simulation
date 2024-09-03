@@ -34,14 +34,14 @@ export default function MarketingForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      retentionRate: 0,
-      discountRate: 0,
-      stDev: 0,
-      yearOneMeanProfit: 0,
-      yearTwoMeanProfit: 0,
-      yearThreeMeanProfit: 0,
-      yearFourMeanProfit: 0,
-      yearFiveMeanProfit: 0,
+      retentionRate: undefined,
+      discountRate: undefined,
+      stDev: undefined,
+      yearOneMeanProfit: undefined,
+      yearTwoMeanProfit: undefined,
+      yearThreeMeanProfit: undefined,
+      yearFourMeanProfit: undefined,
+      yearFiveMeanProfit: undefined,
     },
   });
 

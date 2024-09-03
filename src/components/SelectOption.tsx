@@ -21,9 +21,6 @@ export default function SelectModel() {
   const ProductionForm = dynamic(() => import("@/components/ProductionForm"), {
     ssr: false,
   });
-  const FinanceForm = dynamic(() => import("@/components/FinanceForm"), {
-    ssr: false,
-  });
   const CashFlowForm = dynamic(() => import("@/components/CashFlowForm"), {
     ssr: false,
   });
@@ -54,7 +51,6 @@ export default function SelectModel() {
       {option === "randomvalues" && <RandomValuesForm />}
       {option === "production" && <ProductionForm />}
       {option === "marketing" && <MarketingForm />}
-      {option === "finance" && <FinanceForm />}
       {option === "cashflow" && <CashFlowForm />}
     </section>
   );
