@@ -12,21 +12,21 @@ import { Label } from "@/components/ui/label";
 
 export default function SelectModel() {
   // client component imports
-  const RandomValuesForm = dynamic(
-    () => import("@/components/RandomValuesForm"),
-    {
-      ssr: false,
-    },
-  );
-  const ProductionForm = dynamic(() => import("@/components/ProductionForm"), {
-    ssr: false,
-  });
   const CashFlowForm = dynamic(() => import("@/components/CashFlowForm"), {
     ssr: false,
   });
   const MarketingForm = dynamic(() => import("@/components/MarketingForm"), {
     ssr: false,
   });
+  const ProductionForm = dynamic(() => import("@/components/ProductionForm"), {
+    ssr: false,
+  });
+  const RandomValuesForm = dynamic(
+    () => import("@/components/RandomValuesForm"),
+    {
+      ssr: false,
+    },
+  );
 
   const [option, setOption] = useState("");
 
@@ -41,17 +41,14 @@ export default function SelectModel() {
           <SelectItem value="randomvalues">Pseudorandom Values</SelectItem>
           <SelectItem value="production">Production Planning</SelectItem>
           <SelectItem value="marketing">Marketing</SelectItem>
-          {/* <SelectItem value="finance">
-            Monte Carlo Simulation for Finance
-          </SelectItem> */}
           <SelectItem value="cashflow">Cash Flow</SelectItem>
         </SelectContent>
       </Select>
 
-      {option === "randomvalues" && <RandomValuesForm />}
-      {option === "production" && <ProductionForm />}
-      {option === "marketing" && <MarketingForm />}
       {option === "cashflow" && <CashFlowForm />}
+      {option === "marketing" && <MarketingForm />}
+      {option === "production" && <ProductionForm />}
+      {option === "randomvalues" && <RandomValuesForm />}
     </section>
   );
 }
