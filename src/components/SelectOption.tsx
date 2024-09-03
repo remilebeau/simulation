@@ -38,10 +38,10 @@ export default function SelectModel() {
           <SelectValue placeholder="" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="randomvalues">Pseudorandom Values</SelectItem>
-          <SelectItem value="production">Production Planning</SelectItem>
-          <SelectItem value="marketing">Marketing</SelectItem>
           <SelectItem value="cashflow">Cash Flow</SelectItem>
+          <SelectItem value="marketing">Marketing</SelectItem>
+          <SelectItem value="production">Production Planning</SelectItem>
+          <SelectItem value="randomvalues">Pseudorandom Values</SelectItem>
         </SelectContent>
       </Select>
 
