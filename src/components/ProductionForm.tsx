@@ -29,9 +29,9 @@ import ProductionInstructions from "@/components/ProductionInstructions";
 
 const formSchema = z
   .object({
-    unitCost: z.coerce.number().optional(),
-    unitPrice: z.coerce.number().optional(),
-    salvagePrice: z.coerce.number().optional(),
+    unitCost: z.coerce.number(),
+    unitPrice: z.coerce.number(),
+    salvagePrice: z.coerce.number(),
     demandMin: z.coerce.number().optional(),
     demandMean: z.coerce.number().optional(),
     demandMax: z.coerce.number().optional(),
@@ -41,13 +41,10 @@ const formSchema = z
         message: "Standard deviation must be greater than or equal to 0",
       })
       .optional(),
-    fixedCost: z.coerce.number().optional(),
-    productionQuantity: z.coerce
-      .number()
-      .gt(0, {
-        message: "Production quantity must be greater than 0",
-      })
-      .optional(),
+    fixedCost: z.coerce.number(),
+    productionQuantity: z.coerce.number().gt(0, {
+      message: "Production quantity must be greater than 0",
+    }),
   })
 
   .refine(
@@ -99,7 +96,7 @@ export default function ProductionForm() {
       productionQuantity,
     } = values;
     router.push(
-      `/results/production?unitCost=${unitCost}&unitPrice=${unitPrice}&salvagePrice=${salvagePrice}&demandMin=${demandMin}&demandMean=${demandMean}&demandMax=${demandMax}&demandSD=${demandSD}&fixedCost=${fixedCost}&productionQuantity=${productionQuantity}`,
+      `/results/production?unitCost=${unitCost}&unitPrice=${unitPrice}&salvagePrice=${salvagePrice}&demandMin=${demandMin ?? "0"}&demandMean=${demandMean ?? "0"}&demandMax=${demandMax ?? "0"}&demandSD=${demandSD ?? "0"}&fixedCost=${fixedCost}&productionQuantity=${productionQuantity}`,
     );
   }
 
