@@ -30,12 +30,15 @@ const formSchema = z
   .object({
     periodsPerYear: z.coerce.number().int().positive(),
     fixedCost: z.coerce.number(),
-    min: z.coerce.number(),
-    mean: z.coerce.number(),
-    max: z.coerce.number(),
-    sd: z.coerce.number().gte(0, {
-      message: "Standard deviation must be greater than or equal to 0",
-    }),
+    min: z.coerce.number().optional(),
+    mean: z.coerce.number().optional(),
+    max: z.coerce.number().optional(),
+    sd: z.coerce
+      .number()
+      .gte(0, {
+        message: "Standard deviation must be greater than or equal to 0",
+      })
+      .optional(),
   })
 
   .refine(
@@ -57,12 +60,12 @@ export default function CashFlowForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      periodsPerYear: 0,
-      fixedCost: 0,
-      min: 0,
-      mean: 0,
-      max: 0,
-      sd: 0,
+      periodsPerYear: undefined,
+      fixedCost: undefined,
+      min: undefined,
+      mean: undefined,
+      max: undefined,
+      sd: undefined,
     },
   });
 
@@ -70,7 +73,7 @@ export default function CashFlowForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     const { periodsPerYear, fixedCost, min, mean, max, sd } = values;
     router.push(
-      `/results/cashflow?periodsPerYear=${periodsPerYear}&fixedCost=${fixedCost}&min=${min}&mean=${mean}&max=${max}&sd=${sd}`,
+      `/results/cashflow?periodsPerYear=${periodsPerYear}&fixedCost=${fixedCost}&min=${min ?? "0"}&mean=${mean ?? "0"}&max=${max ?? "0"}&sd=${sd ?? "0"}`,
     );
   }
 
