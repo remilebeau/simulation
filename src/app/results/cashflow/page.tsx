@@ -46,19 +46,19 @@ export default async function CashFlowResults() {
       value: fixedCost,
     },
     {
-      name: "Min Cash Flow",
+      name: "Minimum Periodic Cash Flow",
       value: min,
     },
     {
-      name: "Mean Cash Flow",
+      name: "Mean Periodic Cash Flow",
       value: mean,
     },
     {
-      name: "Max Cash Flow",
+      name: "Maximum Periodic Cash Flow",
       value: max,
     },
     {
-      name: "Standard Deviation",
+      name: "Standard Deviation of Periodic Cash Flows",
       value: sd,
     },
   ];
