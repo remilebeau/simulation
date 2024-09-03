@@ -29,12 +29,15 @@ import RandomValuesInstructions from "@/components/RandomValuesInstructions";
 
 const formSchema = z
   .object({
-    distMin: z.coerce.number(),
-    distMean: z.coerce.number(),
-    distMax: z.coerce.number(),
-    distSD: z.coerce.number().gte(0, {
-      message: "Standard Deviation must be greater than or equal to 0",
-    }),
+    distMin: z.coerce.number().optional(),
+    distMean: z.coerce.number().optional(),
+    distMax: z.coerce.number().optional(),
+    distSD: z.coerce
+      .number()
+      .gte(0, {
+        message: "Standard Deviation must be greater than or equal to 0",
+      })
+      .optional(),
   })
   // validate that the inputs match one of the required distributions
   .refine(
@@ -59,10 +62,10 @@ export default function RandomValuesForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      distMin: 0,
-      distMean: 0,
-      distMax: 0,
-      distSD: 0,
+      distMin: undefined,
+      distMean: undefined,
+      distMax: undefined,
+      distSD: undefined,
     },
   });
 
@@ -70,7 +73,7 @@ export default function RandomValuesForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     const { distMin, distMean, distMax, distSD } = values;
     router.push(
-      `/results/randomvalues?min=${distMin}&mean=${distMean}&max=${distMax}&sd=${distSD}`,
+      `/results/randomvalues?min=${distMin ?? "0"}&mean=${distMean ?? "0"}&max=${distMax ?? "0"}&sd=${distSD ?? "0"}`,
     );
   }
 
