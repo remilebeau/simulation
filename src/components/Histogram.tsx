@@ -15,8 +15,16 @@ export default async function Histogram({ values }: Props) {
             type: "histogram",
           },
         ]}
-        layout={{}}
-        config={{ responsive: true }}
+        layout={{
+          title: "Simulated Profits (click to edit title)",
+          xaxis: {
+            title: "Simulated Profit ($) (click to edit label)",
+          },
+          yaxis: {
+            title: "Count (click to edit label)",
+          },
+        }}
+        config={{ responsive: true, editable: true }}
       />
     </>
   );
