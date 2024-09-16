@@ -32,7 +32,7 @@ export default function SelectModel() {
 
   return (
     <section className="flex w-full flex-col gap-4">
-      <Label htmlFor="option">Select Option</Label>
+      <Label htmlFor="option">Select a Scenario</Label>
       <Select onValueChange={(value) => setOption(value)} value={option}>
         <SelectTrigger>
           <SelectValue placeholder="" />
