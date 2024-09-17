@@ -11,9 +11,9 @@ export default function HomePageInstructions() {
           From this histogram, we can answer the following questions about our
           scenario:
         </p>
-        <ul>
+        <ul className="flex flex-col gap-2 sm:grid sm:grid-cols-2">
           <li>What is the expected profit?</li>
-          <li>What is the likelihood of a profit above a certain value?</li>
+          <li>What is the chance of a profit above a required value?</li>
           <li>What was the lowest profit observed?</li>
           <li>What was the highest profit observed?</li>
           <li>What is the risk of losing money?</li>
