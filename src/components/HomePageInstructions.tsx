@@ -11,12 +11,12 @@ export default function HomePageInstructions() {
         scenario:
       </p>
       <ul>
-        <li>What is my expected profit?</li>
-        <li>What is my chance of making a profit above a required value?</li>
+        <li>What is the expected profit?</li>
+        <li>What is the likelihood of a profit above a certain value?</li>
         <li>What was the lowest profit observed?</li>
         <li>What was the highest profit observed?</li>
-        <li>What is my chance of losing money?</li>
-        <li>What is my value at risk?</li>
+        <li>What is the risk of losing money?</li>
+        <li>What is the value at risk?</li>
       </ul>
       <p>
         To download the raw output data for your own analysis, please visit the{" "}
