@@ -2,10 +2,10 @@ export default function HomePageInstructions() {
   return (
     <>
       <section className="flex flex-col gap-4 p-4">
-        <p>Select a business scenario and input the parameters.</p>
         <p>
-          The scenario will be simulated 1000 times, and the 1000 simulated
-          profits will be summarized in a histogram.
+          Select a business scenario and input the parameters. The scenario will
+          be simulated 1000 times, and the results will be summarized in a
+          histogram.
         </p>
         <p>
           From this histogram, we can answer the following questions about our
@@ -22,11 +22,11 @@ export default function HomePageInstructions() {
       </section>
       <section className="flex flex-col gap-4 p-4">
         <p>
-          The key factor in Monte Carlo simulation lies in the choice of
-          probability distribution for any random variables, such as demand.
-          Although demand is random, thanks to our historical data, industry
-          knowledge, and conversations with our sales and marketing team, we
-          typically have <i>some</i> idea of the randomness.
+          A key factor in Monte Carlo simulation is the choice of probability
+          distribution for any random variables, such as demand. Although demand
+          is random, thanks to our historical data, industry knowledge, and
+          conversations with our sales and marketing team, we typically have{" "}
+          <i>some</i> idea of the randomness.
         </p>
         <p>This app accepts the following distributions:</p>
         <section className="flex flex-col gap-4 p-4 sm:grid sm:grid-cols-2">
