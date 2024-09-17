@@ -18,10 +18,10 @@ export default async function Histogram({ values }: Props) {
         layout={{
           title: "Simulated Profits (click to edit title)",
           xaxis: {
-            title: "Simulated Profit ($) (click to edit label)",
+            title: "Profit ($) (click to edit label)",
           },
           yaxis: {
-            title: "Count (click to edit label)",
+            title: "Frequency (click to edit label)",
           },
         }}
         config={{ responsive: true, editable: true }}
