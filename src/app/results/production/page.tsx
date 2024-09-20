@@ -2,7 +2,6 @@
 import dynamic from "next/dynamic";
 import simulateProduction from "@/lib/simulateProduction";
 import { useSearchParams } from "next/navigation";
-import { ModeToggle as ThemeSwitch } from "@/components/ThemeSwitch";
 import ModelInputs from "@/components/ModelInputs";
 import SimulationOutputExplanation from "@/components/SimulationOutputExplanation";
 
@@ -83,7 +82,6 @@ export default async function ProductionResults() {
           />
           <SimulationOutputExplanation />
           <BackButton />
-          <ThemeSwitch />
         </main>
       )}
     </>
