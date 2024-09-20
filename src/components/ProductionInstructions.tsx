@@ -13,11 +13,7 @@ export default function ProductionInstructions() {
         demand.
       </p>
       <p>
-        <b>Demand Distribution</b>: The expected distribution of demand. Demand
-        is typically forecasted using historical data, industry knowledge,
-        conversations with the sales and marketing team, and other means. This
-        model accepts normal, triangular, truncated normal, or uniform demand
-        distributions.
+        <b>Demand Distribution</b>: The expected distribution of demand.
       </p>
       <p>
         <b>Fixed Costs:</b> The total fixed costs of the production.

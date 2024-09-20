@@ -1,4 +1,5 @@
 import HomePageInstructions from "@/components/HomePageInstructions";
+import ProductionInstructions from "@/components/ProductionInstructions";
 import dynamic from "next/dynamic";
 
 export default function HomePage() {
@@ -12,6 +13,7 @@ export default function HomePage() {
         Monte Carlo Simulation for Production Planning
       </h1>
       <HomePageInstructions />
+      <ProductionInstructions />
       <ProductionForm />
     </main>
   );

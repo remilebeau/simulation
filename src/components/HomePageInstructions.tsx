@@ -1,6 +1,6 @@
 export default function HomePageInstructions() {
   return (
-    <>
+    <article className="flex flex-col gap-4">
       <section className="flex flex-col gap-4 p-4">
         <p>
           Input the parameters of your production scenario. The scenario will be
@@ -29,27 +29,23 @@ export default function HomePageInstructions() {
           <i>some</i> idea of the randomness.
         </p>
         <p>This app accepts the following distributions:</p>
-        <section className="flex flex-col gap-4 p-4 sm:grid sm:grid-cols-2">
-          <div className="flex flex-col gap-2">
+        <ul className="flex flex-col gap-4 p-4 sm:grid sm:grid-cols-2">
+          <li>
             <img src="/normal.png" alt="Normal Distribution" />
-            <p className="text-center">Normal</p>
-          </div>
-          <div className="flex flex-col gap-2">
+          </li>
+          <li>
             <img src="/triangular.png" alt="Triangular Distribution" />
-            <p className="text-center">Triangular</p>
-          </div>
-          <div className="flex flex-col gap-2">
+          </li>
+          <li>
             <img
               src="/truncatedNormal.png"
               alt="Truncated Normal Distribution"
             />
-            <p className="text-center">Truncated Normal</p>
-          </div>
-          <div className="flex flex-col gap-2">
+          </li>
+          <li>
             <img src="/uniform.png" alt="Uniform Distribution" />
-            <p className="text-center">Uniform</p>
-          </div>
-        </section>
+          </li>
+        </ul>
       </section>
       <p>
         To download the raw output data for your own analysis, please visit the{" "}
@@ -62,6 +58,6 @@ export default function HomePageInstructions() {
           API docs.
         </a>
       </p>
-    </>
+    </article>
   );
 }
