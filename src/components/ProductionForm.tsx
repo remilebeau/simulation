@@ -265,7 +265,7 @@ export default function ProductionForm() {
           </>
         )}
 
-        <Button className="w-full" type="submit">
+        <Button className="w-full bg-teal-700" type="submit">
           Submit
         </Button>
       </form>
