@@ -75,25 +75,33 @@ export default async function ProductionResults() {
               {Number(salvagePrice).toLocaleString("en-US")}
             </li>
             <li>
-              <b>Min Demand:</b> {Number(demandMin).toLocaleString("en-US")}
-            </li>
-            <li>
-              <b>Mean Demand:</b> {Number(demandMean).toLocaleString("en-US")}
-            </li>
-            <li>
-              <b>Max Demand:</b> {Number(demandMax).toLocaleString("en-US")}
-            </li>
-            <li>
-              <b>Demand Standard Deviation:</b>{" "}
-              {Number(demandSD).toLocaleString("en-US")}
-            </li>
-            <li>
               <b>Fixed Cost:</b> {Number(fixedCost).toLocaleString("en-US")}
             </li>
             <li>
               <b>Production Quantity:</b>{" "}
               {Number(productionQuantity).toLocaleString("en-US")}
             </li>
+            {demandMin !== "0" && (
+              <li>
+                <b>Min Demand:</b> {Number(demandMin).toLocaleString("en-US")}
+              </li>
+            )}
+            {demandMean !== "0" && (
+              <li>
+                <b>Mean Demand:</b> {Number(demandMean).toLocaleString("en-US")}
+              </li>
+            )}
+            {demandMax !== "0" && (
+              <li>
+                <b>Max Demand:</b> {Number(demandMax).toLocaleString("en-US")}
+              </li>
+            )}
+            {demandSD !== "0" && (
+              <li>
+                <b>Demand Standard Deviation:</b>{" "}
+                {Number(demandSD).toLocaleString("en-US")}
+              </li>
+            )}
           </ul>
           <Histogram values={simulatedProfits} />
           <SimStats
