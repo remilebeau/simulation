@@ -3,8 +3,8 @@ export default function HomePageInstructions() {
     <>
       <section className="flex flex-col gap-4 p-4">
         <p>
-          Select a business scenario and input the parameters. The scenario will
-          be simulated 1000 times, and the results will be summarized in a
+          Input the parameters of your production scenario. The scenario will be
+          simulated 1000 times, and the results will be summarized in a
           histogram.
         </p>
         <p>
