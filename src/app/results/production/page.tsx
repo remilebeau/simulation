@@ -1,10 +1,13 @@
 "use client";
 import dynamic from "next/dynamic";
 import simulateProduction from "@/lib/simulateProduction";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import SimulationOutputExplanation from "@/components/SimulationOutputExplanation";
 
 export default async function ProductionResults() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   // client component imports
   const Histogram = dynamic(() => import("@/components/Histogram"), {
     ssr: false,
@@ -12,10 +15,6 @@ export default async function ProductionResults() {
   const SimStats = dynamic(() => import("@/components/SimStats"), {
     ssr: false,
   });
-  const BackButton = dynamic(() => import("@/components/BackButton"), {
-    ssr: false,
-  });
-  const searchParams = useSearchParams();
 
   // get query params
   const unitCost = searchParams.get("unitCost")!;
@@ -53,7 +52,13 @@ export default async function ProductionResults() {
     <>
       {simulatedProfits && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-4 p-4">
-          <BackButton />
+          {/* BACK BUTTON */}
+          <button
+            className="w-full rounded-xl bg-teal-700 text-3xl font-bold transition-all duration-300 ease-in-out hover:bg-black"
+            onClick={() => router.push("/")}
+          >
+            Go Back
+          </button>
           <h1 className="text-xl font-bold sm:text-2xl">
             Production Simulation Results
           </h1>
@@ -101,7 +106,13 @@ export default async function ProductionResults() {
             valueAtRisk={valueAtRisk}
           />
           <SimulationOutputExplanation />
-          <BackButton />
+          {/* BACK BUTTON */}
+          <button
+            className="w-full rounded-xl bg-teal-700 text-3xl font-bold transition-all duration-300 ease-in-out hover:bg-black"
+            onClick={() => router.push("/")}
+          >
+            Go Back
+          </button>
         </main>
       )}
     </>

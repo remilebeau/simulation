@@ -13,18 +13,33 @@ export default async function Histogram({ values }: Props) {
           {
             x: values,
             type: "histogram",
+            marker: {
+              color: "#ffffff",
+            },
           },
         ]}
         layout={{
-          title: "Simulated Profits (click to edit title)",
+          title: {
+            text: "Simulated Profits",
+            font: {
+              color: "#ffffff",
+            },
+          },
           xaxis: {
-            title: "Profit ($) (click to edit label)",
+            title: "Profit ($)",
+            color: "#ffffff",
           },
           yaxis: {
-            title: "Frequency (click to edit label)",
+            title: "Frequency",
+            color: "#ffffff",
           },
+          paper_bgcolor: "#000000",
+          plot_bgcolor: "#000000",
         }}
-        config={{ responsive: true, editable: true }}
+        config={{
+          responsive: true,
+          staticPlot: true,
+        }}
       />
     </>
   );

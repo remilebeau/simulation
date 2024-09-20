@@ -265,9 +265,12 @@ export default function ProductionForm() {
           </>
         )}
 
-        <Button className="w-full bg-teal-700" type="submit">
+        <button
+          className="w-full rounded-xl bg-teal-700 p-4 font-bold transition-all duration-300 ease-in-out hover:bg-black"
+          type="submit"
+        >
           Submit
-        </Button>
+        </button>
       </form>
     </Form>
   );
