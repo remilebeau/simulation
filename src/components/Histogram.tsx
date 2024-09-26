@@ -20,7 +20,7 @@ export default async function Histogram({ values }: Props) {
         ]}
         layout={{
           title: {
-            text: "Simulated Profits",
+            text: "Simulated Profits (1000 trials)",
             font: {
               color: "#ffffff",
             },
