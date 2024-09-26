@@ -1,7 +1,9 @@
 export default function SimulationOutputExplanation() {
   return (
-    <section className="flex flex-col gap-4 p-4">
-      <h2 className="font-bold">Explanation of Simulation Output</h2>
+    <section className="flex flex-col gap-4 rounded-md border border-white p-4">
+      <h2 className="text-center font-bold">
+        Explanation of Simulation Output
+      </h2>
       <p>
         <b>Mean:</b> The mean profit.
       </p>

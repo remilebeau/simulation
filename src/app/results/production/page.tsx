@@ -63,7 +63,7 @@ export default async function ProductionResults() {
             Production Simulation Results
           </h1>
           {/* MODEL INPUTS SECTION */}
-          <ul className="flex flex-col gap-4 sm:grid sm:grid-cols-2">
+          <ul className="flex flex-col gap-4 rounded-md border border-white p-4 sm:grid sm:grid-cols-2">
             <li>
               <b>Unit Cost:</b> {Number(unitCost).toLocaleString("en-US")}
             </li>
