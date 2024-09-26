@@ -11,12 +11,16 @@ export default function HomePageInstructions() {
         scenario:
       </p>
       <ul className="flex flex-col gap-2 sm:grid sm:grid-cols-2">
-        <li>What is the expected profit?</li>
-        <li>What is the chance of a profit above a required amount?</li>
-        <li>What was the lowest profit observed?</li>
-        <li>What was the highest profit observed?</li>
-        <li>What is the chance of a negative profit?</li>
-        <li>What is the value at risk?</li>
+        <section className="flex flex-col">
+          <li>What is the average profit?</li>
+          <li>What is the chance of a profit above a required amount?</li>
+          <li>What was the highest profit observed?</li>
+        </section>
+        <section className="flex flex-col">
+          <li>What was the lowest profit observed?</li>
+          <li>What is the chance of a negative profit?</li>
+          <li>What is the value at risk?</li>
+        </section>
       </ul>
       <p>
         Although demand is random, thanks to our historical data, industry
