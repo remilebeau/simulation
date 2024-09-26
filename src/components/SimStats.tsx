@@ -49,7 +49,7 @@ export default function SimStats({
       value: pLoseMoney,
     },
     {
-      name: "Value at Risk",
+      name: "Value at Risk (5% level)",
       value: valueAtRisk,
     },
   ];

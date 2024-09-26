@@ -2,7 +2,6 @@
 import dynamic from "next/dynamic";
 import simulateProduction from "@/lib/simulateProduction";
 import { useRouter, useSearchParams } from "next/navigation";
-import SimulationOutputExplanation from "@/components/SimulationOutputExplanation";
 
 export default async function ProductionResults() {
   const router = useRouter();
@@ -115,7 +114,6 @@ export default async function ProductionResults() {
             pLoseMoney={pLoseMoney}
             valueAtRisk={valueAtRisk}
           />
-          <SimulationOutputExplanation />
           {/* BACK BUTTON */}
           <button
             className="w-full rounded-xl bg-teal-700 text-3xl font-bold transition-all duration-300 ease-in-out hover:bg-black"
