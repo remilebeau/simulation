@@ -8,11 +8,7 @@ type ResponseType = {
   maximum: number;
   simulatedProfits: number[];
   meanProfit: number;
-  meanStandardError: number;
-  meanLowerCI: number;
-  meanUpperCI: number;
-  pLoseMoneyLowerCI: number;
-  pLoseMoneyUpperCI: number;
+  pLoseMoney: number;
   valueAtRisk: number;
 };
 

@@ -5,11 +5,7 @@ type Props = {
   q3: number;
   maximum: number;
   meanProfit: number;
-  meanStandardError: number;
-  meanLowerCI: number;
-  meanUpperCI: number;
-  pLoseMoneyLowerCI: number;
-  pLoseMoneyUpperCI: number;
+  pLoseMoney: number;
   valueAtRisk: number;
 };
 
@@ -20,78 +16,62 @@ export default function SimStats({
   q3,
   maximum,
   meanProfit,
-  meanStandardError,
-  meanLowerCI,
-  meanUpperCI,
-  pLoseMoneyLowerCI,
-  pLoseMoneyUpperCI,
+  pLoseMoney,
   valueAtRisk,
 }: Props) {
+  const stats = [
+    {
+      name: "Minimum",
+      value: minimum,
+    },
+    {
+      name: "Q1",
+      value: q1,
+    },
+    {
+      name: "Median",
+      value: median,
+    },
+    {
+      name: "Q3",
+      value: q3,
+    },
+    {
+      name: "Maximum",
+      value: maximum,
+    },
+    {
+      name: "Mean",
+      value: meanProfit,
+    },
+    {
+      name: "P(Lose Money)",
+      value: pLoseMoney,
+    },
+    {
+      name: "VaR",
+      value: valueAtRisk,
+    },
+  ];
   return (
     <article className="flex w-full flex-col rounded-md border border-border p-4">
       <h2 className="text-center font-bold">Simulation Statistics</h2>
-      <section id="mean" className="flex flex-row justify-between">
-        <p className="text-md">Mean:</p>
-        <p className="text-md">
-          {meanProfit.toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-            maximumFractionDigits: 0,
-          })}
-        </p>
-      </section>
-      <section id="standardError" className="flex flex-row justify-between">
-        <p className="text-md">Standard Error:</p>
-        <p className="text-md">
-          {meanStandardError.toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-            maximumFractionDigits: 0,
-          })}
-        </p>
-      </section>
-      <section id="ci" className="flex flex-row justify-between text-right">
-        <p className="text-md">Mean CI:</p>
-        <p className="text-md">
-          [
-          {meanLowerCI.toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-            maximumFractionDigits: 0,
-          })}{" "}
-          to{" "}
-          {meanUpperCI.toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-            maximumFractionDigits: 0,
-          })}
-          ]
-        </p>
-      </section>
-      <section id="pLoseMoney" className="flex flex-row justify-between">
-        <p className="text-md">P(Lose Money):</p>
-        <p className="text-md">
-          [
-          {pLoseMoneyLowerCI.toLocaleString("en-US", {
-            style: "percent",
-          })}{" "}
-          to{" "}
-          {pLoseMoneyUpperCI.toLocaleString("en-US", {
-            style: "percent",
-          })}
-          ]
-        </p>
-      </section>
-      <section id="valueAtRisk" className="flex flex-row justify-between">
-        <p className="text-md">VaR:</p>
-        <p className="text-md">
-          {valueAtRisk.toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-            maximumFractionDigits: 0,
-          })}
-        </p>
-      </section>
+      {stats.map((stat) => (
+        <section key={stat.name} className="flex flex-row justify-between">
+          <p className="text-md">{stat.name}:</p>
+          <p className="text-md">
+            {stat.name !== "P(Lose Money)"
+              ? stat.value.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                  maximumFractionDigits: 0,
+                })
+              : stat.value.toLocaleString("en-US", {
+                  style: "percent",
+                })}
+          </p>
+        </section>
+      ))}
     </article>
   );
 }
