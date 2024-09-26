@@ -26,18 +26,19 @@ export default function HomePageInstructions() {
           knowledge, conversations with our sales and marketing team, and other
           means, we typically have <i>some</i> idea of the randomness.
         </p>
+        <p>
+          To download the raw output data for your own analysis, please visit
+          the{" "}
+          <a
+            href="https://simulation-api-rsaw.onrender.com/docs"
+            rel="noreferrer"
+            target="_blank"
+            className="text-blue-500 hover:underline"
+          >
+            API docs.
+          </a>
+        </p>
       </section>
-      <p>
-        To download the raw output data for your own analysis, please visit the{" "}
-        <a
-          href="https://simulation-api-rsaw.onrender.com/docs"
-          rel="noreferrer"
-          target="_blank"
-          className="text-blue-500 hover:underline"
-        >
-          API docs.
-        </a>
-      </p>
     </article>
   );
 }
