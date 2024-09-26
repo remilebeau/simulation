@@ -1,6 +1,6 @@
 export default function HomePageInstructions() {
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex flex-col gap-4 rounded-xl bg-slate-700 p-4">
       <p>
         Input the parameters of your production scenario. The scenario will be
         simulated 1000 times, and the resulting 1000 profits will be summarized
