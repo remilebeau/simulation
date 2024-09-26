@@ -28,6 +28,11 @@ export default async function ProductionResults() {
   const productionQuantity = searchParams.get("productionQuantity")!;
 
   const {
+    minimum,
+    q1,
+    median,
+    q3,
+    maximum,
     simulatedProfits,
     meanProfit,
     meanStandardError,
@@ -105,6 +110,11 @@ export default async function ProductionResults() {
           </ul>
           <Histogram values={simulatedProfits} />
           <SimStats
+            minimum={minimum}
+            q1={q1}
+            median={median}
+            q3={q3}
+            maximum={maximum}
             meanProfit={meanProfit}
             meanStandardError={meanStandardError}
             meanLowerCI={meanLowerCI}

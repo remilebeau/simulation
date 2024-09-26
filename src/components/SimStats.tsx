@@ -1,4 +1,9 @@
 type Props = {
+  minimum: number;
+  q1: number;
+  median: number;
+  q3: number;
+  maximum: number;
   meanProfit: number;
   meanStandardError: number;
   meanLowerCI: number;
@@ -9,6 +14,11 @@ type Props = {
 };
 
 export default function SimStats({
+  minimum,
+  q1,
+  median,
+  q3,
+  maximum,
   meanProfit,
   meanStandardError,
   meanLowerCI,

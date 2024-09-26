@@ -1,6 +1,11 @@
 import { redirect } from "next/navigation";
 
 type ResponseType = {
+  minimum: number;
+  q1: number;
+  median: number;
+  q3: number;
+  maximum: number;
   simulatedProfits: number[];
   meanProfit: number;
   meanStandardError: number;
