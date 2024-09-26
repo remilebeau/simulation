@@ -8,7 +8,7 @@ export default function HomePage() {
     ssr: false,
   });
   return (
-    <main className="mx-auto flex max-w-4xl flex-col items-center gap-4 p-4">
+    <main className="mx-auto flex max-w-4xl flex-col gap-4 p-4">
       <h1 className="w-full rounded-xl bg-teal-700 p-4 text-center text-xl font-bold">
         Monte Carlo Simulation for Production Planning
       </h1>
