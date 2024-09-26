@@ -25,15 +25,15 @@ export default function SimStats({
       value: minimum,
     },
     {
-      name: "Q1",
+      name: "25th Percentile",
       value: q1,
     },
     {
-      name: "Median",
+      name: "50th Percentile",
       value: median,
     },
     {
-      name: "Q3",
+      name: "75th Percentile",
       value: q3,
     },
     {
@@ -41,26 +41,26 @@ export default function SimStats({
       value: maximum,
     },
     {
-      name: "Mean",
+      name: "Average",
       value: mean,
     },
     {
-      name: "P(Lose Money)",
+      name: "Chance of Losing Money",
       value: pLoseMoney,
     },
     {
-      name: "VaR",
+      name: "Value at Risk",
       value: valueAtRisk,
     },
   ];
   return (
     <article className="flex w-full flex-col rounded-md border border-border p-4">
-      <h2 className="text-center font-bold">Simulation Statistics</h2>
+      <h2 className="text-center font-bold">Summary of Simulated Profits</h2>
       {stats.map((stat) => (
         <section key={stat.name} className="flex flex-row justify-between">
           <p className="text-md">{stat.name}:</p>
           <p className="text-md">
-            {stat.name == "P(Lose Money)"
+            {stat.name == "Chance of Losing Money"
               ? stat.value.toLocaleString("en-US", {
                   style: "percent",
                 })
