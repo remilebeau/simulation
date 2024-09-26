@@ -102,7 +102,7 @@ export default function ProductionForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-4 p-4"
+        className="flex flex-col gap-4 rounded-xl border border-white p-4"
       >
         <FormLabel>Unit Cost</FormLabel>
         <FormField
