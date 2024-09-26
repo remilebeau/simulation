@@ -7,7 +7,7 @@ type ResponseType = {
   q3: number;
   maximum: number;
   simulatedProfits: number[];
-  meanProfit: number;
+  mean: number;
   pLoseMoney: number;
   valueAtRisk: number;
 };

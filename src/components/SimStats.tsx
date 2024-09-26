@@ -4,7 +4,7 @@ type Props = {
   median: number;
   q3: number;
   maximum: number;
-  meanProfit: number;
+  mean: number;
   pLoseMoney: number;
   valueAtRisk: number;
 };
@@ -15,7 +15,7 @@ export default function SimStats({
   median,
   q3,
   maximum,
-  meanProfit,
+  mean,
   pLoseMoney,
   valueAtRisk,
 }: Props) {
@@ -42,7 +42,7 @@ export default function SimStats({
     },
     {
       name: "Mean",
-      value: meanProfit,
+      value: mean,
     },
     {
       name: "P(Lose Money)",
@@ -60,14 +60,14 @@ export default function SimStats({
         <section key={stat.name} className="flex flex-row justify-between">
           <p className="text-md">{stat.name}:</p>
           <p className="text-md">
-            {stat.name !== "P(Lose Money)"
+            {stat.name == "P(Lose Money)"
               ? stat.value.toLocaleString("en-US", {
+                  style: "percent",
+                })
+              : stat.value.toLocaleString("en-US", {
                   style: "currency",
                   currency: "USD",
                   maximumFractionDigits: 0,
-                })
-              : stat.value.toLocaleString("en-US", {
-                  style: "percent",
                 })}
           </p>
         </section>

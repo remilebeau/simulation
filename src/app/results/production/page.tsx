@@ -34,7 +34,7 @@ export default async function ProductionResults() {
     q3,
     maximum,
     simulatedProfits,
-    meanProfit,
+    mean,
     pLoseMoney,
     valueAtRisk,
   } = await simulateProduction(
@@ -111,7 +111,7 @@ export default async function ProductionResults() {
             median={median}
             q3={q3}
             maximum={maximum}
-            meanProfit={meanProfit}
+            mean={mean}
             pLoseMoney={pLoseMoney}
             valueAtRisk={valueAtRisk}
           />
