@@ -2,13 +2,11 @@ export default function HomePageInstructions() {
   return (
     <section className="flex flex-col gap-4 rounded-xl border border-white p-4">
       <p>
-        Input the parameters of your production scenario. The scenario will be
-        simulated 1000 times, and the resulting 1000 profits will be summarized
-        in a histogram.
+        Input the parameters to simulate a production scenario. The scenario
+        will be simulated 1000 times, and the resulting 1000 profits will be
+        summarized in a histogram.
       </p>
-      <p>
-        From this histogram, we can gain insight about our scenario, such as:
-      </p>
+      <p>The histogram can provide insight about the scenario, including:</p>
       <ul className="flex flex-col gap-2 sm:grid sm:grid-cols-2">
         <section className="flex flex-col">
           <li>What is the expected profit?</li>
