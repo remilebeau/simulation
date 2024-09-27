@@ -43,7 +43,8 @@ const formSchema = z
         fields.demandSD,
       ),
     {
-      message: "Please check that min <= mean <= max and min < max and sd >= 0",
+      message:
+        "Please check that (min <= mean <= max) and (min < max) and (sd >= 0)",
       path: ["unitCost"],
     },
   );
@@ -80,7 +81,7 @@ export default function ProductionForm() {
       productionQuantity,
     } = values;
     router.push(
-      `/results/production?unitCost=${unitCost}&unitPrice=${unitPrice}&salvagePrice=${salvagePrice}&demandMin=${demandMin ?? "0"}&demandMean=${demandMean ?? "0"}&demandMax=${demandMax ?? "0"}&demandSD=${demandSD ?? "0"}&fixedCost=${fixedCost}&productionQuantity=${productionQuantity}`,
+      `/results/production?unitCost=${unitCost}&unitPrice=${unitPrice}&salvagePrice=${salvagePrice}&demandMin=${demandMin}&demandMean=${demandMean}&demandMax=${demandMax}&demandSD=${demandSD}&fixedCost=${fixedCost}&productionQuantity=${productionQuantity}`,
     );
   }
 
