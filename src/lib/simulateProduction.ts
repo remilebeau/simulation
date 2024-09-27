@@ -2,14 +2,15 @@ import { redirect } from "next/navigation";
 
 type ResponseType = {
   minimum: number;
+  tenPercentile: number;
   q1: number;
   median: number;
   q3: number;
+  ninetyPercentile: number;
   maximum: number;
-  simulatedProfits: number[];
   mean: number;
   pLoseMoney: number;
-  valueAtRisk: number;
+  simulatedProfits: number[];
 };
 
 export async function simulateProduction(

@@ -1,28 +1,34 @@
 type Props = {
   minimum: number;
+  tenPercentile: number;
   q1: number;
   median: number;
   q3: number;
+  ninetyPercentile: number;
   maximum: number;
   mean: number;
   pLoseMoney: number;
-  valueAtRisk: number;
 };
 
 export default function SimStats({
   minimum,
+  tenPercentile,
   q1,
   median,
   q3,
+  ninetyPercentile,
   maximum,
   mean,
   pLoseMoney,
-  valueAtRisk,
 }: Props) {
   const stats = [
     {
       name: "Minimum",
       value: minimum,
+    },
+    {
+      name: "10th Percentile",
+      value: tenPercentile,
     },
     {
       name: "25th Percentile",
@@ -37,6 +43,10 @@ export default function SimStats({
       value: q3,
     },
     {
+      name: "90th Percentile",
+      value: ninetyPercentile,
+    },
+    {
       name: "Maximum",
       value: maximum,
     },
@@ -47,10 +57,6 @@ export default function SimStats({
     {
       name: "Chance of Losing Money",
       value: pLoseMoney,
-    },
-    {
-      name: "Value at Risk (5% level)",
-      value: valueAtRisk,
     },
   ];
   return (

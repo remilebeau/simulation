@@ -28,14 +28,15 @@ export default async function ProductionResults() {
 
   const {
     minimum,
+    tenPercentile,
     q1,
     median,
     q3,
+    ninetyPercentile,
     maximum,
-    simulatedProfits,
     mean,
     pLoseMoney,
-    valueAtRisk,
+    simulatedProfits,
   } = await simulateProduction(
     unitCost,
     unitPrice,
@@ -106,13 +107,14 @@ export default async function ProductionResults() {
           <Histogram values={simulatedProfits} />
           <SimStats
             minimum={minimum}
+            tenPercentile={tenPercentile}
             q1={q1}
             median={median}
             q3={q3}
+            ninetyPercentile={ninetyPercentile}
             maximum={maximum}
             mean={mean}
             pLoseMoney={pLoseMoney}
-            valueAtRisk={valueAtRisk}
           />
           {/* BACK BUTTON */}
           <button
