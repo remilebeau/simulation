@@ -22,11 +22,6 @@ export default function HomePageInstructions() {
           <li>What is the chance of a profit less than $X?</li>
         </section>
       </ul>
-      <p>
-        Although demand is random, thanks to our historical data, industry
-        knowledge, conversations with our sales and marketing team, and other
-        means, we typically have <i>some</i> idea of the randomness.
-      </p>
     </section>
   );
 }
