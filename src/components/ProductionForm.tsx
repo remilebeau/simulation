@@ -112,6 +112,7 @@ export default function ProductionForm() {
             <FormItem>
               <FormControl>
                 <Input
+                  placeholder="Variable costs per unit"
                   className="bg-black text-white"
                   type="number"
                   {...field}
@@ -129,6 +130,7 @@ export default function ProductionForm() {
             <FormItem>
               <FormControl>
                 <Input
+                  placeholder="Sell price per unit"
                   className="bg-black text-white"
                   type="number"
                   {...field}
@@ -146,6 +148,7 @@ export default function ProductionForm() {
             <FormItem>
               <FormControl>
                 <Input
+                  placeholder="Salvage value for each unit produced above demand"
                   className="bg-black text-white"
                   type="number"
                   {...field}
@@ -163,6 +166,7 @@ export default function ProductionForm() {
             <FormItem>
               <FormControl>
                 <Input
+                  placeholder="Total fixed costs of the production"
                   className="bg-black text-white"
                   type="number"
                   {...field}
@@ -180,6 +184,7 @@ export default function ProductionForm() {
             <FormItem>
               <FormControl>
                 <Input
+                  placeholder="Total production quantity"
                   className="bg-black text-white"
                   type="number"
                   {...field}
@@ -196,7 +201,7 @@ export default function ProductionForm() {
           value={distribution}
         >
           <SelectTrigger className="bg-black text-white">
-            <SelectValue placeholder="" />
+            <SelectValue placeholder="Choose a distribution" />
           </SelectTrigger>
           <SelectContent className="bg-black text-white">
             <SelectItem value="norm">Normal</SelectItem>
