@@ -23,6 +23,10 @@ export default function SimStats({
 }: Props) {
   const stats = [
     {
+      name: "Expected Profit",
+      value: mean,
+    },
+    {
       name: "Minimum",
       value: minimum,
     },
@@ -51,22 +55,17 @@ export default function SimStats({
       value: maximum,
     },
     {
-      name: "Average",
-      value: mean,
-    },
-    {
-      name: "Chance of Losing Money",
+      name: "P(Profit < 0)",
       value: pLoseMoney,
     },
   ];
   return (
-    <article className="flex w-full flex-col rounded-md border border-border p-4">
-      <h2 className="text-center font-bold">Summary of Simulated Profits</h2>
+    <section className="flex flex-col rounded-md border border-border p-4">
       {stats.map((stat) => (
-        <section key={stat.name} className="flex flex-row justify-between">
-          <p className="text-md">{stat.name}:</p>
-          <p className="text-md">
-            {stat.name == "Chance of Losing Money"
+        <ul key={stat.name} className="flex flex-row justify-between gap-4">
+          <li className="text-md">{stat.name}:</li>
+          <li className="text-md">
+            {stat.name == "P(Profit < 0)"
               ? stat.value.toLocaleString("en-US", {
                   style: "percent",
                 })
@@ -75,9 +74,9 @@ export default function SimStats({
                   currency: "USD",
                   maximumFractionDigits: 0,
                 })}
-          </p>
-        </section>
+          </li>
+        </ul>
       ))}
-    </article>
+    </section>
   );
 }
