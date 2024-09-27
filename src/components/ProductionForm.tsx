@@ -111,7 +111,11 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input className="text-black" type="number" {...field} />
+                <Input
+                  className="bg-black text-white"
+                  type="number"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -124,7 +128,11 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input className="text-black" type="number" {...field} />
+                <Input
+                  className="bg-black text-white"
+                  type="number"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -137,7 +145,11 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input className="text-black" type="number" {...field} />
+                <Input
+                  className="bg-black text-white"
+                  type="number"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -150,7 +162,11 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input className="text-black" type="number" {...field} />
+                <Input
+                  className="bg-black text-white"
+                  type="number"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -163,7 +179,11 @@ export default function ProductionForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input className="text-black" type="number" {...field} />
+                <Input
+                  className="bg-black text-white"
+                  type="number"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -175,10 +195,10 @@ export default function ProductionForm() {
           onValueChange={(value) => setDistribution(value)}
           value={distribution}
         >
-          <SelectTrigger className="text-black">
+          <SelectTrigger className="bg-black text-white">
             <SelectValue placeholder="" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="bg-black text-white">
             <SelectItem value="norm">Normal</SelectItem>
             <SelectItem value="triangular">Triangular</SelectItem>
             <SelectItem value="truncnorm">Truncated Normal</SelectItem>
@@ -197,7 +217,11 @@ export default function ProductionForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input className="text-black" type="number" {...field} />
+                    <Input
+                      className="bg-black text-white"
+                      type="number"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -217,7 +241,11 @@ export default function ProductionForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input className="text-black" type="number" {...field} />
+                    <Input
+                      className="bg-black text-white"
+                      type="number"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -237,7 +265,11 @@ export default function ProductionForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input className="text-black" type="number" {...field} />
+                    <Input
+                      className="bg-black text-white"
+                      type="number"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -255,7 +287,11 @@ export default function ProductionForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input className="text-black" type="number" {...field} />
+                    <Input
+                      className="bg-black text-white"
+                      type="number"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
