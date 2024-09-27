@@ -1,10 +1,11 @@
 "use client";
 import dynamic from "next/dynamic";
 import simulateProduction from "@/lib/simulateProduction";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import ModelInputs from "@/components/ModelInputs";
+import BackButton from "@/components/BackButton";
 
 export default async function ProductionResults() {
-  const router = useRouter();
   const searchParams = useSearchParams();
 
   // client component imports
@@ -53,57 +54,21 @@ export default async function ProductionResults() {
     <>
       {simulatedProfits && (
         <main className="mx-auto flex max-w-4xl flex-col items-center gap-4 p-4">
-          {/* BACK BUTTON */}
-          <button
-            className="w-full rounded-xl bg-teal-700 text-3xl font-bold transition-all duration-300 ease-in-out hover:bg-black"
-            onClick={() => router.push("/")}
-          >
-            Go Back
-          </button>
+          <BackButton />
           <h1 className="text-xl font-bold sm:text-2xl">
             Production Simulation Results
           </h1>
-          {/* MODEL INPUTS SECTION */}
-          <ul className="flex flex-col gap-4 rounded-md border border-white p-4 sm:grid sm:grid-cols-2">
-            <li>
-              <b>Unit Cost:</b> {Number(unitCost).toLocaleString("en-US")}
-            </li>
-            <li>
-              <b>Unit Price:</b> {Number(unitPrice).toLocaleString("en-US")}
-            </li>
-            <li>
-              <b>Salvage Price:</b>{" "}
-              {Number(salvagePrice).toLocaleString("en-US")}
-            </li>
-            <li>
-              <b>Fixed Cost:</b> {Number(fixedCost).toLocaleString("en-US")}
-            </li>
-            <li>
-              <b>Production Quantity:</b>{" "}
-              {Number(productionQuantity).toLocaleString("en-US")}
-            </li>
-            {demandMin !== "0" && (
-              <li>
-                <b>Min Demand:</b> {Number(demandMin).toLocaleString("en-US")}
-              </li>
-            )}
-            {demandMean !== "0" && (
-              <li>
-                <b>Mean Demand:</b> {Number(demandMean).toLocaleString("en-US")}
-              </li>
-            )}
-            {demandMax !== "0" && (
-              <li>
-                <b>Max Demand:</b> {Number(demandMax).toLocaleString("en-US")}
-              </li>
-            )}
-            {demandSD !== "0" && (
-              <li>
-                <b>Demand Standard Deviation:</b>{" "}
-                {Number(demandSD).toLocaleString("en-US")}
-              </li>
-            )}
-          </ul>
+          <ModelInputs
+            unitCost={unitCost}
+            unitPrice={unitPrice}
+            salvagePrice={salvagePrice}
+            demandMin={demandMin}
+            demandMean={demandMean}
+            demandMax={demandMax}
+            demandSD={demandSD}
+            fixedCost={fixedCost}
+            productionQuantity={productionQuantity}
+          />
           <Histogram values={simulatedProfits} />
           <SimStats
             minimum={minimum}
@@ -116,13 +81,7 @@ export default async function ProductionResults() {
             mean={mean}
             pLoseMoney={pLoseMoney}
           />
-          {/* BACK BUTTON */}
-          <button
-            className="w-full rounded-xl bg-teal-700 text-3xl font-bold transition-all duration-300 ease-in-out hover:bg-black"
-            onClick={() => router.push("/")}
-          >
-            Go Back
-          </button>
+          <BackButton />
         </main>
       )}
     </>
