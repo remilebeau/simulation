@@ -7,21 +7,12 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { useState } from "react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { determineDistribution } from "@/lib/validation";
+import { isValidInput } from "@/lib/validation";
 
 // define form schema
 
@@ -30,15 +21,12 @@ const formSchema = z
     unitCost: z.coerce.number(),
     unitPrice: z.coerce.number(),
     salvagePrice: z.coerce.number(),
-    demandMin: z.coerce.number().optional(),
-    demandMean: z.coerce.number().optional(),
-    demandMax: z.coerce.number().optional(),
-    demandSD: z.coerce
-      .number()
-      .gte(0, {
-        message: "Standard deviation must be greater than or equal to 0",
-      })
-      .optional(),
+    demandMin: z.coerce.number(),
+    demandMean: z.coerce.number(),
+    demandMax: z.coerce.number(),
+    demandSD: z.coerce.number().gte(0, {
+      message: "Standard deviation must be greater than or equal to 0",
+    }),
     fixedCost: z.coerce.number(),
     productionQuantity: z.coerce.number().gt(0, {
       message: "Production quantity must be greater than 0",
@@ -47,23 +35,21 @@ const formSchema = z
 
   .refine(
     (fields) =>
-      // validate that demand follows a triangular, truncated normal, uniform, or normal distribution
-      determineDistribution(
+      // validate input
+      isValidInput(
         fields.demandMin,
         fields.demandMean,
         fields.demandMax,
         fields.demandSD,
-      ) !== null,
+      ),
     {
-      message:
-        "Demand must follow a triangular, truncated normal, uniform, or normal distribution",
+      message: "Please check that min <= mean <= max and min < max and sd >= 0",
       path: ["unitCost"],
     },
   );
 
 export default function ProductionForm() {
   const router = useRouter();
-  const [distribution, setDistribution] = useState<string>("");
   // define form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -112,6 +98,7 @@ export default function ProductionForm() {
             <FormItem>
               <FormControl>
                 <Input
+                  required
                   placeholder="Variable costs per unit"
                   className="bg-black text-white"
                   type="number"
@@ -130,6 +117,7 @@ export default function ProductionForm() {
             <FormItem>
               <FormControl>
                 <Input
+                  required
                   placeholder="Sell price per unit"
                   className="bg-black text-white"
                   type="number"
@@ -148,6 +136,7 @@ export default function ProductionForm() {
             <FormItem>
               <FormControl>
                 <Input
+                  required
                   placeholder="Salvage value for each unit produced above demand"
                   className="bg-black text-white"
                   type="number"
@@ -166,6 +155,7 @@ export default function ProductionForm() {
             <FormItem>
               <FormControl>
                 <Input
+                  required
                   placeholder="Total fixed costs of the production"
                   className="bg-black text-white"
                   type="number"
@@ -184,6 +174,7 @@ export default function ProductionForm() {
             <FormItem>
               <FormControl>
                 <Input
+                  required
                   placeholder="Total production quantity"
                   className="bg-black text-white"
                   type="number"
@@ -195,115 +186,85 @@ export default function ProductionForm() {
           )}
         />
 
-        <Label htmlFor="option">Demand Distribution</Label>
-        <Select
-          onValueChange={(value) => setDistribution(value)}
-          value={distribution}
-        >
-          <SelectTrigger className="bg-black text-white">
-            <SelectValue placeholder="Choose a distribution" />
-          </SelectTrigger>
-          <SelectContent className="bg-black text-white">
-            <SelectItem value="norm">Normal</SelectItem>
-            <SelectItem value="triangular">Triangular</SelectItem>
-            <SelectItem value="truncnorm">Truncated Normal</SelectItem>
-            <SelectItem value="uniform">Uniform</SelectItem>
-          </SelectContent>
-        </Select>
-        {/* conditional rendering for min demand */}
-        {(distribution === "triangular" ||
-          distribution === "truncnorm" ||
-          distribution === "uniform") && (
-          <>
-            <FormLabel>Min Demand</FormLabel>
-            <FormField
-              control={form.control}
-              name="demandMin"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      className="bg-black text-white"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        )}
-        {/* conditional rendering for mean demand*/}
-        {(distribution === "triangular" ||
-          distribution === "truncnorm" ||
-          distribution === "norm") && (
-          <>
-            <FormLabel>Mean Demand</FormLabel>
-            <FormField
-              control={form.control}
-              name="demandMean"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      className="bg-black text-white"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        )}
-        {/* conditional rendering for max demand */}
-        {(distribution === "triangular" ||
-          distribution === "truncnorm" ||
-          distribution === "uniform") && (
-          <>
-            <FormLabel>Max Demand</FormLabel>
-            <FormField
-              control={form.control}
-              name="demandMax"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      className="bg-black text-white"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        )}
-        {/* conditional rendering for demand standard deviation */}
-        {(distribution === "truncnorm" || distribution === "norm") && (
-          <>
-            <FormLabel>Demand Standard Deviation</FormLabel>
-            <FormField
-              control={form.control}
-              name="demandSD"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      className="bg-black text-white"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </>
-        )}
+        <FormLabel>Min Demand</FormLabel>
+        <FormField
+          control={form.control}
+          name="demandMin"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input
+                  required
+                  placeholder="Minimum forecasted demand"
+                  className="bg-black text-white"
+                  type="number"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormLabel>Mean Demand</FormLabel>
+        <FormField
+          control={form.control}
+          name="demandMean"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input
+                  required
+                  placeholder="Expected demand"
+                  className="bg-black text-white"
+                  type="number"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormLabel>Max Demand</FormLabel>
+        <FormField
+          control={form.control}
+          name="demandMax"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input
+                  required
+                  placeholder="Maximum forecasted demand"
+                  className="bg-black text-white"
+                  type="number"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormLabel>Demand Standard Deviation</FormLabel>
+        <FormField
+          control={form.control}
+          name="demandSD"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input
+                  required
+                  placeholder="Set to 0 if unknown"
+                  className="bg-black text-white"
+                  type="number"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <button
           className="w-full rounded-xl bg-teal-700 p-4 font-bold transition-all duration-300 ease-in-out hover:bg-black"
