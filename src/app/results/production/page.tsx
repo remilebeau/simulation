@@ -29,11 +29,13 @@ export default async function ProductionResults() {
 
   const {
     minimum,
+    fivePercentile,
     tenPercentile,
     q1,
     median,
     q3,
     ninetyPercentile,
+    ninetyFivePercentile,
     maximum,
     mean,
     pLoseMoney,
@@ -72,11 +74,13 @@ export default async function ProductionResults() {
           <Histogram values={simulatedProfits} />
           <SimStats
             minimum={minimum}
+            fivePercentile={fivePercentile}
             tenPercentile={tenPercentile}
             q1={q1}
             median={median}
             q3={q3}
             ninetyPercentile={ninetyPercentile}
+            ninetyFivePercentile={ninetyFivePercentile}
             maximum={maximum}
             mean={mean}
             pLoseMoney={pLoseMoney}
