@@ -2,16 +2,17 @@ import { redirect } from "next/navigation";
 
 type ResponseType = {
   minimum: number;
-  fivePercentile: number;
-  tenPercentile: number;
+  valueAtRisk: number;
   q1: number;
+  mean: number;
+  meanLowerCI: number;
+  meanUpperCI: number;
   median: number;
   q3: number;
-  ninetyPercentile: number;
-  ninetyFivePercentile: number;
   maximum: number;
-  mean: number;
   pLoseMoney: number;
+  pLoseMoneyLowerCI: number;
+  pLoseMoneyUpperCI: number;
   simulatedProfits: number[];
 };
 

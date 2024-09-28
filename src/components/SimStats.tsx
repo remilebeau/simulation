@@ -1,50 +1,56 @@
 type Props = {
   minimum: number;
-  fivePercentile: number;
-  tenPercentile: number;
+  valueAtRisk: number;
   q1: number;
+  mean: number;
+  meanLowerCI: number;
+  meanUpperCI: number;
   median: number;
   q3: number;
-  ninetyPercentile: number;
-  ninetyFivePercentile: number;
   maximum: number;
-  mean: number;
   pLoseMoney: number;
+  pLoseMoneyLowerCI: number;
+  pLoseMoneyUpperCI: number;
 };
 
 export default function SimStats({
   minimum,
-  fivePercentile,
-  tenPercentile,
+  valueAtRisk,
   q1,
+  mean,
+  meanLowerCI,
+  meanUpperCI,
   median,
   q3,
-  ninetyPercentile,
-  ninetyFivePercentile,
   maximum,
-  mean,
   pLoseMoney,
+  pLoseMoneyLowerCI,
+  pLoseMoneyUpperCI,
 }: Props) {
   const stats = [
-    {
-      name: "Expected Profit",
-      value: mean,
-    },
     {
       name: "Minimum",
       value: minimum,
     },
     {
-      name: "5th Percentile",
-      value: fivePercentile,
-    },
-    {
-      name: "10th Percentile",
-      value: tenPercentile,
+      name: "Value at Risk (5%)",
+      value: valueAtRisk,
     },
     {
       name: "25th Percentile",
       value: q1,
+    },
+    {
+      name: "Expected Profit",
+      value: mean,
+    },
+    {
+      name: "E(Profit) Lower 95% CI",
+      value: meanLowerCI,
+    },
+    {
+      name: "E(Profit) Upper 95% CI",
+      value: meanUpperCI,
     },
     {
       name: "50th Percentile",
@@ -55,20 +61,20 @@ export default function SimStats({
       value: q3,
     },
     {
-      name: "90th Percentile",
-      value: ninetyPercentile,
-    },
-    {
-      name: "95th Percentile",
-      value: ninetyFivePercentile,
-    },
-    {
       name: "Maximum",
       value: maximum,
     },
     {
       name: "P(Profit < 0)",
       value: pLoseMoney,
+    },
+    {
+      name: "P(Profit < 0) Lower 95% CI",
+      value: pLoseMoneyLowerCI,
+    },
+    {
+      name: "P(Profit < 0) Upper 95% CI",
+      value: pLoseMoneyUpperCI,
     },
   ];
   return (
@@ -77,7 +83,7 @@ export default function SimStats({
         <ul key={stat.name} className="flex flex-row justify-between gap-4">
           <li className="text-md">{stat.name}:</li>
           <li className="text-md">
-            {stat.name == "P(Profit < 0)"
+            {stat.name.includes("P(Profit")
               ? stat.value.toLocaleString("en-US", {
                   style: "percent",
                 })
