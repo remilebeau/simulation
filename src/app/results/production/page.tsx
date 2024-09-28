@@ -32,14 +32,10 @@ export default async function ProductionResults() {
     valueAtRisk,
     q1,
     mean,
-    meanLowerCI,
-    meanUpperCI,
     median,
     q3,
     maximum,
     pLoseMoney,
-    pLoseMoneyLowerCI,
-    pLoseMoneyUpperCI,
     simulatedProfits,
   } = await simulateProduction(
     unitCost,
@@ -78,14 +74,10 @@ export default async function ProductionResults() {
             valueAtRisk={valueAtRisk}
             q1={q1}
             mean={mean}
-            meanLowerCI={meanLowerCI}
-            meanUpperCI={meanUpperCI}
             median={median}
             q3={q3}
             maximum={maximum}
             pLoseMoney={pLoseMoney}
-            pLoseMoneyLowerCI={pLoseMoneyLowerCI}
-            pLoseMoneyUpperCI={pLoseMoneyUpperCI}
           />
           <BackButton />
         </main>
