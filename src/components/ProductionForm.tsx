@@ -129,6 +129,7 @@ export default function ProductionForm() {
             </FormItem>
           )}
         />
+
         <FormLabel>Salvage Price</FormLabel>
         <FormField
           control={form.control}
@@ -148,6 +149,7 @@ export default function ProductionForm() {
             </FormItem>
           )}
         />
+
         <FormLabel>Fixed Costs</FormLabel>
         <FormField
           control={form.control}
@@ -167,27 +169,8 @@ export default function ProductionForm() {
             </FormItem>
           )}
         />
-        <FormLabel>Production Quantity</FormLabel>
-        <FormField
-          control={form.control}
-          name="productionQuantity"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  required
-                  placeholder="Total production quantity"
-                  className="bg-black text-white"
-                  type="number"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
 
-        <FormLabel>Min Demand</FormLabel>
+        <FormLabel>Minimum Demand</FormLabel>
         <FormField
           control={form.control}
           name="demandMin"
@@ -196,7 +179,7 @@ export default function ProductionForm() {
               <FormControl>
                 <Input
                   required
-                  placeholder="Minimum forecasted demand"
+                  placeholder="Minimum value of forecasted demand"
                   className="bg-black text-white"
                   type="number"
                   {...field}
@@ -207,7 +190,7 @@ export default function ProductionForm() {
           )}
         />
 
-        <FormLabel>Mean Demand</FormLabel>
+        <FormLabel>Expected Demand</FormLabel>
         <FormField
           control={form.control}
           name="demandMean"
@@ -216,7 +199,7 @@ export default function ProductionForm() {
               <FormControl>
                 <Input
                   required
-                  placeholder="Expected demand"
+                  placeholder="Expected value of forecasted demand"
                   className="bg-black text-white"
                   type="number"
                   {...field}
@@ -227,7 +210,7 @@ export default function ProductionForm() {
           )}
         />
 
-        <FormLabel>Max Demand</FormLabel>
+        <FormLabel>Maximum Demand</FormLabel>
         <FormField
           control={form.control}
           name="demandMax"
@@ -236,7 +219,7 @@ export default function ProductionForm() {
               <FormControl>
                 <Input
                   required
-                  placeholder="Maximum forecasted demand"
+                  placeholder="Maximum value of forecasted demand"
                   className="bg-black text-white"
                   type="number"
                   {...field}
@@ -257,6 +240,26 @@ export default function ProductionForm() {
                 <Input
                   required
                   placeholder="Set to 0 if unknown"
+                  className="bg-black text-white"
+                  type="number"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormLabel>Production Quantity</FormLabel>
+        <FormField
+          control={form.control}
+          name="productionQuantity"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input
+                  required
+                  placeholder="Total production quantity"
                   className="bg-black text-white"
                   type="number"
                   {...field}
