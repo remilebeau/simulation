@@ -13,15 +13,15 @@ type ResponseType = {
 };
 
 export async function simulateProduction(
-  unitCost: string,
-  unitPrice: string,
-  salvagePrice: string,
-  demandMin: string,
-  demandMode: string,
-  demandMax: string,
-  demandSD: string,
-  fixedCost: string,
-  productionQuantity: string,
+  unitCost: number,
+  unitPrice: number,
+  salvagePrice: number,
+  demandMin: number,
+  demandMode: number,
+  demandMax: number,
+  demandSD: number,
+  fixedCost: number,
+  productionQuantity: number,
 ): Promise<ResponseType> {
   const DATA_URL =
     process.env.NODE_ENV === "production"
