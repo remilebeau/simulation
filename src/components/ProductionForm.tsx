@@ -87,7 +87,6 @@ export default function ProductionForm() {
   // define submit handler
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 5000));
     const {
       unitCost,
       unitPrice,
