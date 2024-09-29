@@ -16,6 +16,7 @@ import simulateProduction from "@/lib/simulateProduction";
 import { useState } from "react";
 import Histogram from "./Histogram";
 import SimStats from "./SimStats";
+import { LoaderCircle } from "lucide-react";
 
 // define form schema
 
@@ -64,6 +65,9 @@ export default function ProductionForm() {
   const [pLoseMoney, setPLoseMoney] = useState(0);
   const [simulatedProfits, setSimulatedProfits] = useState<number[]>([]);
 
+  // define loading state
+  const [isLoading, setIsLoading] = useState(false);
+
   // define form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -82,6 +86,8 @@ export default function ProductionForm() {
 
   // define submit handler
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 5000));
     const {
       unitCost,
       unitPrice,
@@ -123,11 +129,21 @@ export default function ProductionForm() {
     setMaximum(maximum);
     setPLoseMoney(pLoseMoney);
     setSimulatedProfits(simulatedProfits);
+    setIsLoading(false);
   }
 
   return (
     <>
-      {simulatedProfits.length > 0 && (
+      {isLoading && (
+        <section className="flex flex-col items-center gap-4">
+          <LoaderCircle className="size-16 animate-spin" />
+          <h1 className="text-3xl font-bold">Loading...</h1>
+          <h2 className="text-2xl font-bold">
+            The first request may take up to 30 seconds...
+          </h2>
+        </section>
+      )}
+      {simulatedProfits.length > 0 && !isLoading && (
         <>
           <Histogram values={simulatedProfits} />
           <SimStats
@@ -142,198 +158,200 @@ export default function ProductionForm() {
           />
         </>
       )}
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-col gap-4 rounded-xl border border-white p-4"
-        >
-          <FormLabel>Unit Cost</FormLabel>
-          <FormField
-            control={form.control}
-            name="unitCost"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    required
-                    placeholder="Variable costs per unit"
-                    className="bg-black text-white"
-                    type="number"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormLabel>Unit Price</FormLabel>
-          <FormField
-            control={form.control}
-            name="unitPrice"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    required
-                    placeholder="Sell price per unit"
-                    className="bg-black text-white"
-                    type="number"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormLabel>Salvage Price</FormLabel>
-          <FormField
-            control={form.control}
-            name="salvagePrice"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    required
-                    placeholder="Salvage value for each unit produced above demand"
-                    className="bg-black text-white"
-                    type="number"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormLabel>Fixed Costs</FormLabel>
-          <FormField
-            control={form.control}
-            name="fixedCost"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    required
-                    placeholder="Total fixed costs of the production"
-                    className="bg-black text-white"
-                    type="number"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormLabel>Minimum Demand</FormLabel>
-          <FormField
-            control={form.control}
-            name="demandMin"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    required
-                    placeholder="Minimum value of forecasted demand"
-                    className="bg-black text-white"
-                    type="number"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormLabel>Expected Demand</FormLabel>
-          <FormField
-            control={form.control}
-            name="demandMean"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    required
-                    placeholder="Expected value of forecasted demand"
-                    className="bg-black text-white"
-                    type="number"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormLabel>Maximum Demand</FormLabel>
-          <FormField
-            control={form.control}
-            name="demandMax"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    required
-                    placeholder="Maximum value of forecasted demand"
-                    className="bg-black text-white"
-                    type="number"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormLabel>Demand Standard Deviation</FormLabel>
-          <FormField
-            control={form.control}
-            name="demandSD"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    required
-                    placeholder="Set to 0 if unknown"
-                    className="bg-black text-white"
-                    type="number"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormLabel>Production Quantity</FormLabel>
-          <FormField
-            control={form.control}
-            name="productionQuantity"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    required
-                    placeholder="Total production quantity"
-                    className="bg-black text-white"
-                    type="number"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <button
-            className="w-full rounded-xl bg-teal-700 p-4 font-bold transition-all duration-300 ease-in-out hover:bg-black"
-            type="submit"
+      {!isLoading && (
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col gap-4 rounded-xl border border-white p-4"
           >
-            Submit
-          </button>
-        </form>
-      </Form>
+            <FormLabel>Unit Cost</FormLabel>
+            <FormField
+              control={form.control}
+              name="unitCost"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      required
+                      placeholder="Variable costs per unit"
+                      className="bg-black text-white"
+                      type="number"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormLabel>Unit Price</FormLabel>
+            <FormField
+              control={form.control}
+              name="unitPrice"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      required
+                      placeholder="Sell price per unit"
+                      className="bg-black text-white"
+                      type="number"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormLabel>Salvage Price</FormLabel>
+            <FormField
+              control={form.control}
+              name="salvagePrice"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      required
+                      placeholder="Salvage value for each unit produced above demand"
+                      className="bg-black text-white"
+                      type="number"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormLabel>Fixed Costs</FormLabel>
+            <FormField
+              control={form.control}
+              name="fixedCost"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      required
+                      placeholder="Total fixed costs of the production"
+                      className="bg-black text-white"
+                      type="number"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormLabel>Minimum Demand</FormLabel>
+            <FormField
+              control={form.control}
+              name="demandMin"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      required
+                      placeholder="Minimum value of forecasted demand"
+                      className="bg-black text-white"
+                      type="number"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormLabel>Expected Demand</FormLabel>
+            <FormField
+              control={form.control}
+              name="demandMean"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      required
+                      placeholder="Expected value of forecasted demand"
+                      className="bg-black text-white"
+                      type="number"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormLabel>Maximum Demand</FormLabel>
+            <FormField
+              control={form.control}
+              name="demandMax"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      required
+                      placeholder="Maximum value of forecasted demand"
+                      className="bg-black text-white"
+                      type="number"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormLabel>Demand Standard Deviation</FormLabel>
+            <FormField
+              control={form.control}
+              name="demandSD"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      required
+                      placeholder="Set to 0 if unknown"
+                      className="bg-black text-white"
+                      type="number"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormLabel>Production Quantity</FormLabel>
+            <FormField
+              control={form.control}
+              name="productionQuantity"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      required
+                      placeholder="Total production quantity"
+                      className="bg-black text-white"
+                      type="number"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <button
+              className="w-full rounded-xl bg-teal-700 p-4 font-bold transition-all duration-300 ease-in-out hover:bg-black"
+              type="submit"
+            >
+              Submit
+            </button>
+          </form>
+        </Form>
+      )}
     </>
   );
 }
