@@ -59,10 +59,14 @@ export default function ProductionForm() {
   const [valueAtRisk, setValueAtRisk] = useState(0);
   const [q1, setQ1] = useState(0);
   const [mean, setMean] = useState(0);
+  const [meanLowerCI, setMeanLowerCI] = useState(0);
+  const [meanUpperCI, setMeanUpperCI] = useState(0);
   const [median, setMedian] = useState(0);
   const [q3, setQ3] = useState(0);
   const [maximum, setMaximum] = useState(0);
   const [pLoseMoney, setPLoseMoney] = useState(0);
+  const [pLoseMoneyLowerCI, setPLoseMoneyLowerCI] = useState(0);
+  const [pLoseMoneyUpperCI, setPLoseMoneyUpperCI] = useState(0);
   const [simulatedProfits, setSimulatedProfits] = useState<number[]>([]);
 
   // define loading state
@@ -103,10 +107,14 @@ export default function ProductionForm() {
       valueAtRisk,
       q1,
       mean,
+      meanLowerCI,
+      meanUpperCI,
       median,
       q3,
       maximum,
       pLoseMoney,
+      pLoseMoneyLowerCI,
+      pLoseMoneyUpperCI,
       simulatedProfits,
     } = await simulateProduction(
       unitCost,
@@ -123,10 +131,14 @@ export default function ProductionForm() {
     setValueAtRisk(valueAtRisk);
     setQ1(q1);
     setMean(mean);
+    setMeanLowerCI(meanLowerCI);
+    setMeanUpperCI(meanUpperCI);
     setMedian(median);
     setQ3(q3);
     setMaximum(maximum);
     setPLoseMoney(pLoseMoney);
+    setPLoseMoneyLowerCI(pLoseMoneyLowerCI);
+    setPLoseMoneyUpperCI(pLoseMoneyUpperCI);
     setSimulatedProfits(simulatedProfits);
     setIsLoading(false);
   }
@@ -150,10 +162,14 @@ export default function ProductionForm() {
             valueAtRisk={valueAtRisk}
             q1={q1}
             mean={mean}
+            meanLowerCI={meanLowerCI}
+            meanUpperCI={meanUpperCI}
             median={median}
             q3={q3}
             maximum={maximum}
             pLoseMoney={pLoseMoney}
+            pLoseMoneyLowerCI={pLoseMoneyLowerCI}
+            pLoseMoneyUpperCI={pLoseMoneyUpperCI}
           />
         </>
       )}
