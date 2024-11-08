@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Simulation",
+  title: "Monte Carlo Simulation",
   description: "Monte Carlo simulation for production planning.",
 };
 

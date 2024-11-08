@@ -359,7 +359,7 @@ export default function ProductionForm() {
             />
 
             <button
-              className="w-full rounded-xl bg-teal-700 p-4 font-bold transition-all duration-300 ease-in-out hover:bg-black"
+              className="w-full rounded-xl bg-white p-4 font-bold text-black transition-all duration-300 ease-in-out hover:bg-black hover:text-white"
               type="submit"
             >
               Submit
