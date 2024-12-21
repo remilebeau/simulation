@@ -1,4 +1,4 @@
-export default function HomePageInstructions() {
+export default function ProductionInstructions() {
   return (
     <section className="flex flex-col gap-4 rounded-xl border border-white p-4">
       <p>
