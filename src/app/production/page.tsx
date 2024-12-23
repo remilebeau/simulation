@@ -1,4 +1,4 @@
-import BackButton from "@/components/BackButton";
+import Button from "@/components/Button";
 import ProductionInstructions from "@/components/ProductionInstructions";
 import dynamic from "next/dynamic";
 
@@ -12,7 +12,7 @@ export default function HomePage() {
       <h1 className="w-full rounded-xl bg-white p-4 text-center text-xl font-bold text-black">
         Monte Carlo Simulation for Production Planning
       </h1>
-      <BackButton />
+      <Button href="/" label="Go Back" />
       <ProductionInstructions />
       <ProductionForm />
     </main>

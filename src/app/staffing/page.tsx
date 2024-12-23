@@ -1,4 +1,4 @@
-import BackButton from "@/components/BackButton";
+import Button from "@/components/Button";
 import OptimizationInstructions from "@/components/OptimizationInstructions";
 import dynamic from "next/dynamic";
 
@@ -15,7 +15,7 @@ export default function HomePage() {
       <h1 className="w-full rounded-xl bg-white p-4 text-center text-xl font-bold text-black">
         Optimization Model for Staffing
       </h1>
-      <BackButton />
+      <Button href="/" label="Go Back" />
       <OptimizationInstructions />
       <OptimizationForm />
     </main>
