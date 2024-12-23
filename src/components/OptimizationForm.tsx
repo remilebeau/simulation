@@ -18,13 +18,13 @@ import optimization from "@/lib/optimization";
 // define form schema
 
 const formSchema = z.object({
-  monday: z.coerce.number().gt(0),
-  tuesday: z.coerce.number().gt(0),
-  wednesday: z.coerce.number().gt(0),
-  thursday: z.coerce.number().gt(0),
-  friday: z.coerce.number().gt(0),
-  saturday: z.coerce.number().gt(0),
-  sunday: z.coerce.number().gt(0),
+  monday: z.coerce.number().gte(0),
+  tuesday: z.coerce.number().gte(0),
+  wednesday: z.coerce.number().gte(0),
+  thursday: z.coerce.number().gte(0),
+  friday: z.coerce.number().gte(0),
+  saturday: z.coerce.number().gte(0),
+  sunday: z.coerce.number().gte(0),
 });
 
 export default function ProductionForm() {
