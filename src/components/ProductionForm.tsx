@@ -14,9 +14,9 @@ import { z } from "zod";
 import { isValidInput } from "@/lib/validation";
 import simulateProduction from "@/lib/simulateProduction";
 import { useState } from "react";
-import Histogram from "./Histogram";
-import SimStats from "./SimStats";
-import { LoaderCircle } from "lucide-react";
+import Histogram from "@/components/Histogram";
+import SimStats from "@/components/SimStats";
+import Loader from "@/components/Loader";
 
 // define form schema
 
@@ -145,15 +145,7 @@ export default function ProductionForm() {
 
   return (
     <>
-      {isLoading && (
-        <section className="flex flex-col items-center gap-4">
-          <LoaderCircle className="size-16 animate-spin" />
-          <h1 className="text-3xl font-bold">Loading...</h1>
-          <h2 className="text-2xl font-bold">
-            The first request may take up to 30 seconds...
-          </h2>
-        </section>
-      )}
+      {isLoading && <Loader />}
       {simulatedProfits.length > 0 && !isLoading && (
         <>
           <Histogram values={simulatedProfits} />
