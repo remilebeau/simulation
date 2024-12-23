@@ -103,13 +103,13 @@ export default function ProductionForm() {
       {!isLoading && objFuncVal && (
         <section>
           <p>Minimum number of staff required: {objFuncVal}</p>
-          <p>Number of Monday to Friday workers: {xMonday}</p>
-          <p>Number of Tuesday to Saturday workers: {xTuesday}</p>
-          <p>Number of Wednesday to Sunday workers: {xWednesday}</p>
-          <p>Number of Thursday to Monday workers: {xThursday}</p>
-          <p>Number of Friday to Tuesday workers: {xFriday}</p>
-          <p>Number of Saturday to Wednesday workers: {xSaturday}</p>
-          <p>Number of Sunday to Thursday workers: {xSunday}</p>
+          <p>Number of Monday to Friday staff: {xMonday}</p>
+          <p>Number of Tuesday to Saturday staff: {xTuesday}</p>
+          <p>Number of Wednesday to Sunday staff: {xWednesday}</p>
+          <p>Number of Thursday to Monday staff: {xThursday}</p>
+          <p>Number of Friday to Tuesday staff: {xFriday}</p>
+          <p>Number of Saturday to Wednesday staff: {xSaturday}</p>
+          <p>Number of Sunday to Thursday staff: {xSunday}</p>
         </section>
       )}
       {!isLoading && (
@@ -127,7 +127,7 @@ export default function ProductionForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Number of workers needed every Monday"
+                      placeholder="Number of staff required every Monday"
                       className="bg-black text-white"
                       type="number"
                       {...field}
@@ -146,7 +146,7 @@ export default function ProductionForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Number of workers needed every Tuesday"
+                      placeholder="Number of staff required every Tuesday"
                       className="bg-black text-white"
                       type="number"
                       {...field}
@@ -166,7 +166,7 @@ export default function ProductionForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Number of workers needed every Wednesday"
+                      placeholder="Number of staff required every Wednesday"
                       className="bg-black text-white"
                       type="number"
                       {...field}
@@ -186,7 +186,7 @@ export default function ProductionForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Number of workers needed every Thursday"
+                      placeholder="Number of staff required every Thursday"
                       className="bg-black text-white"
                       type="number"
                       {...field}
@@ -206,7 +206,7 @@ export default function ProductionForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Number of workers needed every Friday"
+                      placeholder="Number of staff required every Friday"
                       className="bg-black text-white"
                       type="number"
                       {...field}
@@ -226,7 +226,7 @@ export default function ProductionForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Number of workers needed every Saturday"
+                      placeholder="Number of staff required every Saturday"
                       className="bg-black text-white"
                       type="number"
                       {...field}
@@ -246,7 +246,7 @@ export default function ProductionForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Number of workers needed every Sunday"
+                      placeholder="Number of staff required every Sunday"
                       className="bg-black text-white"
                       type="number"
                       {...field}
