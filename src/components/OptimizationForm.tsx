@@ -29,7 +29,7 @@ const formSchema = z.object({
 
 export default function ProductionForm() {
   // define state for simulation results
-  const [objFuncVal, setObjFuncVal] = useState(0);
+  const [objFuncVal, setObjFuncVal] = useState<number | undefined>(undefined);
   const [xMonday, setXMonday] = useState(0);
   const [xTuesday, setXTuesday] = useState(0);
   const [xWednesday, setXWednesday] = useState(0);
@@ -100,7 +100,7 @@ export default function ProductionForm() {
           </h2>
         </section>
       )}
-      {!isLoading && objFuncVal !== 0 && (
+      {!isLoading && objFuncVal && (
         <section>
           <p>Minimum number of staff required: {objFuncVal}</p>
           <p>Number of Monday to Friday workers: {xMonday}</p>
