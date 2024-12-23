@@ -12,8 +12,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useState } from "react";
-import { LoaderCircle } from "lucide-react";
 import optimization from "@/lib/optimization";
+import OptimizationResults from "@/components/OptimizationResults";
+import Loader from "@/components/Loader";
 
 // define form schema
 
@@ -91,26 +92,18 @@ export default function ProductionForm() {
 
   return (
     <>
-      {isLoading && (
-        <section className="flex flex-col items-center gap-4">
-          <LoaderCircle className="size-16 animate-spin" />
-          <h1 className="text-3xl font-bold">Loading...</h1>
-          <h2 className="text-2xl font-bold">
-            The first request may take up to 30 seconds...
-          </h2>
-        </section>
-      )}
+      {isLoading && <Loader />}
       {!isLoading && objFuncVal && (
-        <section>
-          <p>Minimum number of staff required: {objFuncVal}</p>
-          <p>Number of Monday to Friday staff: {xMonday}</p>
-          <p>Number of Tuesday to Saturday staff: {xTuesday}</p>
-          <p>Number of Wednesday to Sunday staff: {xWednesday}</p>
-          <p>Number of Thursday to Monday staff: {xThursday}</p>
-          <p>Number of Friday to Tuesday staff: {xFriday}</p>
-          <p>Number of Saturday to Wednesday staff: {xSaturday}</p>
-          <p>Number of Sunday to Thursday staff: {xSunday}</p>
-        </section>
+        <OptimizationResults
+          objFuncVal={objFuncVal}
+          xMonday={xMonday}
+          xTuesday={xTuesday}
+          xWednesday={xWednesday}
+          xThursday={xThursday}
+          xFriday={xFriday}
+          xSaturday={xSaturday}
+          xSunday={xSunday}
+        />
       )}
       {!isLoading && (
         <Form {...form}>
