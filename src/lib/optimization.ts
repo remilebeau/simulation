@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 
 type ResponseType = {
+  objFuncVal: number;
   xMonday: number;
   xTuesday: number;
   xWednesday: number;

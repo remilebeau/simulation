@@ -29,6 +29,7 @@ const formSchema = z.object({
 
 export default function ProductionForm() {
   // define state for simulation results
+  const [objFuncVal, setObjFuncVal] = useState(0);
   const [xMonday, setXMonday] = useState(0);
   const [xTuesday, setXTuesday] = useState(0);
   const [xWednesday, setXWednesday] = useState(0);
@@ -60,6 +61,7 @@ export default function ProductionForm() {
     const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } =
       values;
     const {
+      objFuncVal,
       xMonday,
       xTuesday,
       xWednesday,
@@ -76,6 +78,7 @@ export default function ProductionForm() {
       saturday,
       sunday,
     );
+    setObjFuncVal(objFuncVal);
     setXMonday(xMonday);
     setXTuesday(xTuesday);
     setXWednesday(xWednesday);
@@ -97,34 +100,18 @@ export default function ProductionForm() {
           </h2>
         </section>
       )}
-      {!isLoading &&
-        (xMonday ||
-          xTuesday ||
-          xWednesday ||
-          xThursday ||
-          xFriday ||
-          xSaturday ||
-          xSunday) && (
-          <section>
-            <p>
-              Minimum number of staff required:{" "}
-              {xMonday +
-                xTuesday +
-                xWednesday +
-                xThursday +
-                xFriday +
-                xSaturday +
-                xSunday}
-            </p>
-            <p>Number of Monday to Friday workers: {xMonday}</p>
-            <p>Number of Tuesday to Saturday workers: {xTuesday}</p>
-            <p>Number of Wednesday to Sunday workers: {xWednesday}</p>
-            <p>Number of Thursday to Monday workers: {xThursday}</p>
-            <p>Number of Friday to Tuesday workers: {xFriday}</p>
-            <p>Number of Saturday to Wednesday workers: {xSaturday}</p>
-            <p>Number of Sunday to Thursday workers: {xSunday}</p>
-          </section>
-        )}
+      {!isLoading && objFuncVal !== 0 && (
+        <section>
+          <p>Minimum number of staff required: {objFuncVal}</p>
+          <p>Number of Monday to Friday workers: {xMonday}</p>
+          <p>Number of Tuesday to Saturday workers: {xTuesday}</p>
+          <p>Number of Wednesday to Sunday workers: {xWednesday}</p>
+          <p>Number of Thursday to Monday workers: {xThursday}</p>
+          <p>Number of Friday to Tuesday workers: {xFriday}</p>
+          <p>Number of Saturday to Wednesday workers: {xSaturday}</p>
+          <p>Number of Sunday to Thursday workers: {xSunday}</p>
+        </section>
+      )}
       {!isLoading && (
         <Form {...form}>
           <form
