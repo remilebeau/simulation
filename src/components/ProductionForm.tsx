@@ -171,6 +171,26 @@ export default function ProductionForm() {
             onSubmit={form.handleSubmit(onSubmit)}
             className="flex flex-col gap-4 rounded-xl border border-white p-4"
           >
+            <FormLabel>Production Quantity</FormLabel>
+            <FormField
+              control={form.control}
+              name="productionQuantity"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      required
+                      placeholder="Total production quantity"
+                      className="bg-black text-white"
+                      type="number"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormLabel>Unit Cost</FormLabel>
             <FormField
               control={form.control}
@@ -319,27 +339,7 @@ export default function ProductionForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Set to 0 if unknown"
-                      className="bg-black text-white"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormLabel>Production Quantity</FormLabel>
-            <FormField
-              control={form.control}
-              name="productionQuantity"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      placeholder="Total production quantity"
+                      placeholder="Standard deviation of forecasted demand. Set to 0 if unknown"
                       className="bg-black text-white"
                       type="number"
                       {...field}
