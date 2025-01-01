@@ -1,16 +1,5 @@
 import { redirect } from "next/navigation";
 
-type ResponseType = {
-  objFuncVal: number;
-  xMonday: number;
-  xTuesday: number;
-  xWednesday: number;
-  xThursday: number;
-  xFriday: number;
-  xSaturday: number;
-  xSunday: number;
-};
-
 export async function optimization(
   monday: number,
   tuesday: number,
@@ -19,7 +8,7 @@ export async function optimization(
   friday: number,
   saturday: number,
   sunday: number,
-): Promise<ResponseType> {
+): Promise<OptimizationResults> {
   const DATA_URL =
     process.env.NODE_ENV === "production"
       ? `https://simulation-api-rsaw.onrender.com/api/optimizations/staffing?monday=${monday}&tuesday=${tuesday}&wednesday=${wednesday}&thursday=${thursday}&friday=${friday}&saturday=${saturday}&sunday=${sunday}`

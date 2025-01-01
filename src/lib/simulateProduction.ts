@@ -1,21 +1,5 @@
 import { redirect } from "next/navigation";
 
-type ResponseType = {
-  minimum: number;
-  valueAtRisk: number;
-  q1: number;
-  mean: number;
-  meanLowerCI: number;
-  meanUpperCI: number;
-  median: number;
-  q3: number;
-  maximum: number;
-  pLoseMoney: number;
-  pLoseMoneyLowerCI: number;
-  pLoseMoneyUpperCI: number;
-  simulatedProfits: number[];
-};
-
 export async function simulateProduction(
   unitCost: number,
   unitPrice: number,
@@ -26,7 +10,7 @@ export async function simulateProduction(
   demandSD: number,
   fixedCost: number,
   productionQuantity: number,
-): Promise<ResponseType> {
+): Promise<ProductionResults> {
   const DATA_URL =
     process.env.NODE_ENV === "production"
       ? `https://simulation-api-rsaw.onrender.com/api/simulations/production?unitCost=${unitCost}&unitPrice=${unitPrice}&salvagePrice=${salvagePrice}&demandMin=${demandMin}&demandMode=${demandMode}&demandMax=${demandMax}&demandSD=${demandSD}&fixedCost=${fixedCost}&productionQuantity=${productionQuantity}`

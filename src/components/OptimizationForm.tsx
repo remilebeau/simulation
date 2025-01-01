@@ -31,13 +31,20 @@ const formSchema = z.object({
 export default function ProductionForm() {
   // define state for simulation results
   const [objFuncVal, setObjFuncVal] = useState<number | undefined>(undefined);
-  const [xMonday, setXMonday] = useState(0);
-  const [xTuesday, setXTuesday] = useState(0);
-  const [xWednesday, setXWednesday] = useState(0);
-  const [xThursday, setXThursday] = useState(0);
-  const [xFriday, setXFriday] = useState(0);
-  const [xSaturday, setXSaturday] = useState(0);
-  const [xSunday, setXSunday] = useState(0);
+  const [xMondayFriday, setXMondayFriday] = useState(0);
+  const [xTuesdaySaturday, setXTuesdaySaturday] = useState(0);
+  const [xWednesdaySunday, setXWednesdaySunday] = useState(0);
+  const [xThursdayMonday, setXThursdayMonday] = useState(0);
+  const [xFridayTuesday, setXFridayTuesday] = useState(0);
+  const [xSaturdayWednesday, setXSaturdayWednesday] = useState(0);
+  const [xSundayThursday, setXSundayThursday] = useState(0);
+  const [mondayStaff, setMondayStaff] = useState(0);
+  const [tuesdayStaff, setTuesdayStaff] = useState(0);
+  const [wednesdayStaff, setWednesdayStaff] = useState(0);
+  const [thursdayStaff, setThursdayStaff] = useState(0);
+  const [fridayStaff, setFridayStaff] = useState(0);
+  const [saturdayStaff, setSaturdayStaff] = useState(0);
+  const [sundayStaff, setSundayStaff] = useState(0);
 
   // define loading state
   const [isLoading, setIsLoading] = useState(false);
@@ -63,13 +70,20 @@ export default function ProductionForm() {
       values;
     const {
       objFuncVal,
-      xMonday,
-      xTuesday,
-      xWednesday,
-      xThursday,
-      xFriday,
-      xSaturday,
-      xSunday,
+      xMondayFriday,
+      xTuesdaySaturday,
+      xWednesdaySunday,
+      xThursdayMonday,
+      xFridayTuesday,
+      xSaturdayWednesday,
+      xSundayThursday,
+      mondayStaff,
+      tuesdayStaff,
+      wednesdayStaff,
+      thursdayStaff,
+      fridayStaff,
+      saturdayStaff,
+      sundayStaff,
     } = await optimization(
       monday,
       tuesday,
@@ -80,13 +94,20 @@ export default function ProductionForm() {
       sunday,
     );
     setObjFuncVal(objFuncVal);
-    setXMonday(xMonday);
-    setXTuesday(xTuesday);
-    setXWednesday(xWednesday);
-    setXThursday(xThursday);
-    setXFriday(xFriday);
-    setXSaturday(xSaturday);
-    setXSunday(xSunday);
+    setXMondayFriday(xMondayFriday);
+    setXTuesdaySaturday(xTuesdaySaturday);
+    setXWednesdaySunday(xWednesdaySunday);
+    setXThursdayMonday(xThursdayMonday);
+    setXFridayTuesday(xFridayTuesday);
+    setXSaturdayWednesday(xSaturdayWednesday);
+    setXSundayThursday(xSundayThursday);
+    setMondayStaff(mondayStaff);
+    setTuesdayStaff(tuesdayStaff);
+    setWednesdayStaff(wednesdayStaff);
+    setThursdayStaff(thursdayStaff);
+    setFridayStaff(fridayStaff);
+    setSaturdayStaff(saturdayStaff);
+    setSundayStaff(sundayStaff);
     setIsLoading(false);
   }
 
@@ -96,13 +117,20 @@ export default function ProductionForm() {
       {!isLoading && objFuncVal && (
         <OptimizationResults
           objFuncVal={objFuncVal}
-          xMonday={xMonday}
-          xTuesday={xTuesday}
-          xWednesday={xWednesday}
-          xThursday={xThursday}
-          xFriday={xFriday}
-          xSaturday={xSaturday}
-          xSunday={xSunday}
+          xMondayFriday={xMondayFriday}
+          xTuesdaySaturday={xTuesdaySaturday}
+          xWednesdaySunday={xWednesdaySunday}
+          xThursdayMonday={xThursdayMonday}
+          xFridayTuesday={xFridayTuesday}
+          xSaturdayWednesday={xSaturdayWednesday}
+          xSundayThursday={xSundayThursday}
+          mondayStaff={mondayStaff}
+          tuesdayStaff={tuesdayStaff}
+          wednesdayStaff={wednesdayStaff}
+          thursdayStaff={thursdayStaff}
+          fridayStaff={fridayStaff}
+          saturdayStaff={saturdayStaff}
+          sundayStaff={sundayStaff}
         />
       )}
       {!isLoading && (
