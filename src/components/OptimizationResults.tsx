@@ -35,8 +35,8 @@ export default function OptimizationResults({
 }: Props) {
   return (
     <>
-      <p>Total staff required: {objFuncVal}</p>
-      <section className="flex flex-row gap-4 sm:grid sm:grid-cols-2">
+      <p className="text-center text-xl">Total staff required: {objFuncVal}</p>
+      <section className="mx-auto flex flex-row gap-8 text-xl sm:grid sm:grid-cols-2">
         <div>
           <p>Mon to Fri staff: {xMondayFriday}</p>
           <p>Tue to Sat staff: {xTuesdaySaturday}</p>
@@ -47,13 +47,13 @@ export default function OptimizationResults({
           <p>Sun to Thu staff: {xSundayThursday}</p>
         </div>
         <div>
-          <p>Monday staff: {mondayStaff}</p>
-          <p>Tuesday staff: {tuesdayStaff}</p>
-          <p>Wednesday staff: {wednesdayStaff}</p>
-          <p>Thursday staff: {thursdayStaff}</p>
-          <p>Friday staff: {fridayStaff}</p>
-          <p>Saturday staff: {saturdayStaff}</p>
-          <p>Sunday staff: {sundayStaff}</p>
+          <p>Mon available: {mondayStaff}</p>
+          <p>Tue available: {tuesdayStaff}</p>
+          <p>Wed available: {wednesdayStaff}</p>
+          <p>Thu available: {thursdayStaff}</p>
+          <p>Fri available: {fridayStaff}</p>
+          <p>Sat available: {saturdayStaff}</p>
+          <p>Sun available: {sundayStaff}</p>
         </div>
       </section>
     </>
