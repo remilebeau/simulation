@@ -35,8 +35,10 @@ export default function OptimizationResults({
 }: Props) {
   return (
     <>
-      <p className="text-center text-xl">Total staff required: {objFuncVal}</p>
-      <section className="mx-auto flex flex-row gap-8 text-xl sm:grid sm:grid-cols-2">
+      <p className="text-center font-bold sm:text-xl">
+        Total staff required: {objFuncVal}
+      </p>
+      <section className="mx-auto flex flex-row gap-8 sm:grid sm:grid-cols-2 sm:text-xl">
         <div>
           <p>Mon to Fri staff: {xMondayFriday}</p>
           <p>Tue to Sat staff: {xTuesdaySaturday}</p>
