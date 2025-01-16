@@ -12,10 +12,10 @@ export const Route = createFileRoute("/simulation")({
 function RouteComponent() {
   return (
     <main className="mx-auto flex max-w-4xl flex-col gap-8 p-4">
-      <h1 className="w-full rounded-xl bg-white p-4 text-center text-3xl font-bold text-black">
+      <h1 className="p-4 text-center text-3xl font-bold">
         Monte Carlo Simulation for Production Planning
       </h1>
-      <Button asChild>
+      <Button className="rounded-xl" asChild>
         <Link to="/">Back to Home</Link>
       </Button>
       <SimulationInstructions />

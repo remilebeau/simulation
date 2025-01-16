@@ -9,16 +9,14 @@ function Index() {
   return (
     <main className="mx-auto flex max-w-4xl flex-col gap-8 p-4">
       <h1 className="p-4 text-center text-3xl font-bold">
-        Select a simulation or optimization model to test:
+        Select a simulation or optimization model:
       </h1>
       <Button
         className="rounded-xl"
         asChild
-        title="Monte Carlo Simulation for Production Planning"
+        title="Simulation for Production Planning"
       >
-        <Link to="/simulation">
-          Monte Carlo Simulation for Production Planning
-        </Link>
+        <Link to="/simulation">Simulation Model for Production Planning</Link>
       </Button>
       <Button
         className="rounded-xl"

@@ -15,7 +15,8 @@ import simulateProduction from "@/lib/simulateProduction";
 import { useState } from "react";
 import Histogram from "@/components/Histogram";
 import SimStats from "@/components/SimStats";
-import { Loader } from "lucide-react";
+import Loader from "@/components/Loader";
+import { Button } from "@/components/ui/button";
 // define form schema
 
 const formSchema = z
@@ -89,7 +90,6 @@ export default function SimulationForm() {
   // define submit handler
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 3000));
     const {
       unitCost,
       unitPrice,
@@ -144,7 +144,7 @@ export default function SimulationForm() {
 
   return (
     <>
-      {isLoading && <Loader className="absolute top-1/2 left-1/2" />}
+      {isLoading && <Loader />}
       {simulatedProfits.length > 0 && !isLoading && (
         <>
           <Histogram values={simulatedProfits} />
@@ -180,7 +180,7 @@ export default function SimulationForm() {
                     <Input
                       required
                       placeholder="Total production quantity"
-                      className="bg-black text-white"
+                      className="rounded-xl"
                       type="number"
                       {...field}
                     />
@@ -200,7 +200,7 @@ export default function SimulationForm() {
                     <Input
                       required
                       placeholder="Variable costs per unit"
-                      className="bg-black text-white"
+                      className="rounded-xl"
                       type="number"
                       {...field}
                     />
@@ -219,7 +219,7 @@ export default function SimulationForm() {
                     <Input
                       required
                       placeholder="Sell price per unit"
-                      className="bg-black text-white"
+                      className="rounded-xl"
                       type="number"
                       {...field}
                     />
@@ -239,7 +239,7 @@ export default function SimulationForm() {
                     <Input
                       required
                       placeholder="Salvage value for each unit produced above demand"
-                      className="bg-black text-white"
+                      className="rounded-xl"
                       type="number"
                       {...field}
                     />
@@ -259,7 +259,7 @@ export default function SimulationForm() {
                     <Input
                       required
                       placeholder="Total fixed costs of the production"
-                      className="bg-black text-white"
+                      className="rounded-xl"
                       type="number"
                       {...field}
                     />
@@ -279,7 +279,7 @@ export default function SimulationForm() {
                     <Input
                       required
                       placeholder="Minimum value of forecasted demand"
-                      className="bg-black text-white"
+                      className="rounded-xl"
                       type="number"
                       {...field}
                     />
@@ -299,7 +299,7 @@ export default function SimulationForm() {
                     <Input
                       required
                       placeholder="Expected value of forecasted demand"
-                      className="bg-black text-white"
+                      className="rounded-xl"
                       type="number"
                       {...field}
                     />
@@ -319,7 +319,7 @@ export default function SimulationForm() {
                     <Input
                       required
                       placeholder="Maximum value of forecasted demand"
-                      className="bg-black text-white"
+                      className="rounded-xl"
                       type="number"
                       {...field}
                     />
@@ -339,7 +339,7 @@ export default function SimulationForm() {
                     <Input
                       required
                       placeholder="Standard deviation of forecasted demand. Set to 0 if unknown"
-                      className="bg-black text-white"
+                      className="rounded-xl"
                       type="number"
                       {...field}
                     />
@@ -349,12 +349,9 @@ export default function SimulationForm() {
               )}
             />
 
-            <button
-              className="w-full rounded-xl bg-white p-4 font-bold text-black transition-all duration-300 ease-in-out hover:bg-black hover:text-white"
-              type="submit"
-            >
-              Submit
-            </button>
+            <Button className="rounded-xl" type="submit">
+              Simulate
+            </Button>
           </form>
         </Form>
       )}

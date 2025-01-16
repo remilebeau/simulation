@@ -1,6 +1,6 @@
 export default function SimulationInstructions() {
   return (
-    <article className="flex flex-col rounded-xl border border-white p-4">
+    <article className="flex flex-col rounded-xl border p-4">
       <p className="mb-2">
         Model a production planning scenario with the inputs below. The model
         will be simulated 1000 times, and the resulting 1000 profits will be
