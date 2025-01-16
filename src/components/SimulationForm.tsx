@@ -170,26 +170,6 @@ export default function SimulationForm() {
             onSubmit={form.handleSubmit(onSubmit)}
             className="flex flex-col gap-4 rounded-xl border p-4"
           >
-            <FormLabel>Production Quantity</FormLabel>
-            <FormField
-              control={form.control}
-              name="productionQuantity"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      placeholder="Total production quantity"
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
             <FormLabel>Unit Cost</FormLabel>
             <FormField
               control={form.control}
@@ -339,6 +319,26 @@ export default function SimulationForm() {
                     <Input
                       required
                       placeholder="Standard deviation of forecasted demand. Set to 0 if unknown"
+                      className="rounded-xl"
+                      type="number"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormLabel>Production Quantity</FormLabel>
+            <FormField
+              control={form.control}
+              name="productionQuantity"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      required
+                      placeholder="Total production quantity"
                       className="rounded-xl"
                       type="number"
                       {...field}
