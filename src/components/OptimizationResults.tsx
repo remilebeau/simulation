@@ -36,7 +36,7 @@ export default function OptimizationResults({
   return (
     <section className="bg-background flex flex-col gap-4 rounded-xl border  p-4">
       <p className="text-center font-bold sm:text-xl">
-        Total staff required: {objFuncVal}
+        Total staff required: {objFuncVal.toLocaleString("en-US")}
       </p>
       <section className="mx-auto flex flex-row gap-8 sm:grid sm:grid-cols-2 sm:text-xl">
         <div>
