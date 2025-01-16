@@ -15,7 +15,7 @@ function RouteComponent() {
       <h1 className="p-4 text-center text-3xl font-bold">
         Monte Carlo Simulation for Production Planning
       </h1>
-      <Button className="rounded-xl" asChild>
+      <Button className="rounded-xl" asChild title="Back to Home">
         <Link to="/">Back to Home</Link>
       </Button>
       <SimulationInstructions />

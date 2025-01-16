@@ -168,7 +168,7 @@ export default function SimulationForm() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-4 rounded-xl border border-white p-4"
+            className="flex flex-col gap-4 rounded-xl border p-4"
           >
             <FormLabel>Production Quantity</FormLabel>
             <FormField
