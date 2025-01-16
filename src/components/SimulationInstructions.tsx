@@ -1,4 +1,4 @@
-export default function ProductionInstructions() {
+export default function SimulationInstructions() {
   return (
     <article className="flex flex-col rounded-xl border border-white p-4">
       <p className="mb-2">

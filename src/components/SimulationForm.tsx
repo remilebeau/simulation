@@ -15,7 +15,7 @@ import simulateProduction from "@/lib/simulateProduction";
 import { useState } from "react";
 import Histogram from "@/components/Histogram";
 import SimStats from "@/components/SimStats";
-
+import { Loader } from "lucide-react";
 // define form schema
 
 const formSchema = z
@@ -51,7 +51,7 @@ const formSchema = z
     }
   );
 
-export default function ProductionForm() {
+export default function SimulationForm() {
   // define state for simulation results
   const [minimum, setMinimum] = useState(0);
   const [valueAtRisk, setValueAtRisk] = useState(0);
@@ -89,6 +89,7 @@ export default function ProductionForm() {
   // define submit handler
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     const {
       unitCost,
       unitPrice,
@@ -143,7 +144,7 @@ export default function ProductionForm() {
 
   return (
     <>
-      {isLoading && <div>Loading</div>}
+      {isLoading && <Loader className="absolute top-1/2 left-1/2" />}
       {simulatedProfits.length > 0 && !isLoading && (
         <>
           <Histogram values={simulatedProfits} />

@@ -13,24 +13,24 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as ProductionImport } from './routes/production'
+import { Route as SimulationImport } from './routes/simulation'
+import { Route as OptimizationImport } from './routes/optimization'
 
 // Create Virtual Routes
 
-const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
-const AboutLazyRoute = AboutLazyImport.update({
-  id: '/about',
-  path: '/about',
+const SimulationRoute = SimulationImport.update({
+  id: '/simulation',
+  path: '/simulation',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
+} as any)
 
-const ProductionRoute = ProductionImport.update({
-  id: '/production',
-  path: '/production',
+const OptimizationRoute = OptimizationImport.update({
+  id: '/optimization',
+  path: '/optimization',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -51,18 +51,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/production': {
-      id: '/production'
-      path: '/production'
-      fullPath: '/production'
-      preLoaderRoute: typeof ProductionImport
+    '/optimization': {
+      id: '/optimization'
+      path: '/optimization'
+      fullPath: '/optimization'
+      preLoaderRoute: typeof OptimizationImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutLazyImport
+    '/simulation': {
+      id: '/simulation'
+      path: '/simulation'
+      fullPath: '/simulation'
+      preLoaderRoute: typeof SimulationImport
       parentRoute: typeof rootRoute
     }
   }
@@ -72,42 +72,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
-  '/production': typeof ProductionRoute
-  '/about': typeof AboutLazyRoute
+  '/optimization': typeof OptimizationRoute
+  '/simulation': typeof SimulationRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
-  '/production': typeof ProductionRoute
-  '/about': typeof AboutLazyRoute
+  '/optimization': typeof OptimizationRoute
+  '/simulation': typeof SimulationRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
-  '/production': typeof ProductionRoute
-  '/about': typeof AboutLazyRoute
+  '/optimization': typeof OptimizationRoute
+  '/simulation': typeof SimulationRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/production' | '/about'
+  fullPaths: '/' | '/optimization' | '/simulation'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/production' | '/about'
-  id: '__root__' | '/' | '/production' | '/about'
+  to: '/' | '/optimization' | '/simulation'
+  id: '__root__' | '/' | '/optimization' | '/simulation'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
-  ProductionRoute: typeof ProductionRoute
-  AboutLazyRoute: typeof AboutLazyRoute
+  OptimizationRoute: typeof OptimizationRoute
+  SimulationRoute: typeof SimulationRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
-  ProductionRoute: ProductionRoute,
-  AboutLazyRoute: AboutLazyRoute,
+  OptimizationRoute: OptimizationRoute,
+  SimulationRoute: SimulationRoute,
 }
 
 export const routeTree = rootRoute
@@ -121,18 +121,18 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/production",
-        "/about"
+        "/optimization",
+        "/simulation"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
     },
-    "/production": {
-      "filePath": "production.tsx"
+    "/optimization": {
+      "filePath": "optimization.tsx"
     },
-    "/about": {
-      "filePath": "about.lazy.tsx"
+    "/simulation": {
+      "filePath": "simulation.tsx"
     }
   }
 }

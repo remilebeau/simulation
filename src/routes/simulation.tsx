@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
-import ProductionInstructions from "@/components/ProductionInstructions";
-import ProductionForm from "@/components/ProductionForm";
+import SimulationInstructions from "@/components/SimulationInstructions";
+import SimulationForm from "@/components/SimulationForm";
 
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/production")({
+export const Route = createFileRoute("/simulation")({
   component: RouteComponent,
 });
 
@@ -18,8 +18,8 @@ function RouteComponent() {
       <Button asChild>
         <Link to="/">Back to Home</Link>
       </Button>
-      <ProductionInstructions />
-      <ProductionForm />
+      <SimulationInstructions />
+      <SimulationForm />
     </main>
   );
 }
