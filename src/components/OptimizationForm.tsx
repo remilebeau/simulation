@@ -148,7 +148,7 @@ export default function OptimizationForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Number of staff required every Monday"
+                      placeholder="Staff required every Monday"
                       className="rounded-xl"
                       type="number"
                       {...field}
@@ -167,7 +167,7 @@ export default function OptimizationForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Number of staff required every Tuesday"
+                      placeholder="Staff required every Tuesday"
                       className="rounded-xl"
                       type="number"
                       {...field}
@@ -187,7 +187,7 @@ export default function OptimizationForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Number of staff required every Wednesday"
+                      placeholder="Staff required every Wednesday"
                       className="rounded-xl"
                       type="number"
                       {...field}
@@ -207,7 +207,7 @@ export default function OptimizationForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Number of staff required every Thursday"
+                      placeholder="Staff required every Thursday"
                       className="rounded-xl"
                       type="number"
                       {...field}
@@ -227,7 +227,7 @@ export default function OptimizationForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Number of staff required every Friday"
+                      placeholder="Staff required every Friday"
                       className="rounded-xl"
                       type="number"
                       {...field}
@@ -247,7 +247,7 @@ export default function OptimizationForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Number of staff required every Saturday"
+                      placeholder="Staff required every Saturday"
                       className="rounded-xl"
                       type="number"
                       {...field}
@@ -267,7 +267,7 @@ export default function OptimizationForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Number of staff required every Sunday"
+                      placeholder="Staff required every Sunday"
                       className="rounded-xl"
                       type="number"
                       {...field}
