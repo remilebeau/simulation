@@ -179,7 +179,6 @@ export default function SimulationForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Variable costs per unit"
                       className="rounded-xl"
                       type="number"
                       {...field}
@@ -198,7 +197,6 @@ export default function SimulationForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Sell price per unit"
                       className="rounded-xl"
                       type="number"
                       {...field}
@@ -218,7 +216,6 @@ export default function SimulationForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Salvage value for each unit produced above demand"
                       className="rounded-xl"
                       type="number"
                       {...field}
@@ -238,7 +235,6 @@ export default function SimulationForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Total fixed costs of the production"
                       className="rounded-xl"
                       type="number"
                       {...field}
@@ -258,7 +254,6 @@ export default function SimulationForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Minimum value of forecasted demand"
                       className="rounded-xl"
                       type="number"
                       {...field}
@@ -278,7 +273,6 @@ export default function SimulationForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Expected value of forecasted demand"
                       className="rounded-xl"
                       type="number"
                       {...field}
@@ -298,7 +292,6 @@ export default function SimulationForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Maximum value of forecasted demand"
                       className="rounded-xl"
                       type="number"
                       {...field}
@@ -318,7 +311,7 @@ export default function SimulationForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Standard deviation of forecasted demand. Set to 0 if unknown"
+                      placeholder="Enter 0 if unknown"
                       className="rounded-xl"
                       type="number"
                       {...field}
@@ -338,7 +331,6 @@ export default function SimulationForm() {
                   <FormControl>
                     <Input
                       required
-                      placeholder="Total production quantity"
                       className="rounded-xl"
                       type="number"
                       {...field}
