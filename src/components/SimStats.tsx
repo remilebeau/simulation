@@ -94,7 +94,7 @@ export default function SimStats({
     },
   ];
   return (
-    <section className="flex flex-col rounded-md border border-border p-4">
+    <section className="flex flex-col rounded-xl border border-border p-4">
       {stats.map((stat) => (
         <ul key={stat.name} className="flex flex-row justify-between gap-4">
           <li className="text-md">{stat.name}:</li>
