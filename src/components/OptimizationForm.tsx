@@ -15,6 +15,7 @@ import optimization from "@/lib/optimization";
 import OptimizationResults from "@/components/OptimizationResults";
 import Loader from "@/components/Loader";
 import { Button } from "@/components/ui/button";
+import OptimizationInstructions from "@/components/OptimizationInstructions";
 
 // define form schema
 
@@ -113,6 +114,7 @@ export default function OptimizationForm() {
 
   return (
     <>
+      {!isLoading && !objFuncVal && <OptimizationInstructions />}
       {isLoading && <Loader />}
       {!isLoading && objFuncVal && (
         <OptimizationResults

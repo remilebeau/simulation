@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import OptimizationInstructions from "@/components/OptimizationInstructions";
 import OptimizationForm from "@/components/OptimizationForm";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
@@ -16,7 +15,6 @@ function RouteComponent() {
       <Button className="rounded-xl" asChild title="Back to Home">
         <Link to="/">Back to Home</Link>
       </Button>
-      <OptimizationInstructions />
       <OptimizationForm />
     </main>
   );
