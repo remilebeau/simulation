@@ -8,7 +8,7 @@ export default function Histogram({ values }: Props) {
   return (
     <section className="border border-border rounded-xl p-4">
       <Plot
-        className="max-w-sm sm:max-w-3xl"
+        className="max-w-xs sm:max-w-3xl"
         data={[
           {
             x: values,
