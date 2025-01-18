@@ -17,6 +17,7 @@ import Histogram from "@/components/Histogram";
 import SimStats from "@/components/SimStats";
 import Loader from "@/components/Loader";
 import { Button } from "@/components/ui/button";
+import SimulationInstructions from "@/components/SimulationInstructions";
 // define form schema
 
 const formSchema = z
@@ -144,6 +145,7 @@ export default function SimulationForm() {
 
   return (
     <>
+      {!isLoading && !simulatedProfits.length && <SimulationInstructions />}
       {isLoading && <Loader />}
       {simulatedProfits.length > 0 && !isLoading && (
         <>

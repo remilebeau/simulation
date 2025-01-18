@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
-import SimulationInstructions from "@/components/SimulationInstructions";
 import SimulationForm from "@/components/SimulationForm";
 
 import { createFileRoute } from "@tanstack/react-router";
@@ -18,7 +17,6 @@ function RouteComponent() {
       <Button className="rounded-xl" asChild title="Back to Home">
         <Link to="/">Back to Home</Link>
       </Button>
-      <SimulationInstructions />
       <SimulationForm />
     </main>
   );
