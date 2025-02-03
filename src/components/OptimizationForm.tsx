@@ -1,12 +1,4 @@
-import {
-  Form,
-  FormLabel,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -16,6 +8,7 @@ import OptimizationResults from "@/components/OptimizationResults";
 import Loader from "@/components/Loader";
 import { Button } from "@/components/ui/button";
 import OptimizationInstructions from "@/components/OptimizationInstructions";
+import FieldWithLabel from "@/components/FieldWithLabel";
 
 // define form schema
 
@@ -141,143 +134,40 @@ export default function OptimizationForm() {
             onSubmit={form.handleSubmit(onSubmit)}
             className="flex flex-col gap-4 rounded-xl border  p-4"
           >
-            <FormLabel>Monday</FormLabel>
-            <FormField
-              control={form.control}
+            <FieldWithLabel
+              label="Monday"
               name="monday"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      placeholder="Staff required every Monday"
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+              placeholder="Staff required every Monday"
             />
-            <FormLabel>Tuesday</FormLabel>
-            <FormField
-              control={form.control}
+            <FieldWithLabel
+              label="Tuesday"
               name="tuesday"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      placeholder="Staff required every Tuesday"
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+              placeholder="Staff required every Tuesday"
             />
-
-            <FormLabel>Wednesday</FormLabel>
-            <FormField
-              control={form.control}
+            <FieldWithLabel
+              label="Wednesday"
               name="wednesday"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      placeholder="Staff required every Wednesday"
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+              placeholder="Staff required every Wednesday"
             />
-
-            <FormLabel>Thursday</FormLabel>
-            <FormField
-              control={form.control}
+            <FieldWithLabel
+              label="Thursday"
               name="thursday"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      placeholder="Staff required every Thursday"
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+              placeholder="Staff required every Thursday"
             />
-
-            <FormLabel>Friday</FormLabel>
-            <FormField
-              control={form.control}
+            <FieldWithLabel
+              label="Friday"
               name="friday"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      placeholder="Staff required every Friday"
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+              placeholder="Staff required every Friday"
             />
-
-            <FormLabel>Saturday</FormLabel>
-            <FormField
-              control={form.control}
+            <FieldWithLabel
+              label="Saturday"
               name="saturday"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      placeholder="Staff required every Saturday"
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+              placeholder="Staff required every Saturday"
             />
-
-            <FormLabel>Sunday</FormLabel>
-            <FormField
-              control={form.control}
+            <FieldWithLabel
+              label="Sunday"
               name="sunday"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      placeholder="Staff required every Sunday"
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+              placeholder="Staff required every Sunday"
             />
 
             <Button className="rounded-xl" type="submit">
