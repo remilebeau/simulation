@@ -46,15 +46,6 @@ export default function OptimizationForm() {
   // define form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      monday: undefined,
-      tuesday: undefined,
-      wednesday: undefined,
-      thursday: undefined,
-      friday: undefined,
-      saturday: undefined,
-      sunday: undefined,
-    },
   });
 
   // define submit handler

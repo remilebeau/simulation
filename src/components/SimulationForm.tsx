@@ -1,12 +1,4 @@
-import {
-  Form,
-  FormLabel,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -18,6 +10,7 @@ import SimStats from "@/components/SimStats";
 import Loader from "@/components/Loader";
 import { Button } from "@/components/ui/button";
 import SimulationInstructions from "@/components/SimulationInstructions";
+import FieldWithLabel from "@/components/FieldWithLabel";
 // define form schema
 
 const formSchema = z
@@ -75,17 +68,6 @@ export default function SimulationForm() {
   // define form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      unitCost: undefined,
-      unitPrice: undefined,
-      salvagePrice: undefined,
-      demandMin: undefined,
-      demandMean: undefined,
-      demandMax: undefined,
-      demandSD: undefined,
-      fixedCost: undefined,
-      productionQuantity: undefined,
-    },
   });
 
   // define submit handler
@@ -172,175 +154,17 @@ export default function SimulationForm() {
             onSubmit={form.handleSubmit(onSubmit)}
             className="flex flex-col gap-4 rounded-xl border p-4"
           >
-            <FormLabel>Unit Cost</FormLabel>
-            <FormField
-              control={form.control}
-              name="unitCost"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormLabel>Unit Price</FormLabel>
-            <FormField
-              control={form.control}
-              name="unitPrice"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormLabel>Salvage Price</FormLabel>
-            <FormField
-              control={form.control}
-              name="salvagePrice"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormLabel>Fixed Costs</FormLabel>
-            <FormField
-              control={form.control}
-              name="fixedCost"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormLabel>Minimum Demand</FormLabel>
-            <FormField
-              control={form.control}
-              name="demandMin"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormLabel>Expected Demand</FormLabel>
-            <FormField
-              control={form.control}
-              name="demandMean"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormLabel>Maximum Demand</FormLabel>
-            <FormField
-              control={form.control}
-              name="demandMax"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormLabel>Demand Standard Deviation</FormLabel>
-            <FormField
-              control={form.control}
-              name="demandSD"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      placeholder="Enter 0 if unknown"
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormLabel>Production Quantity</FormLabel>
-            <FormField
-              control={form.control}
+            <FieldWithLabel label="Unit Cost" name="unitCost" />
+            <FieldWithLabel label="Unit price" name="unitPrice" />
+            <FieldWithLabel label="Salvage Price" name="salvagePrice" />
+            <FieldWithLabel label="Fixed Costs" name="fixedCost" />
+            <FieldWithLabel label="Minimum Demand" name="demandMin" />
+            <FieldWithLabel label="Expected Demand" name="demandMean" />
+            <FieldWithLabel label="Maximum Demand" name="demandMax" />
+            <FieldWithLabel label="Demand Standard Deviation" name="demandSD" />
+            <FieldWithLabel
+              label="Production Quantity"
               name="productionQuantity"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      required
-                      className="rounded-xl"
-                      type="number"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
             />
 
             <Button className="rounded-xl" type="submit">

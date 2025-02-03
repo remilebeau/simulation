@@ -10,15 +10,8 @@ import { useFormContext } from "react-hook-form";
 
 type Props = {
   label: string;
-  name:
-    | "monday"
-    | "tuesday"
-    | "wednesday"
-    | "thursday"
-    | "friday"
-    | "saturday"
-    | "sunday";
-  placeholder: string;
+  name: string;
+  placeholder?: string;
 };
 
 export default function FieldWithLabel({ label, name, placeholder }: Props) {
