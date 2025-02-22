@@ -26,7 +26,7 @@ export default function SimulationInstructions() {
         <li className="text-red-500">Assumed value</li>
       </ul>
       <p>
-        Enter the <var className="text-red-500">Assumed values </var>below
+        Enter the <var className="text-red-500">Assumed values </var>below:
       </p>
     </article>
   );
