@@ -1,4 +1,3 @@
-"use client";
 import SimulationForm from "@/components/SimulationForm";
 import SimulationInstructions from "@/components/SimulationInstructions";
 
@@ -8,10 +7,9 @@ export default function Home() {
       <h1 className="text-center text-4xl font-bold">
         Simulation for Production Planning
       </h1>
-      <section className="flex flex-col sm:flex-row">
-        <SimulationInstructions />
-        <SimulationForm />
-      </section>
+      <SimulationInstructions />
+      <hr />
+      <SimulationForm />
     </main>
   );
 }
