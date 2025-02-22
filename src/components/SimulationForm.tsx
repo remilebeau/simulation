@@ -2,13 +2,11 @@ import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { isValidInput } from "@/lib/validation";
 import simulateProduction from "@/lib/simulateProduction";
 import { useState } from "react";
 import SimStats from "@/components/SimulationStats";
 import Loader from "@/components/Loader";
 import { Button } from "@/components/ui/button";
-import SimulationInstructions from "@/components/SimulationInstructions";
 import FieldWithLabel from "@/components/FieldWithLabel";
 import type { ProductionResults } from "@/types/ProductionResults";
 
@@ -30,13 +28,14 @@ const formSchema = z
   })
 
   .refine(
-    (fields) =>
-      isValidInput(
-        fields.demandMin,
-        fields.demandMean,
-        fields.demandMax,
-        fields.demandSD,
-      ),
+    (fields) => () => {
+      return (
+        fields.demandMin <= fields.demandMean &&
+        fields.demandMean <= fields.demandMax &&
+        fields.demandMin < fields.demandMax &&
+        fields.demandSD >= 0
+      );
+    },
     {
       message:
         "Please check that (min <= mean <= max) and (min < max) and (sd >= 0)",
@@ -75,7 +74,6 @@ export default function SimulationForm() {
 
   return (
     <>
-      <SimulationInstructions />
       {isLoading && <Loader />}
       {!isLoading && simData && <SimStats simData={simData} />}
       {!isLoading && (
