@@ -5,15 +5,12 @@ type Props = {
 
 export default function SimulationStats({ simData }: Props) {
   function formatValue(value: number) {
-    // format percentages
     if (value >= 0 && value <= 1) {
       return value.toLocaleString("en-US", {
         style: "percent",
         maximumFractionDigits: 0,
       });
-    }
-    // format currencies
-    else
+    } else
       return value.toLocaleString("en-US", {
         style: "currency",
         currency: "USD",
@@ -71,13 +68,16 @@ export default function SimulationStats({ simData }: Props) {
     },
   ];
   return (
-    <section className="flex flex-col rounded-xl border border-border p-4">
-      {stats.map((stat) => (
-        <ul key={stat.name} className="flex flex-row justify-between gap-4">
-          <li className="text-md">{stat.name}:</li>
-          <li className="text-md">{stat.value}</li>
-        </ul>
-      ))}
-    </section>
+    <>
+      <section className="flex flex-col sm:mx-auto sm:w-1/2">
+        {stats.map((stat) => (
+          <ul key={stat.name} className="flex flex-row justify-between">
+            <li className="text-md">{stat.name}:</li>
+            <li className="text-md">{stat.value}</li>
+          </ul>
+        ))}
+      </section>
+      <hr />
+    </>
   );
 }
