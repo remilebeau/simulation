@@ -20,7 +20,7 @@ export default function SimulationInstructions() {
           <var className="text-red-500"> unitCost</var>
         </li>
       </ul>
-      <ul className="flex flex-col justify-evenly italic">
+      <ul className="mx-auto flex flex-col italic sm:flex-row sm:gap-12">
         <li className="text-blue-500">Calculated value</li>
         <li className="text-green-500">Simulated value</li>
         <li className="text-red-500">Assumed value</li>
@@ -28,23 +28,6 @@ export default function SimulationInstructions() {
       <p>
         Enter the <var className="text-red-500">Assumed values </var>below
       </p>
-
-      <p>The simulation provides insight about the scenario, such as:</p>
-
-      <ul className="flex flex-col justify-evenly gap-4 text-left sm:flex-row">
-        <ul className="flex flex-col">
-          <li>What is the expected profit?</li>
-          <li>What is the highest profit observed?</li>
-          <li>What is the chance of a profit over $X?</li>
-          <li>Which inputs affect profit the most?</li>
-        </ul>
-        <ul className="flex-flex-col">
-          <li>Which inputs affect profit the least?</li>
-          <li>What is the value at risk?</li>
-          <li>What is the lowest profit observed?</li>
-          <li>What is the chance of a profit under $X?</li>
-        </ul>
-      </ul>
     </article>
   );
 }
