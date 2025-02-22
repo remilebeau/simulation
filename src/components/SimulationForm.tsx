@@ -46,12 +46,14 @@ const formSchema = z
 export default function SimulationForm() {
   const [simData, setSimData] = useState<ProductionResults | undefined>();
   const [isLoading, setIsLoading] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setErrMsg("");
     setIsLoading(true);
     const data = await simulateProduction(
       values.unitCost,
@@ -65,6 +67,7 @@ export default function SimulationForm() {
       values.productionQuantity,
     );
     if (!data) {
+      setErrMsg("Something went wrong. Please try again.");
       setIsLoading(false);
       return;
     }
@@ -76,6 +79,7 @@ export default function SimulationForm() {
     <>
       {isLoading && <Loader />}
       {!isLoading && simData && <SimStats simData={simData} />}
+      {errMsg && <p className="text-red-500">{errMsg}</p>}
       {!isLoading && (
         <Form {...form}>
           <form
