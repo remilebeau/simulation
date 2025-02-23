@@ -19,24 +19,16 @@ export default function SimulationStats({ simData }: Props) {
   }
   const stats = [
     {
-      name: "Expected Profit",
-      value: formatValue(simData.mean),
-    },
-    {
-      name: "E(Profit) Lower 95% CI",
-      value: formatValue(simData.meanLowerCI),
-    },
-    {
-      name: "E(Profit) Upper 95% CI",
-      value: formatValue(simData.meanUpperCI),
-    },
-    {
       name: "Minimum",
       value: formatValue(simData.minimum),
     },
     {
       name: "25th Percentile",
       value: formatValue(simData.q1),
+    },
+    {
+      name: "Mean",
+      value: formatValue(simData.mean),
     },
     {
       name: "50th Percentile",
@@ -53,18 +45,6 @@ export default function SimulationStats({ simData }: Props) {
     {
       name: "P(Profit < 0)",
       value: formatValue(simData.pLoseMoney),
-    },
-    {
-      name: "P(Profit < 0) Lower 95% CI",
-      value: formatValue(simData.pLoseMoneyLowerCI),
-    },
-    {
-      name: "P(Profit < 0) Upper 95% CI",
-      value: formatValue(simData.pLoseMoneyUpperCI),
-    },
-    {
-      name: "Value at Risk (5%)",
-      value: formatValue(simData.valueAtRisk),
     },
   ];
   return (
