@@ -56,24 +56,28 @@ export default function SimulationForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setErrMsg("");
     setIsLoading(true);
-    const data = await simulateProduction(
-      values.unitCost,
-      values.unitPrice,
-      values.salvagePrice,
-      values.demandMin,
-      values.demandMean,
-      values.demandMax,
-      values.demandSD,
-      values.fixedCost,
-      values.productionQuantity,
-    );
-    if (!data) {
+    try {
+      const data = await simulateProduction(
+        values.unitCost,
+        values.unitPrice,
+        values.salvagePrice,
+        values.demandMin,
+        values.demandMean,
+        values.demandMax,
+        values.demandSD,
+        values.fixedCost,
+        values.productionQuantity,
+      );
+      if (!data) {
+        setErrMsg("Something went wrong. Please try again.");
+        return;
+      }
+      setSimData(data);
+    } catch (error) {
       setErrMsg("Something went wrong. Please try again.");
+    } finally {
       setIsLoading(false);
-      return;
     }
-    setSimData(data);
-    setIsLoading(false);
   }
 
   return (
