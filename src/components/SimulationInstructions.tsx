@@ -1,6 +1,6 @@
 export default function SimulationInstructions() {
   return (
-    <article className="flex flex-col gap-4 rounded-xl p-4 text-center font-bold">
+    <article className="mx-auto flex flex-col gap-4 rounded-xl p-4 font-bold">
       <ul className="flex flex-col italic text-blue-500">
         <li>
           profit = salesRevenue + salvageRevenue - productionCosts -
@@ -20,7 +20,7 @@ export default function SimulationInstructions() {
           <var className="text-red-500"> unitCost</var>
         </li>
       </ul>
-      <ul className="mx-auto flex flex-col italic sm:flex-row sm:gap-12">
+      <ul className="flex flex-col italic sm:flex-row sm:gap-12">
         <li className="text-blue-500">Calculated value</li>
         <li className="text-green-500">Simulated value</li>
         <li className="text-red-500">Assumed value</li>
