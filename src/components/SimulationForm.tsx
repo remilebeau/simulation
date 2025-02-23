@@ -87,7 +87,7 @@ export default function SimulationForm() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-4 rounded-xl p-4 sm:grid sm:grid-cols-2"
+            className="flex flex-col gap-4 rounded-xl sm:grid sm:grid-cols-3"
           >
             <FieldWithLabel label="Unit Cost" name="unitCost" />
             <FieldWithLabel label="Unit price" name="unitPrice" />
@@ -102,7 +102,7 @@ export default function SimulationForm() {
               name="productionQuantity"
             />
 
-            <Button className="rounded-xl sm:col-span-2" type="submit">
+            <Button className="rounded-xl sm:col-span-3" type="submit">
               Simulate
             </Button>
           </form>
