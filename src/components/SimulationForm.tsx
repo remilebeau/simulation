@@ -19,9 +19,7 @@ const formSchema = z
     demandMin: z.coerce.number().gte(0),
     demandMean: z.coerce.number().gte(0),
     demandMax: z.coerce.number().gte(0),
-    demandSD: z.coerce.number().gte(0, {
-      message: "Standard deviation must be greater than or equal to 0",
-    }),
+    demandSD: z.coerce.number().gt(0),
     fixedCost: z.coerce.number(),
     productionQuantity: z.coerce.number().gt(0, {
       message: "Production quantity must be greater than 0",
@@ -34,12 +32,12 @@ const formSchema = z
         fields.demandMin <= fields.demandMean &&
         fields.demandMean <= fields.demandMax &&
         fields.demandMin < fields.demandMax &&
-        fields.demandSD >= 0
+        fields.demandSD > 0
       );
     },
     {
       message:
-        "Please check that (min <= mean <= max) and (min < max) and (sd >= 0)",
+        "Please check that (min <= mean <= max) and (min < max) and (sd > 0)",
       path: ["demandMin"],
     },
   );
@@ -98,11 +96,7 @@ export default function SimulationForm() {
             <FieldWithLabel label="Minimum Demand" name="demandMin" />
             <FieldWithLabel label="Expected Demand" name="demandMean" />
             <FieldWithLabel label="Maximum Demand" name="demandMax" />
-            <FieldWithLabel
-              label="Demand Standard Deviation"
-              name="demandSD"
-              placeholder="Enter 0 if unknown"
-            />
+            <FieldWithLabel label="Demand Standard Deviation" name="demandSD" />
             <FieldWithLabel
               label="Production Quantity"
               name="productionQuantity"
