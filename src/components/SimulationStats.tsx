@@ -27,7 +27,7 @@ export default function SimulationStats({ simData }: Props) {
       value: formatValue(simData.q1),
     },
     {
-      name: "Mean",
+      name: "Expected Profit",
       value: formatValue(simData.mean),
     },
     {
