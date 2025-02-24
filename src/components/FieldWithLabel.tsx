@@ -25,6 +25,7 @@ export default function FieldWithLabel({ label, name, placeholder }: Props) {
           <FormLabel>{label}</FormLabel>
           <FormControl>
             <Input
+              type="number"
               required
               placeholder={placeholder}
               className="rounded-xl"
