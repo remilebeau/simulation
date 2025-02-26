@@ -19,6 +19,14 @@ export default function SimulationStats({ simData }: Props) {
   }
   const stats = [
     {
+      name: "Expected Profit",
+      value: formatValue(simData.mean),
+    },
+    {
+      name: "Chance of Losing Money",
+      value: formatValue(simData.pLoseMoney),
+    },
+    {
       name: "Minimum",
       value: formatValue(simData.minimum),
     },
@@ -26,10 +34,7 @@ export default function SimulationStats({ simData }: Props) {
       name: "25th Percentile",
       value: formatValue(simData.q1),
     },
-    {
-      name: "Expected Profit",
-      value: formatValue(simData.mean),
-    },
+
     {
       name: "50th Percentile",
       value: formatValue(simData.median),
@@ -41,10 +46,6 @@ export default function SimulationStats({ simData }: Props) {
     {
       name: "Maximum",
       value: formatValue(simData.maximum),
-    },
-    {
-      name: "P(Profit < 0)",
-      value: formatValue(simData.pLoseMoney),
     },
   ];
   return (
