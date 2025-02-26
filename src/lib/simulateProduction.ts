@@ -10,7 +10,7 @@ export async function simulateProduction(
   demandSD: number,
   fixedCost: number,
   productionQuantity: number,
-): Promise<ProductionResults | null> {
+): Promise<ProductionResults> {
   const DATA_URL =
     process.env.NODE_ENV === "production"
       ? "https://simulation-api-rsaw.onrender.com/api/simulations/production"
@@ -32,7 +32,7 @@ export async function simulateProduction(
       productionQuantity,
     }),
   });
-  if (!res.ok) return null;
+  if (!res.ok) throw new Error("Something went wrong. Please try again.");
   const data = await res.json();
   return data;
 }
