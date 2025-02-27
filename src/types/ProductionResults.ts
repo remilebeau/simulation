@@ -1,10 +1,9 @@
 export type ProductionResults = {
-  minimum: number;
-  q1: number;
   mean: number;
-  median: number;
-  q3: number;
-  maximum: number;
+  meanLowerCI: number;
+  meanUpperCI: number;
   pLoseMoney: number;
+  pLoseMoneyLowerCI: number;
+  pLoseMoneyUpperCI: number;
   simulatedProfits: number[];
 };

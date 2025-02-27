@@ -17,47 +17,29 @@ export default function SimulationStats({ simData }: Props) {
         maximumFractionDigits: 0,
       });
   }
-  const stats = [
-    {
-      name: "Expected Profit",
-      value: formatValue(simData.mean),
-    },
-    {
-      name: "Chance of Losing Money",
-      value: formatValue(simData.pLoseMoney),
-    },
-    {
-      name: "Minimum",
-      value: formatValue(simData.minimum),
-    },
-    {
-      name: "25th Percentile",
-      value: formatValue(simData.q1),
-    },
+  const meanLowerCI = formatValue(simData.meanLowerCI);
+  const meanUpperCI = formatValue(simData.meanUpperCI);
+  const pLoseMoneyLowerCI = formatValue(simData.pLoseMoneyLowerCI);
+  const pLoseMoneyUpperCI = formatValue(simData.pLoseMoneyUpperCI);
 
-    {
-      name: "50th Percentile",
-      value: formatValue(simData.median),
-    },
-    {
-      name: "75th Percentile",
-      value: formatValue(simData.q3),
-    },
-    {
-      name: "Maximum",
-      value: formatValue(simData.maximum),
-    },
-  ];
   return (
     <>
-      <section className="flex flex-col sm:mx-auto sm:w-1/2">
-        {stats.map((stat) => (
-          <ul key={stat.name} className="flex flex-row justify-between">
-            <li className="text-md">{stat.name}:</li>
-            <li className="text-md">{stat.value}</li>
-          </ul>
-        ))}
-      </section>
+      <table>
+        <tbody>
+          <tr>
+            <td>Expected Profit: </td>
+            <td>
+              {meanLowerCI} to {meanUpperCI}
+            </td>
+          </tr>
+          <tr>
+            <td>Chance of Negative Profit:</td>
+            <td>
+              {pLoseMoneyLowerCI} to {pLoseMoneyUpperCI}
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <hr />
     </>
   );
