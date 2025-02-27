@@ -45,14 +45,12 @@ const formSchema = z
 export default function SimulationForm() {
   const [simData, setSimData] = useState<ProductionResults | undefined>();
   const [isLoading, setIsLoading] = useState(false);
-  const [errMsg, setErrMsg] = useState("");
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setErrMsg("");
     setIsLoading(true);
     const data = await simulateProduction(
       values.unitCost,
@@ -73,24 +71,56 @@ export default function SimulationForm() {
     <>
       {isLoading && <Loader />}
       {!isLoading && simData && <SimStats simData={simData} />}
-      {errMsg && <p className="text-red-500">{errMsg}</p>}
       {!isLoading && (
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
             className="flex flex-col gap-4 rounded-xl sm:grid sm:grid-cols-3"
           >
-            <FieldWithLabel label="Unit Cost" name="unitCost" />
-            <FieldWithLabel label="Unit price" name="unitPrice" />
-            <FieldWithLabel label="Salvage Price" name="salvagePrice" />
-            <FieldWithLabel label="Fixed Costs" name="fixedCost" />
-            <FieldWithLabel label="Minimum Demand" name="demandMin" />
-            <FieldWithLabel label="Expected Demand" name="demandMean" />
-            <FieldWithLabel label="Maximum Demand" name="demandMax" />
-            <FieldWithLabel label="Demand Standard Deviation" name="demandSD" />
             <FieldWithLabel
-              label="Production Quantity"
+              labelColor="text-red-500"
+              label="fixedCosts"
+              name="fixedCost"
+            />
+            <FieldWithLabel
+              labelColor="text-red-500"
+              label="unitPrice"
+              name="unitPrice"
+            />
+            <FieldWithLabel
+              labelColor="text-red-500"
+              label="salvagePrice"
+              name="salvagePrice"
+            />
+            <FieldWithLabel
+              labelColor="text-red-500"
+              label="productionQuantity"
               name="productionQuantity"
+            />
+            <FieldWithLabel
+              labelColor="text-red-500"
+              label="unitCost"
+              name="unitCost"
+            />
+            <FieldWithLabel
+              labelColor="text-green-500"
+              label="Minimum Demand (units)"
+              name="demandMin"
+            />
+            <FieldWithLabel
+              labelColor="text-green-500"
+              label="Expected Demand (units)"
+              name="demandMean"
+            />
+            <FieldWithLabel
+              labelColor="text-green-500"
+              label="Maximum Demand (units)"
+              name="demandMax"
+            />
+            <FieldWithLabel
+              labelColor="text-green-500"
+              label="Demand Standard Deviation (units)"
+              name="demandSD"
             />
 
             <Button className="rounded-xl sm:col-span-3" type="submit">
