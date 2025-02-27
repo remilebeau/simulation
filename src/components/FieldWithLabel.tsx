@@ -12,9 +12,15 @@ type Props = {
   label: string;
   name: string;
   placeholder?: string;
+  labelColor?: string;
 };
 
-export default function FieldWithLabel({ label, name, placeholder }: Props) {
+export default function FieldWithLabel({
+  label,
+  name,
+  placeholder,
+  labelColor,
+}: Props) {
   const form = useFormContext();
   return (
     <FormField
@@ -22,7 +28,7 @@ export default function FieldWithLabel({ label, name, placeholder }: Props) {
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          <FormLabel className={`italic ${labelColor}`}>{label}</FormLabel>
           <FormControl>
             <Input
               type="number"
