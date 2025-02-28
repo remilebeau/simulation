@@ -17,8 +17,10 @@ export default function SimulationStats({ simData }: Props) {
         maximumFractionDigits: 0,
       });
   }
+  const mean = formatValue(simData.mean);
   const meanLowerCI = formatValue(simData.meanLowerCI);
   const meanUpperCI = formatValue(simData.meanUpperCI);
+  const pLoseMoney = formatValue(simData.pLoseMoney);
   const pLoseMoneyLowerCI = formatValue(simData.pLoseMoneyLowerCI);
   const pLoseMoneyUpperCI = formatValue(simData.pLoseMoneyUpperCI);
 
@@ -27,13 +29,21 @@ export default function SimulationStats({ simData }: Props) {
       <table>
         <tbody>
           <tr>
-            <td>Expected Profit: </td>
+            <td>Average Profit: </td>
+            <td>{mean}</td>
+          </tr>
+          <tr>
+            <td>E(Profit) 95% CI: </td>
             <td>
               {meanLowerCI} to {meanUpperCI}
             </td>
           </tr>
           <tr>
-            <td>Chance of Negative Profit:</td>
+            <td>Probability of Negative Profit: </td>
+            <td>{pLoseMoney}</td>
+          </tr>
+          <tr>
+            <td>P(Profit &lt; 0) 95% CI:</td>
             <td>
               {pLoseMoneyLowerCI} to {pLoseMoneyUpperCI}
             </td>
