@@ -29,21 +29,21 @@ export default function SimulationStats({ simData }: Props) {
       <table>
         <tbody>
           <tr>
-            <td>Average Profit: </td>
+            <td>Average Profit </td>
             <td>{mean}</td>
           </tr>
           <tr>
-            <td>E(Profit) 95% CI: </td>
+            <td>Average Profit 95% CI </td>
             <td>
               {meanLowerCI} to {meanUpperCI}
             </td>
           </tr>
           <tr>
-            <td>Probability of Negative Profit: </td>
+            <td>P(Profit &lt; 0) </td>
             <td>{pLoseMoney}</td>
           </tr>
           <tr>
-            <td>P(Profit &lt; 0) 95% CI:</td>
+            <td>P(Profit &lt; 0) 95% CI</td>
             <td>
               {pLoseMoneyLowerCI} to {pLoseMoneyUpperCI}
             </td>
